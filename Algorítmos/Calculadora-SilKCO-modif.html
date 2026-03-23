@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador SilkCO</title>
+</head>
+<body bgcolor="#56b77e">
+    <center>
+    <h1>Simulador Financeiro</h1>
+
+    Quantidade de ovos comprados por safra(g): <input type="text" id="inp_qtdGrama"><br><br>
+    Valor do casulo por Kg: <input type="text" id="inp_valor"><br><br>
+    Tempo de simulação(anos): <input type="text" id="inp_tempo"><br><br>
+
+    <button onclick="but_simular()">Simular</button><br><br>
+
+    <div id="div_mensagem"></div> 
+
+     </center>
+</body>
+</html>
+<script>
+
+    function but_simular(){
+
+        let qtdGramaAnual = Number(inp_qtdGrama.value) * 9;
+        let valorCasulo = Number(inp_valor.value);
+        let tempo = Number(inp_tempo.value); // declarei o tempo de simulação --Lucas
+
+        let casuloPorGrama = qtdGramaAnual * 1500; // MÉDIA 20-40
+        // quantos casulos tem por g de ovos (1g de ovo  = 1500) - Departamento de Entomologia -UFLA
+
+        let kgCasulo = casuloPorGrama / 500; // quilos de casulos produzidos (1kg de casulos = 500 casulos) - wildfibres.co.uk
+        
+        let prejuizoGeral = kgCasulo * 0.40; // casulos perdidos no geral (40%) - International Journal of Advanced Biochemistry Research 2025
+        
+        let prejuizoEspecifico = prejuizoGeral * 0.70; // casulos perdidos por doenças (70% de 40%) - International Journal of Advanced Biochemistry Research 2025
+        
+        let totalAnual = (kgCasulo-prejuizoGeral) * valorCasulo; // valor dos casulos restantes 
+        
+        let totalAnualSilk = (kgCasulo - (prejuizoGeral - prejuizoEspecifico)) * valorCasulo; // valor com sensor
+        
+        let diferença = totalAnualSilk - totalAnual;
+
+        
+
+        div_mensagem.innerHTML = `
+        <b>SEM A SILK COMPANY:</b> <br>
+        Faturamento por safra é em média: R$${(totalAnual/9).toLocaleString('pt-br')}<br>
+        Total anual é: R$${totalAnual.toLocaleString('pt-br')}<br>
+        Total no fim da simulação é: R$${(totalAnual * tempo).toLocaleString('pt-br')}<br><br>
+        
+        <b>COM A SILK COMPANY:</b> <br>
+        Faturamento por safra é em média: R$${(totalAnualSilk/9).toLocaleString('pt-br')}<br>
+        Total anual é: R$${totalAnualSilk.toLocaleString('pt-br')}<br>
+        Total no fim da simulação é: R$${(totalAnualSilk * tempo).toLocaleString('pt-br')} <br><br>
+
+        <span style="color: white;font-size: large"><b>Diferença de R$${diferença.toLocaleString('pt-br')} sem o nosso produto.</b></span><br><br>
+        ` 
+        div_mensagem.innerHTML += `<b>Dados adotados para os cálculos:</b><br>
+        ◆Quantidade de 9 safras por ano<br>
+        ◆(1g de ovo  = 1500 casulos) - Departamento de Entomologia -UFLA<br>
+        ◆(1kg de casulos = 500 casulos) - wildfibres.co.uk<br>
+        ◆Casulos perdidos no geral (40%) - International Journal of Advanced Biochemistry Research 2025<br>
+        ◆Casulos perdidos por doenças (70% de 40%) - International Journal of Advanced Biochemistry Research 2025`
+    }
+</script>
