@@ -1,0 +1,123 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.painel{
+    display: flex;
+    background-color: lightgrey;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.container{
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.container h1{
+    justify-self: center;
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.input_valores{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    
+}
+.input_valores input{
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px 100px 10px 100px;
+    background-color: grey;
+
+}
+.input_valores input::placeholder{
+    color: white;
+    font-size: 11px;
+}
+
+.input_valores button{
+    border-radius: 5px;
+    padding: 7px 27px 7px 27px;
+    background-color: orangered;
+    margin-top: 20px;
+    border: none;
+    width: fit-content;
+    align-self: center;
+    color: white;
+}
+
+.comparacao{
+    display: flex;
+    flex-direction: row;
+    gap: 45%
+}
+.valores_iniciais{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    margin-left: 20px;
+}
+.valores_iniciais h2,p{
+    margin: 0px;
+}
+.valores_finais{
+    display: flex;
+    flex-direction:column;
+    margin: 0px;
+    flex:2;
+}
+.valores_finais h2,p{
+   margin: 0px;
+   margin-left: 15px;
+   margin-top: 5px;
+
+}
+#titulo{
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size:large;
+}
+#resultado{
+    display: flex;
+    justify-content: center;
+    margin-top: 77px;
+}
+
+.chamado{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+#chamado_texto{
+    display: flex;
+    font-weight: bold;
+    font-size: large;
+   margin: 0px;
+}
+
+#chamado_botao{
+    display: flex;
+    border-radius: 5px;
+    padding: 15px 40px 15px 40px;
+    background-color: orangered;
+    margin-top: 20px;
+    border: none;
+    width: fit-content;
+    align-self: center;
+    color: white;
+    margin: 0px;
+}
+
+
+
