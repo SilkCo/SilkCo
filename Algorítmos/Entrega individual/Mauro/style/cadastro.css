@@ -1,0 +1,89 @@
+@font-face {
+    font-family: Open-Sans;
+    src: url(../font/OpenSans-VariableFont_wdth\,wght.ttf) format('truetype');
+}
+*{
+    font-family: Open-Sans;
+}
+body{
+    background-image: url(../img/fundo.png);
+    background-size: cover;
+}
+.conteudo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 90vh;
+}
+.pergunta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
+    margin-left: 20%;
+    margin-top: 4%;
+    background-color: white;
+    height: 90vh;
+    width: 35vw;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+.cont-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+.titulo-card{
+    color: #4a5a6a;
+    font-size: 50px;
+}
+.area-input{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 20%;
+}
+.input{
+    width: 500px;
+    height: 40px;
+    border-style: none;
+    border-bottom-style: solid;
+    border-width: 4px;
+    font-size: 30px;
+}
+.botao-card{
+    height: 60px;
+    width: 200px;
+    border-style: none;
+    border-radius: 25px;
+    background-color: #56b77e;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.titulo-login{
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+.botao-login{
+    height: 60px;
+    width: 200px;
+    border-style: solid;
+    border-radius: 50px;
+    background-color: #56b77e;
+    border-color: white;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.botao-login:hover{
+    cursor: pointer;
+}
+.botao-card:hover{
+    cursor: pointer;
+}

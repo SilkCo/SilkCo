@@ -1,0 +1,20 @@
+body{
+    background-image: url(../img/fundo-invertido.png);
+    background-size: cover;
+}
+.conteudo{
+    flex-direction: row-reverse;
+}
+.card{
+    margin-left: 0%;
+    margin-right: 10%;
+}
+#esqueceu{
+    color: #094eff;
+}
+.esqueceu{
+    margin-top: -40%;
+}
+.botao-card{
+    margin-bottom: 10%;
+}
