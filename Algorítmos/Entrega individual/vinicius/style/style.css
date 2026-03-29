@@ -5,7 +5,7 @@ body{
 
 .painel{
     display: flex;
-    background-color: lightgrey;
+    background-color: #f9f7f2;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -34,18 +34,19 @@ body{
     border-radius: 5px;
     margin-top: 5px;
     padding: 10px 100px 10px 100px;
-    background-color: grey;
+    background-color: #d9d9d9;
+    border: none;
 
 }
 .input_valores input::placeholder{
-    color: white;
+    color: #737373;
     font-size: 11px;
 }
 
 .input_valores button{
     border-radius: 5px;
     padding: 7px 27px 7px 27px;
-    background-color: orangered;
+    background-color: #ff751f;
     margin-top: 20px;
     border: none;
     width: fit-content;
@@ -110,7 +111,7 @@ body{
     display: flex;
     border-radius: 5px;
     padding: 15px 40px 15px 40px;
-    background-color: orangered;
+    background-color: #ff751f;
     margin-top: 20px;
     border: none;
     width: fit-content;
