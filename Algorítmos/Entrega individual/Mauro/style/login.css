@@ -13,8 +13,11 @@ body{
     color: #094eff;
 }
 .esqueceu{
-    margin-top: -40%;
+    margin-top: -30%;
 }
 .botao-card{
     margin-bottom: 10%;
+}
+.area-input{
+    margin-bottom: 40%;
 }

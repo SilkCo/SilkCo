@@ -39,21 +39,21 @@ body{
 }
 .titulo-card{
     color: #4a5a6a;
-    font-size: 50px;
+    font-size: 5vh;
 }
 .area-input{
     display: flex;
     flex-direction: column;
-    gap: 40px;
     margin-bottom: 20%;
+    gap: 20px;
 }
 .input{
-    width: 500px;
+    width: 400px;
     height: 40px;
     border-style: none;
     border-bottom-style: solid;
     border-width: 4px;
-    font-size: 30px;
+    font-size: 20px;
 }
 .botao-card{
     height: 60px;
@@ -86,4 +86,14 @@ body{
 }
 .botao-card:hover{
     cursor: pointer;
+}
+.parametros{
+    color: red;
+}
+#ipt_usuario{
+    margin-bottom: 2%;
+}
+a{
+    text-decoration: none;
+    color: white;
 }

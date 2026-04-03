@@ -13,20 +13,32 @@
     <div class="conteudo">
         <div class="pergunta">
             <h1 class="titulo-login">Não possui um cadastro?</h1>
-            <button class="botao-login">Cadastro</button>
+            <a href="cadastro-usu.html"><button class="botao-login">Cadastro</button></a>
         </div>
         <div class="card">
             <div class="cont-card">
                 <h1 class="titulo-card">Login</h1>
                 <div class="area-input">
-                    <input type="text" class="input" placeholder="Digite seu email">
-                    <input type="password" class="input" placeholder="Digite sua senha">
+                    <input type="text" class="input" id="ipt_email" placeholder="Digite seu email">
+                    <input type="password" class="input" id="ipt_senha" placeholder="Digite sua senha">
                 </div>
                 <h2 class="esqueceu"><a href="#" id="esqueceu">Esqueceu sua senha?</a></h2>
-                <button class="botao-card">Login</button>
+                <button class="botao-card" onclick="logar()">Login</button>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    function logar(){
+        let email = ipt_email.value;
+        let senha = ipt_senha.value;
+
+        if(email == 'brandao@sptech.school' && senha == 'Brandao*78'){
+            alert('Login realizado com sucesso');
+        }else{
+            alert('Email e/ou senha incorreto');
+        }
+    }
+</script>
