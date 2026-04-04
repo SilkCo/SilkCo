@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/cadastro.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="conteudo">
+        <div class="pergunta">
+            <h1 class="titulo-login">Já possui cadastro?</h1>
+            <a href="login.html"><button class="botao-login">Login</button></a>
+        </div>
+        <div class="card">
+            <div class="cont-card">
+                <h1 class="titulo-card">Cadastro do Usuário</h1>
+                <div class="area-input">
+                    <input type="text" class="input" placeholder="Digite seu usuário" id="ipt_usuario">
+                    <input type="text" class="input" placeholder="Digite seu email" id="ipt_email" oninput="validarEmail()">
+                    <span id="txt_email" class="parametros"></span>
+                    <input type="password" class="input" placeholder="Digite sua senha" id="ipt_senha" oninput="validarSenha()">
+                    <span id="txt_senha" class="parametros"></span>
+                </div>
+                <button class="botao-card" onclick="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let caracteres = ['!','@','#','$','%','&','*','(',')','_','-','+','=','{','}','[',']','/','|','.',',',';',':','<','>','?']
+    let verifemail = 0;
+    let veriftam = 0;
+    let verifcarac = 0;
+    let verifmai = 0;
+    let verifmin = 0;
+    function validarEmail(){
+        let email = ipt_email.value;
+
+        if(email.includes('@') && email.includes('.')){
+           txt_email.innerHTML = ``;
+           verifemail = 1;
+        }else if(email.includes('.')){
+             txt_email.innerHTML = `Deve conter @`;
+             verifemail = 0;
+        }else if(email.includes('@')){
+            txt_email.innerHTML = `Deve conter .`;
+             verifemail = 0;
+        }else{
+            txt_email.innerHTML = `Deve conter @<br>
+                                    Deve conter .`;
+             verifemail = 0;
+        }
+    }
+    
+    function validarSenha(){
+        let senha = ipt_senha.value;
+        let tamanho = senha.length;
+        let msg_tam = '';
+        let msg_carac = '';
+        let msg_mai = '';
+        let msg_min = '';
+        if(tamanho < 8){
+            msg_tam = `A senha deve conter ao menos 8 caracteres<br>`
+            veriftam = 0;
+        }else{
+            veriftam = 1;
+        }
+        if(validarCaractere()){
+            msg_carac = `A senha deve conter ao menos 1 caractere especial<br>`
+            verifcarac = 0;
+        }else{
+            verifcarac = 1;
+        }
+        if(senha.toUpperCase() == senha){
+            msg_min = `A senha deve conter ao menos 1 letra minúscula<br>`
+            verifmin = 0;
+        }else{
+            verifmin = 1;
+        }
+        if(senha.toLowerCase() == senha){
+            msg_mai = `A senha deve conter ao menos 1 letra maiúscula<br>`
+            verifmai = 0;
+        }else{
+            verifmai = 1;
+        }
+
+        txt_senha.innerHTML = msg_tam+msg_carac+msg_mai+msg_min;
+    }
+    function validarCaractere(){
+        let senha = ipt_senha.value;
+        for(let cont = 0;cont < caracteres.length;cont++){
+            if(senha.includes(caracteres[cont])){
+                return false;
+            }
+        }
+        return true;
+    }
+    function cadastrar(){
+        let verif = verifcarac+verifemail+verifmai+verifmin+veriftam;
+        let usuario = ipt_usuario.value;
+        if(verif == 5 && usuario != ''){
+            alert(`Cadastrado com sucesso`);
+            window.open('login.html')
+        }else{
+            alert(`Tem que ter todos os parâmetros`);
+        }
+    }
+</script>

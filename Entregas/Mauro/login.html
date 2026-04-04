@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/cadastro.css">
+    <link rel="stylesheet" href="./style/login.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="conteudo">
+        <div class="pergunta">
+            <h1 class="titulo-login">Não possui um cadastro?</h1>
+            <a href="cadastro-usu.html"><button class="botao-login">Cadastro</button></a>
+        </div>
+        <div class="card">
+            <div class="cont-card">
+                <h1 class="titulo-card">Login</h1>
+                <div class="area-input">
+                    <input type="text" class="input" id="ipt_email" placeholder="Digite seu email">
+                    <input type="password" class="input" id="ipt_senha" placeholder="Digite sua senha">
+                </div>
+                <h2 class="esqueceu"><a href="#" id="esqueceu">Esqueceu sua senha?</a></h2>
+                <button class="botao-card" onclick="logar()">Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function logar(){
+        let email = ipt_email.value;
+        let senha = ipt_senha.value;
+
+        if(email == 'brandao@sptech.school' && senha == 'Brandao*78'){
+            alert('Login realizado com sucesso');
+        }else{
+            alert('Email e/ou senha incorreto');
+        }
+    }
+</script>
