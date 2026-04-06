@@ -42,9 +42,10 @@
             </div>
             <h3 id="resultado">Diferença de R$0,00 sem o nosso produto</h3> -->
         </div>
-        <div id="Pai_mensagem">
-           <div id="div_mensagem"> </div>
-        </div>
+        <div id = "div_mensagemPai">
+        <div id="div_mensagem"> </div>
+         <div id="div_mensagem2"> </div>
+         </div>
         <div class="chamado">
             <h4 id="chamado_texto">Quer ter esse resultado na sua empresa?</h4>
             <button id="chamado_botao">Cadastre-se agora!</button>
@@ -82,8 +83,9 @@
         Faturamento por safra é em média: R$${(totalAnual/9).toLocaleString('pt-br')}<br>
         Total anual é: R$${totalAnual.toLocaleString('pt-br')}<br>
         Total no fim da simulação é: R$${(totalAnual * tempoAnos).toLocaleString('pt-br')}<br><br>
-        
-        COM A SILK COMPANY: <br>
+        `
+        div_mensagem2.innerHTML = `
+        <br><br>COM A SILK COMPANY: <br>
         Faturamento por safra é em média: R$${(totalAnualSilk/9).toLocaleString('pt-br')}<br>
         Total anual é: R$${totalAnualSilk.toLocaleString('pt-br')}<br>
         Total no fim da simulação é: R$${(totalAnualSilk * tempoAnos).toLocaleString('pt-br')} <br><br>
