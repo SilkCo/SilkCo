@@ -39,7 +39,23 @@ CREATE TABLE sensor (
         CHECK (statusSensor IN ('Ativo', 'Inativo', 'Manutencao')),
 	CONSTRAINT chFkEmpresaSensor 
 		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
-	
+);
+
+CREATE TABLE contato (
+idContato INT PRIMARY KEY AUTO_INCREMENT,
+numeroCel CHAR(11),
+email VARCHAR(45),
+fkUsuario INT,
+CONSTRAINT chFkUsuario 
+	FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario)
+);
+
+CREATE TABLE galpao (
+idGalpao INT PRIMARY KEY AUTO_INCREMENT,
+localizacao VARCHAR(40),
+fkEmpresa INT,
+CONSTRAINT chFkEmpresa
+	FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
 CREATE TABLE leitura_sensor (
