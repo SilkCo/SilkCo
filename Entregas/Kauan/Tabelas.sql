@@ -9,13 +9,22 @@ CREATE TABLE empresa (
     cnpj CHAR(14)
 );
 
+CREATE TABLE galpao (
+idGalpao INT PRIMARY KEY AUTO_INCREMENT,
+localizacao VARCHAR(40),
+fkEmpresa INT,
+CONSTRAINT chFkEmpresa
+	FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa)
+);
+
 CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(40) NOT NULL,
-    email VARCHAR(40) NOT NULL UNIQUE,
+    emailCadastro VARCHAR(40) NOT NULL UNIQUE,
+    emailSecundario VARCHAR(40) UNIQUE, 
     senha VARCHAR(30) NOT NULL,
     fkEmpresa INT,
-    CONSTRAINT chFkEmpresa 
+    CONSTRAINT chFkEmpresaUsuario 
 		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
@@ -34,28 +43,19 @@ CREATE TABLE sensor (
     statusSensor VARCHAR(10) NOT NULL,
     modeloSensor VARCHAR(30),
 	localizacao VARCHAR(30),
-	fkEmpresa INT,
+	fkGalpao INT,
     CONSTRAINT chStatus 
         CHECK (statusSensor IN ('Ativo', 'Inativo', 'Manutencao')),
-	CONSTRAINT chFkEmpresaSensor 
-		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+	CONSTRAINT chFkGalpaoSensor 
+		FOREIGN KEY (fkGalpao) REFERENCES galpao (idGalpao)
 );
 
-CREATE TABLE contato (
+CREATE TABLE contato(
 idContato INT PRIMARY KEY AUTO_INCREMENT,
-numeroCel CHAR(11),
-email VARCHAR(45),
+telefone CHAR(11),
+email VARCHAR(40),
 fkUsuario INT,
-CONSTRAINT chFkUsuario 
-	FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario)
-);
-
-CREATE TABLE galpao (
-idGalpao INT PRIMARY KEY AUTO_INCREMENT,
-localizacao VARCHAR(40),
-fkEmpresa INT,
-CONSTRAINT chFkEmpresa
-	FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa)
+CONSTRAINT chFkContatoUsuario FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario)
 );
 
 CREATE TABLE leitura_sensor (
