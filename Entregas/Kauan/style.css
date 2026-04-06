@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header{
+    height: 64px;
+    width: 100%;
+    background-color: aqua;
+    box-sizing: border-box;
+}
+
+.insights{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.cartoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    width: 100%;
+}
+
+.seta{
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    background-color: chocolate;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.seta:hover{
+    background-color: rgb(224, 143, 85);
+}
+
+.cartao1{
+    height: 150px;
+    width: 320px;
+    background-color: brown;
+}
+
+.cartao2{
+    height: 150px;
+    width: 320px;
+    background-color: brown;
+}
+
+.cartao3{
+    height: 150px;
+    width: 320px;
+    background-color: brown;
+}
+
+.container{
+    height: 718px;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer{
+    height: 64px;
+    background-color: yellow;
+}
+
+.tu{
+    width: 55%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.grafico1{
+    margin-top: 10px;
+    width: 700px;
+    height: 280px;
+    background-color: green;
+}
+
+.grafico2{
+    margin-top: 10px;
+    width: 700px;
+    height: 280px;
+    background-color: blue;
+}
+
+.tu h3{
+    margin-top: 15px;
+}
+
+.funcionamento{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.grafico3{
+    width: 600px;
+    height: 600px;
+    background-color: blueviolet;
+}
