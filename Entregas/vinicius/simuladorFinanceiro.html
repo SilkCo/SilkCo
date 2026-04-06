@@ -19,11 +19,11 @@
         <div class="container">
             <h1>Simulador Financeiro</h1>
             <div class="input_valores">
-                <input type="text" placeholder="Quantidade de ovos por safra(g)">
-                <input type="text" placeholder="Valor do casulo por Kg:">
-                <input type="text" placeholder="Tempo de simulação(anos):">
-                <button>Simular</button>
-            </div>
+                <input type="text" id="input_ovos" placeholder="Quantidade de ovos por safra(g)">
+                <input type="text" id="input_casulo" placeholder="Valor do casulo por Kg:">
+                <input type="text" id="input_tempo" placeholder="Tempo de simulação(anos):">
+                <button onclick="calculo()">Simular</button>
+            <!-- </div>
 
             <div class="comparacao">
                 <div class="valores_iniciais">
@@ -40,7 +40,10 @@
                     <p>Total no fim da simualação é:</p>
                 </div>
             </div>
-            <h3 id="resultado">Diferença de R$0,00 sem o nosso produto</h3>
+            <h3 id="resultado">Diferença de R$0,00 sem o nosso produto</h3> -->
+        </div>
+        <div id="Pai_mensagem">
+           <div id="div_mensagem"> </div>
         </div>
         <div class="chamado">
             <h4 id="chamado_texto">Quer ter esse resultado na sua empresa?</h4>
@@ -49,8 +52,41 @@
     </div>
 
     <footer>
-        
+
     </footer>
 </body>
 
 </html>
+<script>
+    function calculo() {
+        let ovosPorSafra = Number(input_ovos.value)
+        let valorCasulo = Number(input_casulo.value)
+        let tempoAnos = Number(input_tempo.value)
+        let mensagem = ""
+        let casuloPorGrama = ovosPorSafra * 1500; // MÉDIA 20-40
+        // quantos casulos tem por g de ovos (1g de ovo  = 1500) - Departamento de Entomologia -UFLA
+
+        let kgCasulo = ovosPorSafra / 500; // quilos de casulos produzidos (1kg de casulos = 500 casulos) - wildfibres.co.uk
+        
+        let prejuizoGeral = kgCasulo * 0.40; // casulos perdidos no geral (40%) - International Journal of Advanced Biochemistry Research 2025
+        
+        let prejuizoEspecifico = prejuizoGeral * 0.70; // casulos perdidos por doenças (70% de 40%) - International Journal of Advanced Biochemistry Research 2025
+        
+        let totalAnual = (kgCasulo-prejuizoGeral) * valorCasulo; // valor dos casulos restantes 
+        
+        let totalAnualSilk = (kgCasulo - (prejuizoGeral - prejuizoEspecifico)) * valorCasulo; // valor com sensor
+        
+        let diferença = totalAnualSilk - totalAnual;        
+        div_mensagem.innerHTML = `
+       <br><br> SEM A SILK COMPANY: <br>
+        Faturamento por safra é em média: R$${(totalAnual/9).toLocaleString('pt-br')}<br>
+        Total anual é: R$${totalAnual.toLocaleString('pt-br')}<br>
+        Total no fim da simulação é: R$${(totalAnual * tempoAnos).toLocaleString('pt-br')}<br><br>
+        
+        COM A SILK COMPANY: <br>
+        Faturamento por safra é em média: R$${(totalAnualSilk/9).toLocaleString('pt-br')}<br>
+        Total anual é: R$${totalAnualSilk.toLocaleString('pt-br')}<br>
+        Total no fim da simulação é: R$${(totalAnualSilk * tempoAnos).toLocaleString('pt-br')} <br><br>
+    `
+    }
+</script>

@@ -2,7 +2,6 @@ body{
     margin: 0;
     padding: 0;
 }
-
 .painel{
     display: flex;
     background-color: #f9f7f2;
@@ -28,6 +27,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-self: center;
+    text-align: center;
     
 }
 .input_valores input{
@@ -36,6 +36,7 @@ body{
     padding: 10px 100px 10px 100px;
     background-color: #d9d9d9;
     border: none;
+    text-align: center;
 
 }
 .input_valores input::placeholder{
@@ -94,10 +95,11 @@ body{
 .chamado{
     display: flex;
     flex-direction: row;
-    gap: 50px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 5px;
+    margin-top: 100px;
+    background-color: #56b77e;
 }
 
 #chamado_texto{
@@ -119,6 +121,15 @@ body{
     color: white;
     margin: 0px;
 }
-
+#div_mensagem{
+    display: flex;
+    flex-direction: row;
+ 
+}
+#Pai_mensagem{
+    display: flex;
+    flex-direction: row;
+    flex:2;
+}
 
 
