@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silk Co.</title>
+    <link rel="stylesheet" href="./src/css/global-style.css">
     <link rel="stylesheet" href="./src/css/home-style.css">
     <link rel="stylesheet" href="./src/css/header_footer_style.css">
 </head>
@@ -12,27 +13,22 @@
 <body>
     <header>
         <div class="header-content">
-
             <a href="#" class="logo">
             <img src="./src/img/icon/logo.svg"  class="logo-img">
             <span class="logo-text">SILK CO.</span>
             </a>
 
             <nav>
-                <a href="#" class="active">HOME</a>
-                <a href="#">QUEM SOMOS</a>
-                <a href="#">DASHBOARD</a>
+                <a href="#" class="active">INÍCIO</a>
+                <a href="#quem-somos">QUEM SOMOS</a>
                 <a href="#">SIMULADOR</a>
             </nav>
 
             <a class="btn-entrar">ENTRAR</a>
-
         </div>
-
     </header>
 
     <main>
-
         <div class="banner"></div>
 
         <div class="container main-section-1">
@@ -44,8 +40,7 @@
             </a>
         </div>
 
-        <div class="container cards-section">
-
+        <div class="container main-section-2">
             <div class="card">
                 <img src="./src/img/icon/ok-icon.png" alt="" width="200px">
                 <span>Fácil de instalar</span>
@@ -60,27 +55,53 @@
                 <img src="./src/img/icon/thermo-icon.png" alt="" width="200px">
                 <span>Controle de umidade</span>
             </div>
-
         </div>
 
-        <div class="container main-section-2">
-            <div class="main-section-2-1">
-                <h1>Sem o monitoramento térmico adequado, a produtividade da sua sericicultura pode cair em até 30%.</h1>
+        <div class="container main-section-3" id="quem-somos">
+            <div class="main-section-3-1">
+                <h1>QUEM SOMOS?</h1>
+            </div>
+
+            <div class="main-section-3-2">
+                <h1>
+                    A Silk Co. é uma empresa com foco na criação de soluções para processos na sericicultura.
+                </h1>
+                
+                <div class="logo-card">
+                    <img src="./src/img/icon/logo.svg" alt="" width="125px">
+                </div>
+            </div>
+        </div>
+
+        <div class="container main-section-4">
+            <div class="main-section-4-1 image-card"></div>
+
+            <div class="main-section-4-2">
+                <h1>
+                    Nosso produto tem como objetivo a monitoração de temperatura e umidade da sua criação,
+                    permitindo uma visão ampla das condições da sua produção que facilita a tomada de decisões.
+                </h1>
+            </div>
+        </div>
+
+        <div class="container main-section-5">
+            <div class="main-section-5-1">
+                <h1>
+                    Sem o monitoramento térmico adequado, a produtividade da sua sericicultura pode cair em até 30%.
+                </h1>
                 <a href="">
                     <div class="button">
                         Conheça o nosso simulador financeiro
                     </div>
                 </a>
             </div>
-            <div class="main-section-2-2"></div>
-        </div>
 
+            <div class="main-section-5-2 image-card"></div>
+        </div>
     </main>
 
     <footer>
-            
         <div class="footer-top">
-
             <div class="footer-brand">
                 <a href="#" class="logo">
                     <img src="./src/img/icon/logo.svg" class="logo-img">
@@ -89,14 +110,12 @@
                 <p>xxxxxxxx</p>
             </div>
 
-
             <div class="footer-col">
                 <h4>EMPRESA</h4>
                 <ul>
                 <li><a href="#">Sobre nós</a></li>
                 </ul>
             </div>
-
 
             <div class="footer-col">
                 <h4>PRODUTOS</h4>
@@ -115,7 +134,6 @@
                 <li><a href="#">Status do sistema</a></li>
                 </ul>
             </div>
-
         </div>
 
         <hr class="footer-divisor"/>
@@ -123,9 +141,7 @@
         <div class="footer-bottom">
             <p>© 2026 SILK CO. Todos os direitos reservados.</p>
         </div>
-
     </footer>
 
 </body>
-
 </html>

@@ -1,0 +1,29 @@
+/* FONTES */
+
+@font-face{
+    font-family: 'codec-pro';
+    src: url('../fonts/codec-pro.regular.ttf');
+}
+
+@font-face{
+    font-family: 'OpenSans';
+    src: url('../fonts/OpenSans.ttf');
+}
+
+@font-face{
+    font-family: 'LeagueSpartan';
+    src: url('../fonts/LeagueSpartan.ttf');
+}
+
+/* DEFAULTS */
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f9f7f2;
+    font-family: 'codec-pro';
+}
+
+a{
+    text-decoration: none;
+}

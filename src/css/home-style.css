@@ -1,42 +1,20 @@
-/* FONTES */
-
-@font-face{
-    font-family: 'codec-pro';
-    src: url('../fonts/codec-pro.regular.ttf');
-}
-
-@font-face{
-    font-family: 'OpenSans';
-    src: url('../fonts/OpenSans.ttf');
-}
-
-@font-face{
-    font-family: 'LeagueSpartan';
-    src: url('../fonts/LeagueSpartan.ttf');
-}
-
-/* DEFAULTS */
-
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #f9f7f2;
-    font-family: 'codec-pro';
-}
-
-a{
-    text-decoration: none;
-}
-
 /* MAIN */
 
 main{
     font-family: 'codec-pro';
     height: fit-content;
+    color: #4a5a6a;
 }
 
 .container{
     display: flex;
+    margin: 30px 0 30px;
+}
+
+.image-card{
+    width: 420px;
+    border-radius: 25px;
+    box-shadow: 0 3px 10px #0000004d;
 }
 
 .button{
@@ -78,24 +56,23 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 10px 0 60px 0;
+    padding: 20px 0 40px 0;
 }
 
 .main-section-1 h1{
     height: fit-content;
     width: 700px;
     text-align: center;
-    color: #4a5a6a;
     font-weight: bold;
 }
 
-/* CARDS */
+/* 2 */
 
-.cards-section{
+.main-section-2{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10px 0 60px 0;
+    padding: 20px 0 40px 0;
 }
 
 .card{
@@ -121,35 +98,97 @@ main{
     font-weight: bold;
 }
 
-/* 2 */
+/* 3 */
 
-.main-section-2{
+.main-section-3{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-section-3-1{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.main-section-3-2{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 60px 0 150px 0;
+    padding: 20px 0 40px 0;
 }
 
-.main-section-2-1{
+.logo-card{
+    height: 420px;
+    width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #56b77e;
+    border-radius: 25px;
+    box-shadow: 0 5px 10px #0000004d;
+}
+
+.main-section-3-2 h1{
+    width: 450px;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+
+/* 4 */
+
+.main-section-4{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0 40px 0;
+}
+
+.main-section-4-1{
+    height: 380px;
+    background-image: url('../img/card01.jpg');
+}
+
+.main-section-4-2 h1{
+    height: fit-content;
+    width: 460px;
+    line-height: 1.2;
+    font-size: 40px;
+    text-align: center;
+}
+
+/* 5 */
+
+.main-section-5{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0 40px 0;
+}
+
+.main-section-5-1{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
 
-.main-section-2-1 h1{
+.main-section-5-1 h1{
     height: fit-content;
     width: 410px;
     line-height: 1.2;
-    color: #4a5a6a;
     font-size: 40px;
+    text-align: center;
 }
 
-.main-section-2-2{
+.main-section-5-2{
     height: 500px;
-    width: 420px;
-    border-radius: 25px;
-    background-image: url('../img/card.jpg');
-    box-shadow: 0 3px 10px #0000004d;
+    background-image: url('../img/card02.jpg');
 }
