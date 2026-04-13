@@ -3,6 +3,15 @@
 header{
     padding: 10px 30px;
     box-sizing: border-box;
+    margin: 0;
+    height: 70px;
+    position: sticky;
+    background-color: #56b77e;
+    box-shadow: 0 5px 10px #0000004d;
+    z-index: 1;
+}
+
+header a{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -10,12 +19,6 @@ header{
     font-size: 20px;
     color: #f1f1f1;
     font-weight: bold;
-    margin: 0;
-    height: 70px;
-    position: sticky;
-    background-color: #56b77e;
-    box-shadow: 0 5px 10px #0000004d;
-    z-index: 1;
 }
 
 /* MAIN */
