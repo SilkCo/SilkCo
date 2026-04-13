@@ -1,32 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/cadastro.css">
     <link rel="stylesheet" href="./style/login.css">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="../src/css/global-style.css">
+    <link rel="stylesheet" href="../src/css/login-style.css">
 </head>
 
 <body>
-    <div class="conteudo">
-        <div class="pergunta">
-            <h1 class="titulo-login">Não possui um cadastro?</h1>
-            <a href="cadastro-usu.html"><button class="botao-login">Cadastro</button></a>
-        </div>
-        <div class="card">
-            <div class="cont-card">
-                <h1 class="titulo-card">Login</h1>
-                <div class="area-input">
-                    <input type="text" class="input" id="ipt_email" placeholder="Digite seu email">
-                    <input type="password" class="input" id="ipt_senha" placeholder="Digite sua senha">
+    <header>
+        <img src="../src/img/icon/logo.svg" width="35px" alt="">
+        <span>SILK CO.</span>
+    </header>
+    <main>
+        <div class="main-content">
+            <div class="form-box">
+                <div class="form-section-1">
+                    <h1 class="form-title">Login</h1>
+                
+                    <div class="input-section">
+                        <div class="input">
+                            <span>E-mail: </span>
+                            <input type="text" class="input" id="ipt_email" placeholder="Digite seu email">
+                        </div>
+
+                        <div class="input">
+                            <span>Senha: </span>
+                            <input type="password" class="input" id="ipt_senha" placeholder="Digite sua senha">
+                        </div>
+                    </div>
+
+                    <span class="esqueceu"><a href="#" id="esqueceu">Esqueceu sua senha?</a></span>
                 </div>
-                <h2 class="esqueceu"><a href="#" id="esqueceu">Esqueceu sua senha?</a></h2>
-                <button class="botao-card" onclick="logar()">Login</button>
+
+                <div class="form-section-2">
+                    <button class="submit-button" onclick="logar()">Entrar</button>
+                </div>
+            </div>
+
+            <div class="redirect">
+                    <span>Não possui uma conta?</span>
+                    <a href="cadastro-usu.html"><button class="botao-login">Cadastro</button></a>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
