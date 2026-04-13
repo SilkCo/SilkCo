@@ -1,0 +1,113 @@
+main{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+button, .button{
+    border: none;
+    border-radius: 10px;
+    background-color: #ff751f;
+    font-size: 17px;
+    color: #f1f1f1;
+    font-weight: bold;
+    box-shadow: 0 2px 4px #0000004d;
+    cursor: pointer;
+}
+
+button:hover, .button:hover{
+    background-color: #ff9e62;
+}
+
+/* TÍTULO */
+
+.title{
+    width: fit-content;
+    text-align: center;
+    font-size: 25px;
+}
+
+/* PAINEL */
+
+.panel{
+    height: fit-content;
+    width: 800px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #e4e4e4;
+    box-shadow: 0 5px 10px #0000004d;
+}
+
+/* 1 - INPUTS */
+
+.panel-section-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.input{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input span{
+    width: 140px;
+    font-weight: bold;
+}
+
+.input input{
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid #4a5a6a;
+    font-size: 17px;
+    text-align: center;
+}
+
+.input input:focus{
+    border: 2px solid #4a5a6a;
+    outline: none;
+}
+
+
+
+.panel-section-1 button{
+    height: 35px;
+    width: 120px;
+}
+
+/* 2 - RESULTADOS */
+
+.results-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+}
+
+/* fora */
+
+a.button{
+    height: 40px;
+    width: 150px;
+}
