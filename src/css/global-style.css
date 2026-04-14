@@ -28,6 +28,10 @@ a{
     text-decoration: none;
 }
 
+button{
+    font-family: 'codec-pro';
+}
+
 main{
     font-family: 'codec-pro';
     height: fit-content;
