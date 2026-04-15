@@ -18,6 +18,8 @@ header a{
 .header-content{
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
+    padding: 0 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,6 +32,7 @@ header a{
     align-items: center;
     gap: 15px;
     font-weight: bold;
+    width: 33%;
 }
 
 .logo-img{
@@ -50,9 +53,17 @@ nav a:hover{
     text-shadow: 0 0 18px #ffffff80;
 }
 
-.btn-entrar{
-    height: 34px;
-    width: 100px;
+.redirect-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 33%;
+  justify-content: right;
+}
+
+.redirect-button{
+    height: 36px;
+    width: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +76,7 @@ nav a:hover{
     cursor: pointer;
 }
 
-.btn-entrar:hover{
+.redirect-button:hover{
     background-color: #f1f1f1a2;
 }
 

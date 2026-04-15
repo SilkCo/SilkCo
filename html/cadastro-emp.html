@@ -5,28 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/cadastro.css">
-    <title>Document</title>
+    <title>Cadastro</title>
+    <link rel="icon" href="../src/img/icon/logo.svg">
+
+    <link rel="stylesheet" href="../src/css/global-style.css">
+    <link rel="stylesheet" href="../src/css/login-style.css">
 </head>
 
 <body>
-    <div class="conteudo">
-        <div class="pergunta">
-            <h1 class="titulo-login">Sua empresa possui<br>cadastro?</h1>
-            <a href="login.html"><button class="botao-login">Login</button></a>
-        </div>
-        <div class="card">
-            <div class="cont-card">
-                <h1 class="titulo-card">Cadastro da Empresa</h1>
-                <div class="area-input">
-                    <input type="text" class="input" placeholder="Digite sua empresa">
-                    <input type="text" class="input" placeholder="Digite o telefone da sua empresa">
-                    <input type="text" class="input" placeholder="Digite o CEP da sua empresa">
-                    <input type="text" class="input" placeholder="Digite o CNPJ da sua empresa">
+    <header>
+        <a href="../index.html">
+            <img src="../src/img/icon/logo.svg" width="35px" alt="">
+            <span>SILK CO.</span>
+        </a>
+    </header>
+
+    <main class="cadastro">
+        <div class="main-content">
+            <div class="redirect">
+                <span>Já possui uma conta?</span>
+                <a href="login.html"><button class="redirect-button">Login</button></a>
+            </div>
+
+            <div class="form-box">
+                <div class="form-section1">
+                    <h1 class="form-title">Cadastro do Usuário</h1>
+
+                    <div class="input-section">
+                        <div class="input">
+                            <span>Empresa: </span>
+                            <input type="text" class="input" placeholder="Digite o nome da empresa">
+                        </div>
+
+                        <div class="input">
+                            <span>Telefone:</span>
+                            <input type="text" class="input" placeholder="Digite o telefone da empresa">
+                            <span id="txt_email" class="parametros"></span>
+                        </div>
+
+                        <div class="input">
+                            <span>Senha:</span>
+                            <input type="password" class="input" placeholder="Digite sua senha" id="ipt_senha" oninput="validarSenha()">
+                            <span id="txt_senha" class="parametros"></span>
+                        </div>
+                    </div>
                 </div>
-                <button class="botao-card">Cadastrar</button>
+
+                <div class="form-section-2">
+                    <button class="submit-button" onclick="cadastrar()">Cadastrar</button>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
