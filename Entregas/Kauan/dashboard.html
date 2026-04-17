@@ -13,19 +13,20 @@
 <body>
 
 
-    <header class="header">
-        <div class="header-inner">
+    <header>
+        <div class="header-content">
             <a href="#" class="logo">
-                <img src="" class="logo-img">
-                <span class="logo-text">SILK CO.</span>
+            <img src="./assets/imgs/logo.svg"  class="logo-img">
+            <span class="logo-text">SILK CO.</span>
             </a>
+
             <nav>
-                <a href="#">HOME</a>
-                <a href="#">EMPRESA</a>
-                <a href="#" class="active">DASHBOARD</a>
-                <a href="#">SIMULADOR</a>
+                <a href="#" class="active">INÍCIO</a>
+                <a href="#quem-somos">QUEM SOMOS</a>
+                <a href="./html/simulador-financeiro.html">SIMULADOR</a>
             </nav>
-            <button class="btn-entrar">ENTRAR</button>
+
+            <a class="btn-entrar">ENTRAR</a>
         </div>
     </header>
     <div class="insights">
@@ -44,7 +45,7 @@
         <div class="container">
             <div class="tu">
                 <h3>Temperatura</h3>
-                <div class="grafico1">
+                 <div class="grafico1"> 
                     <canvas id="graficoTemperatura"></canvas>
                 </div>
                 <h3>Umidade</h3>
@@ -55,54 +56,51 @@
             <div class="funcionamento">
                 <h3>Funcionamento</h3>
                 <div class="grafico3">
-                    <canvas id="grafico3"></canvas>
+                    <canvas id="grafico3"></canvas> 
                 </div>
             </div>
         </div>
         <footer>
-    <div class="footer-top">
+   <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="./assets/imgs/logo.svg" class="logo-img">
+                <span class="logo-text">SILK CO.</span>
+                </a>
+                <p>xxxxxxxx</p>
+            </div>
 
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <span class="logo-text">SILK CO.</span>
-        </a>
-        <p>xxxxxxxx</p>
-      </div>
+            <div class="footer-col">
+                <h4>EMPRESA</h4>
+                <ul>
+                <li><a href="#">Sobre nós</a></li>
+                </ul>
+            </div>
 
+            <div class="footer-col">
+                <h4>PRODUTOS</h4>
+                <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Simulador</a></li>
+                <li><a href="#">Relatórios</a></li>
+                </ul>
+            </div>
 
-      <div class="footer-col">
-        <h4>EMPRESA</h4>
-        <ul>
-          <li><a href="#">Sobre nós</a></li>
-        </ul>
-      </div>
+            <div class="footer-col">
+                <h4>SUPORTE</h4>
+                <ul>
+                <li><a href="#">Central de ajuda</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Status do sistema</a></li>
+                </ul>
+            </div>
+        </div>
 
+        <hr class="footer-divisor"/>
 
-      <div class="footer-col">
-        <h4>PRODUTOS</h4>
-        <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Simulador</a></li>
-          <li><a href="#">Relatórios</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>SUPORTE</h4>
-        <ul>
-          <li><a href="#">Central de ajuda</a></li>
-          <li><a href="#">Contato</a></li>
-          <li><a href="#">Status do sistema</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <hr class="footer-divisor"/>
-
-    <div class="footer-bottom">
-      <p>© 2026 SILK CO. Todos os direitos reservados.</p>
-    </div>
+        <div class="footer-bottom">
+            <p>© 2026 SILK CO. Todos os direitos reservados.</p>
+        </div>
   </footer>
 </body>
 
@@ -114,14 +112,14 @@
     new Chart(ctx1, {
         type: 'line',
         data: {
-            labels: ['Temperatura'],
+            labels:  ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Temperatura',
-                    data: [],
+                    data: [10,20,12,16],
                     borderWidth: 2,
-                    backgroundColor: 'red',
-                    borderColor: 'black',
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
                 },
             ]
         },
@@ -139,14 +137,14 @@
     new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Umidade'],
+            labels: ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Umidade',
-                    data: [],
+                    data: [75,66,71,78],
                     borderWidth: 2,
-                    backgroundColor: 'red',
-                    borderColor: 'black',
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
                 },
             ]
         },

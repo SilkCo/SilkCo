@@ -29,7 +29,7 @@
     height: 100%;
     width: 30px;
     cursor: pointer;
-    background-color: chocolate;
+    background-color: #ff751f;
     font-size: 40px;
     font-weight: bold;
     display: flex;
@@ -37,40 +37,40 @@
     justify-content: center;
     align-items: center;
     transition: 0.3s;
+    border: 2px solid black;
+
 }
 
 .seta:hover{
-    background-color: rgb(224, 143, 85);
+    background-color: #ff9e62;
 }
 
 .cartao1{
     height: 150px;
     width: 320px;
-    background-color: brown;
+    background-color: #ff751f;
+    border: 2px solid black;
 }
 
 .cartao2{
     height: 150px;
     width: 320px;
-    background-color: brown;
+    background-color: #ff751f;
+    border: 2px solid black;
 }
 
 .cartao3{
     height: 150px;
     width: 320px;
-    background-color: brown;
+    background-color: #ff751f;
+    border: 2px solid black;
 }
 
 .container{
-    height: 740px;
+    height: 760px;
     background-color: #f8ecd4;
     display: flex;
     flex-direction: row;
-}
-
-.footer{
-    height: 64px;
-    background-color: yellow;
 }
 
 .tu{
@@ -88,6 +88,7 @@
     width: 700px;
     height: 280px;
     background-color: #56b77e;
+    border: 2px solid black;
 }
 
 .grafico2{
@@ -95,6 +96,7 @@
     width: 700px;
     height: 280px;
     background-color: #56b77e;
+    border: 2px solid black;
 }
 
 .tu h3{
@@ -115,126 +117,89 @@
     width: 600px;
     height: 600px;
     background-color: #56b77e;
+    border: 2px solid black;
 }
 
 /* Header */
 
-@font-face {
-  font-family: 'Codec Pro';
-  src: url('fonts/Codec Pro Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
+header{
+    position: sticky;
+    top: 0;
+    height: 64px;
+    width: 100%;
+    background-color: #56b77e;
+    box-shadow: 5px 0 15px #0000004d;
 }
 
-@font-face {
-  font-family: 'League Spartan';
-  src: url('fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
+header a{
+    color: #f1f1f1;
+    font-size: 17px;
+    letter-spacing: 1px;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: #f8ecd4;
-  color: black;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+.header-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
-header {
-  position: relative;
-  top: 0;
-  background: #56b77e;
-  font-family: 'Codec Pro', sans-serif;
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
 }
 
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+.logo-img{
+    width: 34px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  text-decoration: none;
-  color: #f8ecd4;
+nav{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
 }
 
-.logo-icon {
-  width: 34px;
-  height: 34px;
+.active{
+    font-weight: bold;
 }
 
-.logo-text {
-  font-family: 'League Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: 1px;
+nav a:hover{
+    text-shadow: 0 0 18px #ffffff80;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.btn-entrar{
+    height: 34px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+    background-color: #f1f1f1;
+    color: #56b77e;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
 }
 
-nav a {
-  color: #f8ecd4;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 400;
-  padding: 6px 14px;
-  border-radius: 6px;
-  position: relative;
+.btn-entrar:hover{
+    background-color: #f1f1f1a2;
 }
 
-nav a:hover {
-  color: #f8ecd4;
-  background: rgba(255, 255, 255, .12);
+/* Footer */
+
+footer{
+    background-color: #56b77e;
+    color: #f1f1f1;
 }
 
-nav a.active {
-  color: #f8ecd4;
-  font-weight: 600;
-}
-
-.btn-entrar {
-  background: transparent;
-  color: #f8ecd4;
-  border: 1.5px solid #f8ecd4;
-  padding: 13px 20px;
-  border-radius: 20px;
-  font-family: 'Codec Pro', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.btn-entrar:hover {
-  background: rgba(255, 255, 255, .12);
-  border-color: #f8ecd4;
-}
-
-/* FOOTER */
-
-
-footer {
-  background: #56b77e;
-  color: #f8ecd4;
-  font-family: 'Codec Pro', sans-serif;
+footer a{
+    color: #f1f1f1;
 }
 
 .footer-top {
@@ -269,23 +234,16 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  padding: 0;
 }
 
 .footer-col ul li a {
   font-size: 15px;
-  color: #f8ecd4;
   text-decoration: none;
 }
 
 .footer-col ul li a:hover {
-  color: #f8ecd4a6;
-}
-
-.footer-divisor {
-  max-width: 1200px;
-  margin: 0 auto;
-  border: none;
-  border-top: 1px solid #f8ecd4;
+    color: #ffffff;
 }
 
 .footer-bottom {
@@ -300,5 +258,4 @@ footer {
 
 .footer-bottom p {
   font-size: 14px;
-  color: #f8ecd4;
 }
