@@ -8,16 +8,16 @@ main{
 button, .button{
     border: none;
     border-radius: 10px;
-    background-color: #ff751f;
+    background-color: var(--button-color);
     font-size: 17px;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-weight: bold;
-    box-shadow: 0 2px 4px #0000004d;
+    box-shadow: 0 2px 4px var(--shadow-color);
     cursor: pointer;
 }
 
 button:hover, .button:hover{
-    background-color: #ff9e62;
+    background-color: var(--button-color-hover);
 }
 
 /* TÍTULO */
@@ -40,7 +40,7 @@ button:hover, .button:hover{
     align-items: center;
     border-radius: 15px;
     background-color: #e4e4e4;
-    box-shadow: 0 5px 10px #0000004d;
+    box-shadow: 0 5px 10px var(--shadow-color);
 }
 
 /* 1 - INPUTS */

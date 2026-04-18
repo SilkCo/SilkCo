@@ -1,5 +1,5 @@
 .submit-button:hover, .redirect .redirect-button:hover{
-    background-color: #ff9e62;
+    background-color: var(--button-color-hover);
 }
 
 /* HEADER */
@@ -10,8 +10,8 @@ header{
     margin: 0;
     height: 70px;
     position: sticky;
-    background-color: #56b77e;
-    box-shadow: 0 5px 10px #0000004d;
+    background-color: var(--main-color);
+    box-shadow: 0 5px 10px var(--shadow-color);
     z-index: 1;
 }
 
@@ -21,7 +21,7 @@ header a{
     align-items: center;
     gap: 15px;
     font-size: 20px;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-weight: bold;
 }
 
@@ -60,7 +60,7 @@ main.cadastro{
     padding: 15px 20px;
     border-radius: 15px;
     background-color: #f9f7f2;
-    box-shadow: 0 5px 10px #0000004d;
+    box-shadow: 0 5px 10px var(--shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,11 +128,11 @@ main.cadastro{
     width: 150px;
     border: none;
     border-radius: 10px;
-    background-color: #ff751f;
+    background-color: var(--button-color);
     font-size: 17px;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-weight: bold;
-    box-shadow: 0 2px 4px #0000004d;
+    box-shadow: 0 2px 4px var(--shadow-color);
     cursor: pointer;
 }
 
@@ -150,7 +150,7 @@ main.cadastro{
 .redirect span{
     font-size: 55px;
     font-weight: bold;
-    text-shadow: 2px 2px 4px #0000004d;
+    text-shadow: 2px 2px 4px var(--shadow-color);
 }
 
 .redirect button{
@@ -158,10 +158,10 @@ main.cadastro{
     width: 210px;
     border: none;
     border-radius: 25px;
-    background-color: #ff751f;
+    background-color: var(--button-color);
     font-size: 40px;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-weight: bold;
-    box-shadow: 0 5px 10px #0000004d;
+    box-shadow: 0 5px 10px var(--shadow-color);
     cursor: pointer;
 }

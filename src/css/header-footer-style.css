@@ -5,12 +5,12 @@ header{
     top: 0;
     height: 64px;
     width: 100%;
-    background-color: #56b77e;
+    background-color: var(--main-color);
     box-shadow: 5px 0 15px #0000004d;
 }
 
 header a{
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-size: 17px;
     letter-spacing: 1px;
 }
@@ -70,7 +70,7 @@ nav a:hover{
     border-radius: 10px;
     border: 2px solid #f1f1f1;
     background-color: #f1f1f1;
-    color: #56b77e;
+    color: var(--main-color);
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
@@ -83,13 +83,13 @@ nav a:hover{
 /* FOOTER */
 
 footer{
-    background-color: #56b77e;
-    color: #f1f1f1;
+    background-color: var(--main-color);
+    color: var(--text-alt-color-1);
     margin-top: 130px;
 }
 
 footer a{
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
 }
 
 .footer-top {

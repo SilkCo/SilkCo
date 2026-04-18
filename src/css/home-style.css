@@ -8,7 +8,7 @@
 .image-card{
     width: 420px;
     border-radius: 25px;
-    box-shadow: 0 3px 10px #0000004d;
+    box-shadow: 0 3px 10px var(--shadow-color);
 }
 
 .button{
@@ -18,17 +18,17 @@
     flex-direction: column;
     box-sizing: border-box;
     border-radius: 15px;
-    background-color: #ff751f;
+    background-color: var(--button-color);
     align-items: center;
     justify-content: center;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 2px 8px #0000004d;
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .button:hover{
-    background-color: #ff9e62;
+    background-color: var(--button-color-hover);
 }
 
 /* BANNER */
@@ -37,7 +37,7 @@
     height: 400px;
     background-image: url('../img/banner.jpg');
     background-size: cover;
-    box-shadow: 5px 0 15px #0000004d;
+    box-shadow: 5px 0 15px var(--shadow-color);
 }
 
 .banner img{
@@ -80,13 +80,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #56b77e;
-    box-shadow: 0 3px 10px #0000004d;
+    background-color: var(--main-color);
+    box-shadow: 0 3px 10px var(--shadow-color);
 }
 
 .card span{
     width: 100%;
-    color: #f1f1f1;
+    color: var(--text-alt-color-1);
     text-align: center;
     font-size: 25px;
     font-weight: bold;
@@ -122,9 +122,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #56b77e;
+    background-color: var(--main-color);
     border-radius: 25px;
-    box-shadow: 0 5px 10px #0000004d;
+    box-shadow: 0 5px 10px var(--shadow-color);
 }
 
 .main-section-3-2 h1{
