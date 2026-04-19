@@ -1,0 +1,79 @@
+/* MAIN */
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.page-title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* FORM */
+
+.form{
+    height: fit-content;
+    width: 30vw;
+    box-sizing: border-box;
+    padding: 30px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--alt-color-1);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+.input-section{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-title span{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.form-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-item label{
+    width: 100px;
+    font-size: 25px;
+}
+
+.form-item input{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #4a5a6a;
+    font-size: 17px;
+    text-align: center;
+}
+
+.form-item input:focus{
+    border: 2px solid #4a5a6a;
+    outline: none;
+}
+
+button{
+    height: 40px;
+    width: 210px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--button-color);
+    font-size: 20px;
+    color: var(--alt-color-1);
+    font-weight: bold;
+    box-shadow: 0 5px 10px var(--shadow-color);
+    cursor: pointer;
+}

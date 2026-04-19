@@ -21,7 +21,7 @@ header a{
     align-items: center;
     gap: 15px;
     font-size: 20px;
-    color: var(--text-alt-color-1);
+    color: var(--alt-color-1);
     font-weight: bold;
 }
 
@@ -130,7 +130,7 @@ main.cadastro{
     border-radius: 10px;
     background-color: var(--button-color);
     font-size: 17px;
-    color: var(--text-alt-color-1);
+    color: var(--alt-color-1);
     font-weight: bold;
     box-shadow: 0 2px 4px var(--shadow-color);
     cursor: pointer;
@@ -160,7 +160,7 @@ main.cadastro{
     border-radius: 25px;
     background-color: var(--button-color);
     font-size: 40px;
-    color: var(--text-alt-color-1);
+    color: var(--alt-color-1);
     font-weight: bold;
     box-shadow: 0 5px 10px var(--shadow-color);
     cursor: pointer;

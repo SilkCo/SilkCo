@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa</title>
+    <link rel="icon" href="../../src/img/icon/logo.svg">
+
+    <link rel="stylesheet" href="../../src/css/global-style.css">
+    <link rel="stylesheet" href="../../src/css/left-menu-style.css">
+    <link rel="stylesheet" href="../../src/css/empresa-style.css">
+</head>
+<body>
+    <div class="left-menu">
+        <div class="left-menu-content">
+            <div class="left-menu-header">
+                <button onclick="menuOnOff()">
+                    <span>|||</span>
+                </button>
+            </div>
+
+            <nav id="nav">
+                <div class="nav-item">
+                    <a href="./dashboard.html">
+                        <span class="nav-icon">
+                            |||
+                        </span>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="">
+                        <span class="nav-icon">
+                            |||
+                        </span>
+                        <span class="nav-text">
+                            Usuário
+                        </span>
+                    </a>
+                </div>
+
+                <div class="nav-item active">
+                    <a href="#">
+                        <span class="nav-icon">
+                            |||
+                        </span>
+                        <span class="nav-text">
+                            Empresa
+                        </span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div class="main-content">
+            <div class="page-title">
+                <span>Empresa</span>
+            </div>
+
+            <div class="form" id="form_cadastrado">
+                <div class="form-title">
+                    <span>Dados da Empresa</span>
+                </div>
+
+                <div class="input-section">
+                    <div class="form-item">
+                        <label for="">Código: </label>
+                        <input type="text" disabled value="1234">
+                    </div>
+
+                    <div class="form-item">
+                        <label for="">Nome: </label>
+                        <input type="text" disabled value="Nome da Empresa">
+                    </div>
+                
+                    <div class="form-item">
+                        <label for="">CNPJ: </label>
+                        <input type="text" disabled value="12345678912345">
+                    </div>
+                
+                    <div class="form-item">
+                        <label for="">Telefone: </label>
+                        <input type="text" disabled value="11912345678">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form" id="form_cadastrar">
+                <div class="form-title">
+                    <span>Cadastrar Empresa</span>
+                </div>
+                
+                <div class="input-section">
+                    <div class="form-item">
+                        <label for="">Nome: </label>
+                        <input type="text">
+                    </div>
+                
+                    <div class="form-item">
+                        <label for="">CNPJ: </label>
+                        <input type="text">
+                    </div>
+                
+                    <div class="form-item">
+                        <label for="">Telefone: </label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <button>
+                    Cadastrar Empresa
+                </button>
+            </div>
+
+            <div class="form" id="form_entrar">
+                <div class="form-title">
+                    <span>Entrar na Empresa</span>
+                </div>
+
+                <div class="input-section">
+                    <div class="form-item">
+                        <label for="">Código: </label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <button>
+                    Entrar na Empresa
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+    window.onload = function exibirForm(){
+        // escolher qual formulário de empresa vai aparecer
+        // no final será automático....
+        let formulario = 'entrar'; 
+
+        console.log('função executada');
+
+        if(formulario == 'cadastrar'){
+            form_cadastrado.style.display = 'none';
+            form_entrar.style.display = 'none';
+            form_cadastrar.style.display = 'flex';
+        } else if(formulario == 'cadastrado'){
+            form_cadastrar.style.display = 'none';
+            form_entrar.style.display = 'none';
+            form_cadastrado.style.display = 'flex';
+        } else if(formulario == 'entrar'){
+            form_cadastrado.style.display = 'none';
+            form_cadastrar.style.display = 'none';
+            form_entrar.style.display = 'flex';
+        }
+    }
+</script>

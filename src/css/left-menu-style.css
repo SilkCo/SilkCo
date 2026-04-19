@@ -1,6 +1,86 @@
+/* CONFIG */
+
+body{
+    display: flex;
+    flex-direction: row;
+}
+
+main{
+    height: 100vh;
+    width: calc(100vw - 300px);
+    border: 1px solid red;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+/* MENU */
+
 .left-menu{
     height: 100vh;
     width: 300px;
     position: sticky;
-    background-color: ;
+    background-color: var(--main-color);
+    color: var(--alt-color-1);
+}
+
+.left-menu-content{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* HEADER */
+
+.left-menu-header{
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 0 0 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-menu-header button{
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.left-menu-header span{
+    color: var(--alt-color-1);
+    font-size: 30px;
+}
+
+/* NAV */
+
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 23px;
+}
+
+.nav-item{
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+nav a{
+    color: var(--alt-color-1);
+}
+
+.active{
+    font-weight: bold;
+    background-color: var(--main-color-hover);
 }

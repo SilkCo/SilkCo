@@ -18,19 +18,17 @@
 /* VARIÁVEIS */
 
 :root{
-    /* COR PRINCIPAL */
     --main-color: #56b77e;
+    --main-color-hover: #6bdf9b;
+ 
+    --alt-color-1: #f1f1f1;
 
-    /* COR BOTÕES */
     --button-color: #ff751f;
     --button-color-hover: #ff9e62;
-
-    /* COR SOMBRA */
+    
     --shadow-color: #0000004d;
-
-    /* COR TEXTO */
+    
     --text-main-color: #4a5a6a;
-    --text-alt-color-1: #f1f1f1;
 }
 
 /* DEFAULTS */
