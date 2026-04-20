@@ -77,3 +77,11 @@ button{
     box-shadow: 0 5px 10px var(--shadow-color);
     cursor: pointer;
 }
+.parametros{
+    font-size: 13px;
+    color: red;
+    text-decoration: underline;
+}
+.cnpj{
+    margin-top: 13px;
+}
