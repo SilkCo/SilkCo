@@ -1,17 +1,3 @@
-/* MAIN */
-
-.main-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
-.page-title{
-    font-size: 50px;
-    font-weight: bold;
-}
-
 /* FORM */
 
 .form{
@@ -65,7 +51,7 @@
     outline: none;
 }
 
-button{
+.form button{
     height: 40px;
     width: 210px;
     border: none;

@@ -10,7 +10,7 @@
 
 
     <link rel="stylesheet" href="../../src/css/global-style.css">
-    <link rel="stylesheet" href="../../src/css/left-menu-style.css">
+    <link rel="stylesheet" href="../../src/css/plataforma-style.css">
     <link rel="stylesheet" href="../../src/css/dashboard-style.css">
 </head>
 <body>
@@ -61,10 +61,128 @@
 
     <main>
         <div class="main-content">
+            <div class="page-title">
+                <span>Dashboard</span>
+            </div>
             <div class="main-header">
-                
+                <div class="card">
+                    <table>
+                        <tr>
+                            <th>Maior Temperatura</th>
+                        </tr>
+                        <tr>
+                            <td>20º</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Menor Temperatura</th>
+                        </tr>
+                        <tr>
+                            <td>10º</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <table>
+                        <tr>
+                            <th>Temperatura Média</th>
+                        </tr>
+                        <tr>
+                            <td>17º</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Umidade Média</th>
+                        </tr>
+                        <tr>
+                            <td>79%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <table>
+                        <tr>
+                            <th>Maior Umidade</th>
+                        </tr>
+                        <tr>
+                            <td>88%</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Menor Umidade</th>
+                        </tr>
+                        <tr>
+                            <td>65%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="charts">
+                <div class="chart">
+                    <span class="chart-title">
+                        Temperatura
+                    </span>
+                    <canvas id="grafico_temperatura"></canvas>
+                </div>
+
+                <div class="chart">
+                    <span class="chart-title">
+                        Umidade
+                    </span>
+                    <canvas id="grafico_umidade"></canvas>
+                </div>
             </div>
         </div>
     </main>
 </body>
 </html>
+
+<script>
+    const chartTemp = document.getElementById('grafico_temperatura');
+
+    new Chart(chartTemp, {
+        type: 'line',
+        data: {
+            labels:  ['12:00','13:00','14:00','15:00'],
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: [10,20,12,16],
+                    borderWidth: 2,
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    const charUmid = document.getElementById('grafico_umidade');
+
+    new Chart(charUmid, {
+        type: 'line',
+        data: {
+            labels: ['12:00','13:00','14:00','15:00'],
+            datasets: [
+                {
+                    label: 'Umidade',
+                    data: [75,66,71,78],
+                    borderWidth: 2,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
