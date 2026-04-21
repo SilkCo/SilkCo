@@ -134,13 +134,13 @@
 
 <script>
     function calculo() {
-        let ovosPorSafra = Number(input_ovos.value);
+        let ovosPorSafra = Number(input_ovos.value)*9;
         let valorCasulo = Number(input_casulo.value);
         let tempoAnos = Number(input_tempo.value);
         let casuloPorGrama = ovosPorSafra * 1500; // MÉDIA 20-40
         // quantos casulos tem por g de ovos (1g de ovo  = 1500) - Departamento de Entomologia -UFLA
 
-        let kgCasulo = ovosPorSafra / 500; // quilos de casulos produzidos (1kg de casulos = 500 casulos) - wildfibres.co.uk
+        let kgCasulo = casuloPorGrama / 500; // quilos de casulos produzidos (1kg de casulos = 500 casulos) - wildfibres.co.uk
         
         let prejuizoGeral = kgCasulo * 0.40; // casulos perdidos no geral (40%) - International Journal of Advanced Biochemistry Research 2025
         
@@ -160,26 +160,26 @@
 
         let diferenca = totalAnosSilk - totalAnos;
 
-        msg_diferenca.innerHTML = `Diferença de <span style="color: green">R$${diferenca.toFixed(2)}</span> sem o nosso produto!`;
+        msg_diferenca.innerHTML = `Diferença de <span style="color: green">R$${diferenca.toLocaleString('pt-br')}</span> sem o nosso produto!`;
 
         faturamento_medio.innerHTML = `<span style="color: red">
-            R$${faturamentoMedio.toFixed(2)}
+            R$${faturamentoMedio.toLocaleString('pt-br')}
             </span>`;
         total_anual.innerHTML = `<span style="color: red">
-            R$${totalAnual.toFixed(2)}
+            R$${totalAnual.toLocaleString('pt-br')}
             </span>`;
         total_anos.innerHTML = `<span style="color: red">
-            R$${totalAnos.toFixed(2)}
+            R$${totalAnos.toLocaleString('pt-br')}
             </span>`;
 
         faturamento_medio_silk.innerHTML = `<span style="color: green">
-            R$${faturamentoMedioSilk.toFixed(2)}
+            R$${faturamentoMedioSilk.toLocaleString('pt-br')}
             </span>`;
         total_anual_silk.innerHTML = `<span style="color: green">
-            R$${totalAnualSilk.toFixed(2)}
+            R$${totalAnualSilk.toLocaleString('pt-br')}
             </span>`;
         total_anos_silk.innerHTML = `<span style="color: green">
-            R$${totalAnosSilk.toFixed(2)}
+            R$${totalAnosSilk.toLocaleString('pt-br')}
             </span>`;
 
 
