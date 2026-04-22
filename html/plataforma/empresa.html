@@ -144,8 +144,10 @@
     let verifTelefone = 0;
     window.onload = function exibirForm(){
         // escolher qual formulário de empresa vai aparecer
-        // no final será automático....
-        let formulario = 'cadastrar'; 
+        // formulario = 'cadastrar' para cadastrar empresa
+        // formulario = 'cadastrado' para visualizar informação de empresa cadastrada
+        // formulario = 'entrar' para entrar em empresa existente
+        let formulario = 'cadastrado'; 
 
         console.log('função executada');
 

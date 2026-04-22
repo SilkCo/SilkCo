@@ -64,14 +64,24 @@
             <div class="page-title">
                 <span>Dashboard</span>
             </div>
-            <div class="main-header">
+            <div class="page-header">
+                <span>Selecione o Galpão: </span>
+
+                <select name="galpao" id="select_galpao" oninput="selecionarGalpao()">
+                    <option hidden disabled selected>Selecione</option>
+                    <option value="1">Galpão 1</option>
+                    <option value="2">Galpão 2</option>
+                </select>
+            </div>
+
+            <div class="dash-header">
                 <div class="card">
                     <table>
                         <tr>
                             <th>Maior Temperatura</th>
                         </tr>
                         <tr>
-                            <td>20º</td>
+                            <td id="maior_temp">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -79,7 +89,7 @@
                             <th>Menor Temperatura</th>
                         </tr>
                         <tr>
-                            <td>10º</td>
+                            <td id="menor_temp">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -90,7 +100,7 @@
                             <th>Temperatura Média</th>
                         </tr>
                         <tr>
-                            <td>17º</td>
+                            <td id="media_temp">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -98,7 +108,7 @@
                             <th>Umidade Média</th>
                         </tr>
                         <tr>
-                            <td>79%</td>
+                            <td id="media_umid">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -109,7 +119,7 @@
                             <th>Maior Umidade</th>
                         </tr>
                         <tr>
-                            <td>88%</td>
+                            <td id="maior_umid">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -117,25 +127,35 @@
                             <th>Menor Umidade</th>
                         </tr>
                         <tr>
-                            <td>65%</td>
+                            <td id="menor_umid">' '</td>
                         </tr>
                     </table>
                 </div>
             </div>
 
             <div class="charts">
-                <div class="chart">
-                    <span class="chart-title">
-                        Temperatura
-                    </span>
-                    <canvas id="grafico_temperatura"></canvas>
-                </div>
+                <div class="charts-section">
+                    <div class="chart">
+                        <span class="chart-title">
+                            Temperatura
+                        </span>
+                        <canvas id="grafico_temperatura"></canvas>
+                    </div>
 
-                <div class="chart">
-                    <span class="chart-title">
-                        Umidade
-                    </span>
-                    <canvas id="grafico_umidade"></canvas>
+                    <div class="chart">
+                        <span class="chart-title">
+                            Umidade
+                        </span>
+                        <canvas id="grafico_umidade"></canvas>
+                    </div>
+                </div>
+                <div class="charts-section">
+                    <div class="chart">
+                        <span class="chart-title">
+                            Sensores
+                        </span>
+                        <canvas id="grafico_sensores"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,16 +164,18 @@
 </html>
 
 <script>
-    const chartTemp = document.getElementById('grafico_temperatura');
+    
 
-    new Chart(chartTemp, {
+    const canvasTemp = document.getElementById('grafico_temperatura');
+
+    const chartTemp = new Chart(canvasTemp, {
         type: 'line',
         data: {
             labels:  ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Temperatura',
-                    data: [10,20,12,16],
+                    data: [],
                     borderWidth: 2,
                     backgroundColor: 'yellow',
                     borderColor: 'yellow',
@@ -165,16 +187,16 @@
         }
     });
 
-    const charUmid = document.getElementById('grafico_umidade');
+    const canvasUmid = document.getElementById('grafico_umidade');
 
-    new Chart(charUmid, {
+    const chartUmid = new Chart(canvasUmid, {
         type: 'line',
         data: {
             labels: ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Umidade',
-                    data: [75,66,71,78],
+                    data: [],
                     borderWidth: 2,
                     backgroundColor: 'blue',
                     borderColor: 'blue',
@@ -185,4 +207,79 @@
             responsive: true
         }
     });
+
+    const chartSensor = document.getElementById('grafico_sensores');
+
+    new Chart(chartSensor, {
+        type: 'pie',
+        data: {
+            datasets: [
+                {
+                    data: [3, 1],
+                    borderWidth: 1,
+                    borderColor: '#ff751f',
+                    backgroundColor: ['#56b77e', 'red'],
+                }
+            ],
+            labels: [
+                'Funcionando',
+                'Desligado',
+            ]
+        }
+    })
+
+    function selecionarGalpao(){
+        let galpao = select_galpao.value;
+
+        let maiorTemp = 0;
+        let menorTemp = 0;
+        let mediaTemp = 0;
+
+        let maiorUmid = 0;
+        let menorUmid = 0;
+        let mediaUmid = 0;
+
+        let tempData = [];
+        let umidData = [];
+
+        if(galpao == 1){
+            tempData = [10,20,12,16];
+            umidData = [75,66,71,78];
+
+            maiorTemp = 20;
+            menorTemp = 10;
+            mediaTemp = 14;
+
+            maiorUmid = 78;
+            menorUmid = 66;
+            mediaUmid = 72.5;
+
+        } else if(galpao == 2){
+            tempData = [15,22,17,13];
+            umidData = [87,75,77,81];
+
+            maiorTemp = 22;
+            menorTemp = 13;
+            mediaTemp = 16.75;
+
+            maiorUmid = 87;
+            menorUmid = 75;
+            mediaUmid = 80;
+        }
+
+        maior_temp.innerHTML = `${maiorTemp}º`;
+        menor_temp.innerHTML = `${menorTemp}º`;
+        media_temp.innerHTML = `${mediaTemp}º`;
+
+        maior_umid.innerHTML = `${maiorUmid}%`;
+        menor_umid.innerHTML = `${menorUmid}%`;
+        media_umid.innerHTML = `${mediaUmid}%`;
+
+        chartTemp.data.datasets[0].data = tempData;
+        chartUmid.data.datasets[0].data = umidData;
+
+        chartTemp.update();
+        chartUmid.update();
+
+    };
 </script>
