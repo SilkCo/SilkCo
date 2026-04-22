@@ -55,8 +55,8 @@
 }
 
 .chart{
-    height: 300px;
-    width: 500px;
+    height: auto;
+    width: 35vw;
     box-sizing: border-box;
     padding: 15px;
     display: flex;

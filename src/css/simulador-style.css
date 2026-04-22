@@ -121,3 +121,7 @@ button:hover, .button:hover{
     padding: 10px 0 0 0;
     box-sizing: border-box;
 }
+
+div.button a{
+    color: var(--alt-color-1);
+}

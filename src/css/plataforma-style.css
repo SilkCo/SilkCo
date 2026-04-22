@@ -14,7 +14,6 @@ main{
     box-sizing: border-box;
     padding: 30px;
     margin-left: 300px;
-    border: 1px solid red;
 }
 
 .main-content{
