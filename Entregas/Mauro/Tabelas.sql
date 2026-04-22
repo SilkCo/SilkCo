@@ -5,27 +5,7 @@ USE silkCo;
 CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
-	telefone CHAR(13),
     cnpj CHAR(14)
-);
-
-CREATE TABLE galpao (
-idGalpao INT PRIMARY KEY AUTO_INCREMENT,
-localizacao VARCHAR(40),
-fkEmpresa INT,
-CONSTRAINT chFkEmpresa
-	FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa)
-);
-
-CREATE TABLE usuario (
-    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(40) NOT NULL,
-    emailCadastro VARCHAR(40) NOT NULL UNIQUE,
-    emailSecundario VARCHAR(40) UNIQUE, 
-    senha VARCHAR(30) NOT NULL,
-    fkEmpresa INT,
-    CONSTRAINT chFkEmpresaUsuario 
-		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
 CREATE TABLE endereco (
@@ -35,6 +15,24 @@ CREATE TABLE endereco (
     cep CHAR(8),
     fkEmpresa INT,
     CONSTRAINT chFkEmpresaEndereco 
+		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
+);
+
+CREATE TABLE galpao (
+idGalpao INT PRIMARY KEY AUTO_INCREMENT,
+fkEndereco INT,
+CONSTRAINT chFkEndereco
+	FOREIGN KEY(fkEndereco) REFERENCES endereco (idEndereco)
+);
+
+CREATE TABLE usuario (
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(40) NOT NULL,
+    email VARCHAR(40) NOT NULL UNIQUE,
+    senha VARCHAR(30) NOT NULL,
+    administrador CHAR(1) CHECK(administrador IN('S','N')),
+    fkEmpresa INT,
+    CONSTRAINT chFkEmpresaUsuario 
 		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
@@ -53,7 +51,7 @@ CREATE TABLE leitura_sensor (
     idColeta INT PRIMARY KEY AUTO_INCREMENT,
     temperatura DECIMAL(4,2) NOT NULL,
     umidade DECIMAL(4,2) NOT NULL,
-    dtColeta DATETIME NOT NULL,
+    dtColeta DATETIME DEFAULT CURRENT_TIMESTAMP,
     fkSensor INT,
     CONSTRAINT chFkSensor 
 		FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
