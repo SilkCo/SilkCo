@@ -29,6 +29,8 @@
     --shadow-color: #0000004d;
     
     --text-main-color: #4a5a6a;
+
+    --background-color: #f9f7f2;
 }
 
 /* DEFAULTS */
@@ -36,8 +38,8 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #f9f7f2;
     font-family: 'codec-pro';
+    background-color: var(--background-color);
 }
 
 a{

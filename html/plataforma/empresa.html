@@ -6,24 +6,26 @@
     <title>Empresa</title>
     <link rel="icon" href="../../src/img/icon/logo.svg">
 
+    <script src="../../src/js/script.js"></script>
+
     <link rel="stylesheet" href="../../src/css/global-style.css">
     <link rel="stylesheet" href="../../src/css/plataforma-style.css">
     <link rel="stylesheet" href="../../src/css/empresa-style.css">
 </head>
 <body>
-    <div class="left-menu">
+    <div class="left-menu" id="left_menu">
         <div class="left-menu-content">
             <div class="left-menu-header">
-                <button onclick="menuOnOff()">
+                <button onclick="menuOnOff()" id="button_on_off">
                     <span>|||</span>
                 </button>
             </div>
 
             <nav id="nav">
                 <div class="nav-item">
-                    <a href="./dashboard.html">
+                    <a href="./dashboard.html" id="a">
                         <span class="nav-icon">
-                            |||
+                            <img src="../../src/img/icon/dash-icon.png">
                         </span>
                         <span class="nav-text">
                             Dashboard
@@ -31,21 +33,10 @@
                     </a>
                 </div>
 
-                <div class="nav-item">
-                    <a href="">
-                        <span class="nav-icon">
-                            |||
-                        </span>
-                        <span class="nav-text">
-                            Usuário
-                        </span>
-                    </a>
-                </div>
-
                 <div class="nav-item active">
                     <a href="#">
                         <span class="nav-icon">
-                            |||
+                            <img src="../../src/img/icon/empresa-icon.png" alt="">
                         </span>
                         <span class="nav-text">
                             Empresa
