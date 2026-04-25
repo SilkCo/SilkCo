@@ -8,11 +8,15 @@ header{
     padding: 10px 30px;
     box-sizing: border-box;
     margin: 0;
-    height: 70px;
+    height: fit-content;
     position: sticky;
     background-color: var(--main-color);
     box-shadow: 0 5px 10px var(--shadow-color);
     z-index: 1;
+}
+
+header a img{
+    height: 10vh;
 }
 
 header a{
@@ -20,21 +24,25 @@ header a{
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    font-size: 20px;
+    font-size: 3vh;
     color: var(--alt-color-1);
     font-weight: bold;
 }
+
 
 /* MAIN */
 
 main{
     top: 0;
     position: absolute;
-    z-index: 0s;
-    height: 100vh;
+    z-index: 0;
+    min-height: 100vh;
+    max-height: fit-content;
+    max-width: 100vw;
     background-size: cover;
     box-sizing: border-box;
-    padding: 90px 80px;
+    padding: 19vh 10vw 0 15vh;
+    background-attachment: fixed;
 }
 
 main.login{
@@ -46,15 +54,20 @@ main.cadastro{
 }
 
 .main-content{
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* 1 - FORM */
 
 .form-box{
-    height: 500px;
+    min-height: 70vh;
+    max-height: fit-content;
     width: 410px;
     box-sizing: border-box;
     padding: 15px 20px;

@@ -3,7 +3,8 @@
 header{
     position: sticky;
     top: 0;
-    height: 64px;
+    height: fit-content;
+    padding: 20px 0;
     width: 100%;
     background-color: var(--main-color);
     box-shadow: 5px 0 15px #0000004d;
@@ -35,8 +36,8 @@ header a{
     width: 33%;
 }
 
-.logo-img{
-    width: 34px;
+.logo img.logo-img{
+  width: 34px;
 }
 
 nav{
