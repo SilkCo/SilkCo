@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="../../src/css/plataforma-style.css">
     <link rel="stylesheet" href="../../src/css/dashboard-style.css">
 </head>
+
 <body>
     <div class="left-menu" id="left_menu">
         <div class="left-menu-content">
@@ -63,7 +65,27 @@
                     <option value="2">Galpão 2</option>
                 </select>
             </div>
-
+            <details id="abrir-fechar">
+                <summary></summary>
+                <div class="card-alertas">
+                    <div id="esconder" style="display: none;">
+                        <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span>SENSOR: S1 </span><br>
+                            <span>GALPÃO: G1</span><br>
+                            <span>TEMPERATURA: 33ºC</span>
+                        </div>
+                        <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span></span>
+                        </div>
+                        <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </details>
             <div class="dash-header">
                 <div class="card">
                     <table>
@@ -151,17 +173,18 @@
         </div>
     </main>
 </body>
+
 </html>
 
 <script>
-    
+
 
     const canvasTemp = document.getElementById('grafico_temperatura');
 
     const chartTemp = new Chart(canvasTemp, {
         type: 'line',
         data: {
-            labels:  ['12:00','13:00','14:00','15:00'],
+            labels: ['12:00', '13:00', '14:00', '15:00'],
             datasets: [
                 {
                     label: 'Temperatura',
@@ -182,7 +205,7 @@
     const chartUmid = new Chart(canvasUmid, {
         type: 'line',
         data: {
-            labels: ['12:00','13:00','14:00','15:00'],
+            labels: ['12:00', '13:00', '14:00', '15:00'],
             datasets: [
                 {
                     label: 'Umidade',
@@ -218,7 +241,8 @@
         }
     })
 
-    function selecionarGalpao(){
+    function selecionarGalpao() {
+
         let galpao = select_galpao.value;
 
         let maiorTemp = 0;
@@ -232,9 +256,10 @@
         let tempData = [];
         let umidData = [];
 
-        if(galpao == 1){
-            tempData = [10,20,12,16];
-            umidData = [75,66,71,78];
+        if (galpao == 1) {
+
+            tempData = [10, 20, 12, 16];
+            umidData = [75, 66, 71, 78];
 
             maiorTemp = 20;
             menorTemp = 10;
@@ -244,17 +269,18 @@
             menorUmid = 66;
             mediaUmid = 72.5;
 
-        } else if(galpao == 2){
-            tempData = [15,22,17,13];
-            umidData = [87,75,77,81];
+        } else if (galpao == 2) {
+            tempData = [15, 22, 17, 13];
+            umidData = [87, 75, 77, 81];
 
-            maiorTemp = 22;
+            maiorTemp = 1;
             menorTemp = 13;
             mediaTemp = 16.75;
 
-            maiorUmid = 87;
+            maiorUmid = 2;
             menorUmid = 75;
             mediaUmid = 80;
+
         }
 
         maior_temp.innerHTML = `${maiorTemp}º`;
@@ -271,5 +297,16 @@
         chartTemp.update();
         chartUmid.update();
 
+        let esconder = document.getElementById("esconder");
+        let details = document.getElementById("abrir-fechar")
+        if (maiorTemp > 15 || maiorUmid > 75) {
+            details.open = true
+            esconder.style.display = "flex"
+
+        } else {
+            details.open = false
+            esconder.style.display = "none"
+
+        }
     };
 </script>
