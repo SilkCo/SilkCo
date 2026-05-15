@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="../../src/css/plataforma-style.css">
     <link rel="stylesheet" href="../../src/css/dashboard-style.css">
 </head>
-
 <body>
     <div class="left-menu" id="left_menu">
         <div class="left-menu-content">
@@ -65,27 +63,7 @@
                     <option value="2">Galpão 2</option>
                 </select>
             </div>
-            <details id="abrir-fechar">
-                <summary></summary>
-                <div class="card-alertas">
-                    <div id="esconder" style="display: none;">
-                        <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span>SENSOR: S1 </span><br>
-                            <span>GALPÃO: G1</span><br>
-                            <span>TEMPERATURA: 33ºC</span>
-                        </div>
-                        <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span></span>
-                        </div>
-                        <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </details>
+
             <div class="dash-header">
                 <div class="card">
                     <table>
@@ -109,7 +87,7 @@
                 <div class="card">
                     <table>
                         <tr>
-                            <th>Temperatura Média</th>
+                            <th>Temperatura mais recente</th>
                         </tr>
                         <tr>
                             <td id="media_temp">' '</td>
@@ -117,7 +95,7 @@
                     </table>
                     <table>
                         <tr>
-                            <th>Umidade Média</th>
+                            <th>Umidade mais recente</th>
                         </tr>
                         <tr>
                             <td id="media_umid">' '</td>
@@ -160,31 +138,43 @@
                         </span>
                         <canvas id="grafico_umidade"></canvas>
                     </div>
+
                 </div>
                 <div class="charts-section">
-                    <div class="chart">
-                        <span class="chart-title">
-                            Sensores
-                        </span>
-                        <canvas id="grafico_sensores"></canvas>
+                    <div>
+                        <div class="chart">
+                            <span class="chart-title">
+                                Umidade média em 7 dias
+                            </span>
+                            <canvas id="grafico_umidadeMedio"></canvas>
+                        </div>
                     </div>
+
+                    <div>
+                        <div class="chart">
+                            <span class="chart-title">
+                                Temperatura média em 7 dias
+                            </span>
+                            <canvas id="grafico_temperaturaMedio"></canvas>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
 </body>
-
 </html>
 
 <script>
-
+    
 
     const canvasTemp = document.getElementById('grafico_temperatura');
 
     const chartTemp = new Chart(canvasTemp, {
         type: 'line',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00'],
+            labels:  ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Temperatura',
@@ -205,7 +195,7 @@
     const chartUmid = new Chart(canvasUmid, {
         type: 'line',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00'],
+            labels: ['12:00','13:00','14:00','15:00'],
             datasets: [
                 {
                     label: 'Umidade',
@@ -239,10 +229,51 @@
                 'Desligado',
             ]
         }
-    })
+    });
 
-    function selecionarGalpao() {
+    const canvasTempMedio = document.getElementById('grafico_temperaturaMedio');
 
+    const chartTempMedio = new Chart(canvasTempMedio, {
+        type: 'line',
+        data: {
+            labels: ['12/05','13/05','14/05','15/05', '16/05', '17/05', '18/05'],
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: [],
+                    borderWidth: 2,
+                    backgroundColor: 'purple',
+                    borderColor: 'purple',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    const canvasUmiMedio = document.getElementById('grafico_umidadeMedio');
+
+    const chartUmiMedio = new Chart(canvasUmiMedio, {
+        type: 'line',
+        data: {
+            labels: ['12/05','13/05','14/05','15/05', '16/05', '17/05', '18/05'],
+            datasets: [
+                {
+                    label: 'Umidade',
+                    data: [],
+                    borderWidth: 2,
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    function selecionarGalpao(){
         let galpao = select_galpao.value;
 
         let maiorTemp = 0;
@@ -255,11 +286,14 @@
 
         let tempData = [];
         let umidData = [];
+        let tempMedioData= [];
+        let umiMedioData= [];
 
-        if (galpao == 1) {
-
-            tempData = [10, 20, 12, 16];
-            umidData = [75, 66, 71, 78];
+        if(galpao == 1){
+            tempData = [10,20,12,16];
+            umidData = [75,66,71,78];
+            tempMedioData = [22,23,21,26,27,26,26];
+            umiMedioData = [80,81,85,79,79,80,82];
 
             maiorTemp = 20;
             menorTemp = 10;
@@ -269,18 +303,19 @@
             menorUmid = 66;
             mediaUmid = 72.5;
 
-        } else if (galpao == 2) {
-            tempData = [15, 22, 17, 13];
-            umidData = [87, 75, 77, 81];
+        } else if(galpao == 2){
+            tempData = [15,22,17,13];
+            umidData = [87,75,77,81];
+            tempMedioData= [20,21,20,26,25, 26, 22];
+            umiMedioData = [77,86,85,81,83,81,82];
 
-            maiorTemp = 1;
+            maiorTemp = 22;
             menorTemp = 13;
             mediaTemp = 16.75;
 
-            maiorUmid = 2;
+            maiorUmid = 87;
             menorUmid = 75;
             mediaUmid = 80;
-
         }
 
         maior_temp.innerHTML = `${maiorTemp}º`;
@@ -293,20 +328,13 @@
 
         chartTemp.data.datasets[0].data = tempData;
         chartUmid.data.datasets[0].data = umidData;
+        chartTempMedio.data.datasets[0].data = tempMedioData;
+        chartUmiMedio.data.datasets[0].data = umiMedioData;
 
         chartTemp.update();
         chartUmid.update();
-
-        let esconder = document.getElementById("esconder");
-        let details = document.getElementById("abrir-fechar")
-        if (maiorTemp > 15 || maiorUmid > 75) {
-            details.open = true
-            esconder.style.display = "flex"
-
-        } else {
-            details.open = false
-            esconder.style.display = "none"
-
-        }
+        chartTempMedio.update();
+        chartUmiMedio.update();
     };
 </script>
+
