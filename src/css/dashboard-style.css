@@ -93,6 +93,20 @@
     box-shadow: 0 5px 10px var(--shadow-color);
 }
 
+.chartMedio{
+    height: 300px;
+    width: 35vw;
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    border: 2px solid var(--button-color);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px var(--shadow-color);
+}
+
 .chart span{
     font-size: 30px;
     font-weight: bold;
