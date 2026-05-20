@@ -63,10 +63,10 @@
                     <option value="2">Galpão 2</option>
                 </select>
             </div>
-            <details id="abrir-fechar">
-                <summary></summary>
+            <details id="abrir-fechar" open="true">
+                <summary>Alertas</summary>
                 <div class="card-alertas">
-                    <div id="esconder" style="display: none;">
+                    <div id="esconder" style="display: flex;">
                         <div class="alertas">
                             <h1>ALERTA!</h1>
                             <span class="sensorAlerta">SENSOR: S1 </span><br>
@@ -102,10 +102,10 @@
                     </table>
                     <table>
                         <tr>
-                            <th>Menor Temperatura</th>
+                            <th>Maior Umidade</th>
                         </tr>
                         <tr>
-                            <td id="menor_temp">' '</td>
+                            <td id="maior_umid">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -132,10 +132,10 @@
                 <div class="card">
                     <table>
                         <tr>
-                            <th>Maior Umidade</th>
+                            <th>Menor Temperatura</th>
                         </tr>
                         <tr>
-                            <td id="maior_umid">' '</td>
+                            <td id="menor_temp">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -364,15 +364,15 @@
         chartTempMedio.update();
         chartUmiMedio.update();
 
-        if (maiorTemp > 15 || maiorUmid > 75) {
-            details.open = true
-            esconder.style.display = "flex"
+        // if (maiorTemp > 15 || maiorUmid > 75) {
+        //     details.open = true
+        //     esconder.style.display = "flex"
 
-        } else {
-            details.open = false
-            esconder.style.display = "none"
+        // } else {
+        //     details.open = false
+        //     esconder.style.display = "none"
 
-        }
+        // }
 
        
     }
