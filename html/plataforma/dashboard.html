@@ -63,7 +63,33 @@
                     <option value="2">Galpão 2</option>
                 </select>
             </div>
-
+            <details id="abrir-fechar">
+                <summary></summary>
+                <div class="card-alertas">
+                    <div id="esconder" style="display: none;">
+                        <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span class="sensorAlerta">SENSOR: S1 </span><br>
+                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
+                            <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
+                        </div>
+                        <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span class="sensorAlerta">SENSOR: S1 </span><br>
+                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
+                            <span class="metricaAlerta">UMIDADE > 75ºC</span>
+                        </div>
+                          <div class="alertas">
+                            <h1>ALERTA!</h1>
+                            <span class="sensorAlerta">SENSOR: S1 </span><br>
+                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
+                            <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
             <div class="dash-header">
                 <div class="card">
                     <table>
@@ -272,7 +298,8 @@
             responsive: true
         }
     });
-
+     let esconder = document.getElementById("esconder");
+    let details = document.getElementById("abrir-fechar")
     function selecionarGalpao(){
         let galpao = select_galpao.value;
 
@@ -335,6 +362,20 @@
         chartUmid.update();
         chartTempMedio.update();
         chartUmiMedio.update();
-    };
+
+        if (maiorTemp > 15 || maiorUmid > 75) {
+            details.open = true
+            esconder.style.display = "flex"
+
+        } else {
+            details.open = false
+            esconder.style.display = "none"
+
+        }
+
+       
+    }
+    
+    ;
 </script>
 

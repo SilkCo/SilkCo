@@ -20,11 +20,13 @@
 
 .dash-header{
     height: fit-content;
-    width: 60vw;
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin:13px
+    
 }
 
 .card{
@@ -100,14 +102,14 @@
     display: flex;
     width: 1100px;
     padding: 15px;
-    justify-content: space-evenly;
     background-color: var(--alt-color-1);
     border-radius: 15px;
     box-shadow: 0 5px 10px var(--shadow-color);
+    
 }
 #esconder{
-    width: 1000px;
-    justify-content: space-evenly;
+    width: 1100px;
+    justify-content: space-around
 }
 .alertas{
     display: flex;
