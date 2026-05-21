@@ -37,6 +37,12 @@
 
                     <div class="input-section">
                         <div class="input">
+                            <span>Código: </span>
+                            <input type="text" class="input" placeholder="Digite o código da empresa" id="ipt_codigo">
+                        </div>
+
+                    <div class="input-section">
+                        <div class="input">
                             <span>Usuário: </span>
                             <input type="text" class="input" placeholder="Digite seu usuário" id="ipt_usuario">
                         </div>
@@ -59,6 +65,7 @@
                     <button class="submit-button" onclick="cadastrarUsu()">Cadastrar</button>
                 </div>
             </div>
+        </div>
         </div>
         <div class="main-content" id="cad_emp" style="display: none;">
             <div class="form-box">
@@ -188,7 +195,8 @@
     function cadastrarUsu(){
         let verif = verifcarac+verifemail+verifmai+verifmin+veriftam;
         let usuario = ipt_usuario.value;
-        if(verif == 5 && usuario != ''){
+        let codigo = ipt_codigo.value;
+        if(verif == 5 && usuario != ''&& codigo != ''){
             alert(`Cadastrado com sucesso`);
             window.open('login.html')
         }else{
