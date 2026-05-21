@@ -101,6 +101,8 @@
 
 </html>
 <script>
+    window.onload = listar();
+    let codigosEmpresa = [];
     let letra = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m',];
     let numero = [0,1,2,3,4,5,6,7,8,9];
     let caracteres = ['!','@','#','$','%','&','*','(',')','_','-','+','=','{','}','[',']','/','|','.',',',';',':','<','>','?']
@@ -273,4 +275,21 @@
 
         }
     }
+    // Listando empresas cadastradas 
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then(function (cod){
+            for(let i = 0; i < cod.length; i++){
+                codigosEmpresa.push(cod[i]);
+              console.log(cod[i].codigo)
+            }
+        })
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 </script>
