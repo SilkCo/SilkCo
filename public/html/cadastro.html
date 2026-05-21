@@ -101,7 +101,7 @@
 
 </html>
 <script>
-    window.onload = listar();
+    window.onload = listar(); // Tirar daqui e colocar na função de cadastro do usuario
     let codigosEmpresa = [];
     let letra = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m',];
     let numero = [0,1,2,3,4,5,6,7,8,9];
@@ -195,14 +195,73 @@
         return true;
     }
     function cadastrarUsu(){
+
         let verif = verifcarac+verifemail+verifmai+verifmin+veriftam;
+
         let usuario = ipt_usuario.value;
+
         let codigo = ipt_codigo.value;
+
+        let email = ipt_email.value;
+
+        let senha = ipt_senha.value
+
+        let idEmpresaVincular
+
         if(verif == 5 && usuario != ''&& codigo != ''){
-            alert(`Cadastrado com sucesso`);
-            window.open('login.html')
+
+            let verifCod = false;
+    for (let i = 0; i < codigosEmpresa.length; i++) {
+      if (codigosEmpresa[i].codigo == codigo) {
+        idEmpresaVincular = codigosEmpresa[i].idEmpresa
+        console.log("Código de ativação válido.");
+        verifTime = true;
+        break;
+      }
+    }
+    if(!verifTime){
+      alert('Empresa Inválida')
+    //   but_cadastrar.disabled = false;
+    }else{
+
+            fetch('/usuarios/cadastrar', {
+            
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+
+                nomeServer: usuario,
+                emailServer: email,
+                senhaServer: senha,
+                idEmpresaVincularServer: idEmpresaVincular
+
+            }),
+
+        })
+        .then(function (resposta){
+
+            console.log('Resposta: ', resposta);
+
+            if(resposta.ok){
+
+                alert('Usuário cadastrado com sucesso!');
+
+            }
+
+            setTimeout(()=>{
+                
+                window.open('login.html');
+
+            })
+
+        })
+    }
         }else{
+
             alert(`Tem que ter todos os parâmetros`);
+
         }
     }
     function cadastrarEmp(){
