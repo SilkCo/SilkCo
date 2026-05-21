@@ -178,3 +178,14 @@ main.cadastro{
     box-shadow: 0 5px 10px var(--shadow-color);
     cursor: pointer;
 }
+.opcoes_cad{
+    margin-top: 16vh;
+    height: 40vh;
+    width: 20vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    border-radius: 25px;
+}

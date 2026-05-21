@@ -20,7 +20,12 @@
     </header>
 
     <main class="cadastro">
-        <div class="main-content">
+        <div class="opcoes_cad" id="opcoes_cad">
+            <h1 class="form-title">Cadastrar</h1>
+            <button class="submit-button" onclick="mostrarEmp()">Empresa</button>
+            <button class="submit-button" onclick="mostrarUsu()">Usuário</button>
+        </div>
+        <div class="main-content" id="cad_usu" style="display: none;">
             <div class="redirect">
                 <span>Já possui uma conta?</span>
                 <a href="login.html"><button class="redirect-button">Login</button></a>
@@ -51,7 +56,36 @@
                 </div>
 
                 <div class="form-section-2">
-                    <button class="submit-button" onclick="cadastrar()">Cadastrar</button>
+                    <button class="submit-button" onclick="cadastrarUsu()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-content" id="cad_emp" style="display: none;">
+            <div class="form-box">
+                <div class="form-section1">
+                    <h1 class="form-title">Cadastro da Empresa</h1>
+
+                    <div class="input-section">
+                        <div class="input">
+                            <span>Nome: </span>
+                            <input type="text" class="input" placeholder="Digite o nome da empresa" id="ipt_nome">
+                        </div>
+
+                        <div class="input">
+                            <span>CNPJ:</span>
+                            <input type="text" class="input" placeholder="Digite seu CNPJ" id="ipt_cnpj" oninput="validarCNPJ()" maxlength="14">
+                            <span id="txt_cnpj" class="parametros"></span>
+                        </div>
+
+                        <div class="input">
+                            <span>Quantidade de Galpões:</span>
+                            <input type="number" class="input" placeholder="Digite a quantidade de galpões" id="ipt_galpao">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section-2">
+                    <button class="submit-button" onclick="cadastrarEmp()">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -60,12 +94,35 @@
 
 </html>
 <script>
+    let letra = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m',];
+    let numero = [0,1,2,3,4,5,6,7,8,9];
     let caracteres = ['!','@','#','$','%','&','*','(',')','_','-','+','=','{','}','[',']','/','|','.',',',';',':','<','>','?']
     let verifemail = 0;
     let veriftam = 0;
     let verifcarac = 0;
     let verifmai = 0;
     let verifmin = 0;
+    let verifcnpj = 0;
+
+    function mostrarUsu(){
+        opcoes_cad.style.display = 'none'
+        cad_usu.style.display = "flex";
+    }
+
+    function mostrarEmp(){
+        opcoes_cad.style.display = 'none'
+        cad_emp.style.display = "flex";
+    }
+    function validarCNPJ(){
+        let cnpj = ipt_cnpj.value;
+        if(cnpj.length < 14){
+            txt_cnpj.innerHTML = `O CNPJ deve conter 14 dígitos`;
+            verifcnpj = 0
+        }else{
+            txt_cnpj.innerHTML = ``;
+            verifcnpj = 1
+        }
+    }
     function validarEmail(){
         let email = ipt_email.value;
 
@@ -128,12 +185,33 @@
         }
         return true;
     }
-    function cadastrar(){
+    function cadastrarUsu(){
         let verif = verifcarac+verifemail+verifmai+verifmin+veriftam;
         let usuario = ipt_usuario.value;
         if(verif == 5 && usuario != ''){
             alert(`Cadastrado com sucesso`);
             window.open('login.html')
+        }else{
+            alert(`Tem que ter todos os parâmetros`);
+        }
+    }
+    function cadastrarEmp(){
+        let nome = ipt_nome.value;
+        let galpoes = ipt_galpao.value;
+        if(verifcnpj == 1 && nome != '' && galpoes != ''){
+            alert(`Cadastrado com sucesso`);
+            let codigo = '';
+        for(let i = 0;i < 5;i++){
+            if((i+1)%2 != 0){
+                let ale = Math.floor(Math.random()*25)
+                codigo += `${letra[ale].toLocaleUpperCase()}`
+            }else{
+                let ale = Math.floor(Math.random()*10)
+                codigo += `${numero[ale]}`
+            }
+        }
+        alert(`Código da sua empresa\n${codigo}`)
+            window.open('cadastro.html')
         }else{
             alert(`Tem que ter todos os parâmetros`);
         }
