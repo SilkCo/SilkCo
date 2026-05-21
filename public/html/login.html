@@ -62,10 +62,45 @@
         let email = ipt_email.value;
         let senha = ipt_senha.value;
 
-        if(email == 'brandao@sptech.school' && senha == 'Brandao*78'){
-            alert('Login realizado com sucesso');
-        }else{
-            alert('Email e/ou senha incorreto');
-        }
+        fetch('/usuarios/autenticar', {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha,
+            }),
+
+        })
+        .then(function (resposta){
+
+            if(resposta.ok){
+
+                resposta.json().then(json => {
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+                    alert('Login realizado com sucesso!');
+                    setTimeout(()=>{
+                        window.location = './plataforma/dashboard.html';
+                    })
+
+                })
+
+            } else{
+
+                alert('Email e/ou senha incorreto!');
+
+            }
+
+        })
+        .catch(function (erro){
+            console.log(erro);
+        })
     }
 </script>
