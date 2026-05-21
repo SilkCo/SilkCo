@@ -102,40 +102,28 @@
                     </table>
                     <table>
                         <tr>
-                            <th>Maior Umidade</th>
+                            <th>Menor Temperatura</th>
                         </tr>
                         <tr>
                             <td id="maior_umid">' '</td>
                         </tr>
-                    </table>
-                </div>
-
-                <div class="card">
-                    <table>
-                        <tr>
+                        </table>
+                        <table>
+                          <tr>
                             <th>Temperatura mais recente</th>
                         </tr>
                         <tr>
                             <td id="media_temp">' '</td>
                         </tr>
                     </table>
-                    <table>
-                        <tr>
-                            <th>Umidade mais recente</th>
-                        </tr>
-                        <tr>
-                            <td id="media_umid">' '</td>
-                        </tr>
-                    </table>
                 </div>
-
                 <div class="card">
-                    <table>
+                   <table>
                         <tr>
-                            <th>Menor Temperatura</th>
+                            <th>Maior Umidade</th>
                         </tr>
                         <tr>
-                            <td id="menor_temp">' '</td>
+                            <td id="maior_temp">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -143,7 +131,15 @@
                             <th>Menor Umidade</th>
                         </tr>
                         <tr>
-                            <td id="menor_umid">' '</td>
+                            <td id="menor_temp">' '</td>
+                        </tr>
+                        </table>
+                        <table>
+                          <tr>
+                            <th>Umidade mais recente</th>
+                        </tr>
+                        <tr>
+                            <td id="media_temp">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -364,15 +360,15 @@
         chartTempMedio.update();
         chartUmiMedio.update();
 
-        // if (maiorTemp > 15 || maiorUmid > 75) {
-        //     details.open = true
-        //     esconder.style.display = "flex"
+         if (maiorTemp > 15 || maiorUmid > 75) {
+             details.open = true
+            esconder.style.display = "flex"
 
-        // } else {
-        //     details.open = false
-        //     esconder.style.display = "none"
+        } else {
+             details.open = false
+             esconder.style.display = "none"
 
-        // }
+         }
 
        
     }

@@ -13,7 +13,7 @@
     color: var(--text-color-1);
     border-radius: 10px;
     appearance: none;
-    border: 1px solid var(--button-color);
+    border: 1px solid  rgba(0,0,0,0.08);
 }
 
 /* INDICADORES */
@@ -30,23 +30,22 @@
 }
 
 .card{
-    width: 200px;
+    width: 500px;
     box-sizing: border-box;
     padding: 15px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 10px;
     background-color: var(--alt-color-1);
     border-radius: 15px;
-    box-shadow: 0 5px 10px var(--shadow-color);
+    box-shadow:5px 5px  rgba(0,0,0,0.08);
 }
 
 .card table{
-    width: 180px;
+    width: 350px;
     text-align: center;
-    box-shadow: 0 0 10px var(--shadow-color);
-    border: 1px solid var(--button-color);
+    box-shadow:0 105 rgba(0,0,0,0.08);
+    border: 1px solid  rgba(0,0,0,0.08);
     border-radius: 15px;
     box-sizing: border-box;
     padding: 10px;
@@ -55,13 +54,13 @@
 .card th{
     box-sizing: border-box;
     padding: 10px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .card td{
     font-size: 20px;
     border-radius: 10px;
-    border: 1px solid var(--button-color);
+    border: 1px solid  rgba(0,0,0,0.08);
 }
 
 /* GRÁFICOS */
@@ -88,9 +87,9 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    border: 2px solid var(--button-color);
+    border: 2px solid  rgba(0,0,0,0.08);
     border-radius: 15px;
-    box-shadow: 0 5px 10px var(--shadow-color);
+    box-shadow:5px 5px rgba(0,0,0,0.08);
 }
 
 .chartMedio{
@@ -102,34 +101,35 @@
     flex-direction: column;
     align-items: center;
     gap: 3px;
-    border: 2px solid var(--button-color);
+    border: 2px solid  rgba(0,0,0,0.08);
     border-radius: 15px;
-    box-shadow: 0 5px 10px var(--shadow-color);
+    box-shadow:5px 5px rgba(0,0,0,0.08);
+    font-size: 25px;
 }
 
 .chart span{
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 25px;
 }
 
 .card-alertas{
+    box-sizing: border-box;
     display: flex;
     width: 1100px;
     padding: 15px;
     background-color: var(--alt-color-1);
     border-radius: 15px;
-    box-shadow: 0 5px 10px var(--shadow-color);
+    box-shadow:5px 5px rgba(0,0,0,0.08);
     
 }
 #esconder{
     width: 1100px;
-    justify-content: space-around
+    justify-content: space-around;
 }
 .alertas{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 5px solid var(--button-color);;
+    border: 3px solid var(--button-color);;
     border-radius: 10px;
     width: 200px;
     height: auto;
@@ -137,7 +137,7 @@
 
 
 .alertas h1{
-   color: red;
+   color:  #e53935;
    margin: 15px;
 }
 .alertas span{
@@ -147,4 +147,8 @@
 
 summary{
     cursor:pointer;
+}
+
+.main{
+    background-color: beige;
 }
