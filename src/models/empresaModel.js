@@ -1,25 +1,25 @@
 var database = require("../database/config");
 
-function buscarPorId(id) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE id = '${id}'`;
+function buscarPorId(id) { // nao sabemos se vai usar
+  var instrucaoSql = `SELECT * FROM empresa WHERE idEmpresa = '${id}'`;
 
   return database.executar(instrucaoSql);
 }
 
 function listar() {
-  var instrucaoSql = `SELECT id, razao_social, cnpj, codigo_ativacao FROM empresa`;
+  var instrucaoSql = `SELECT idEmpresa, nome, cnpj, codigo FROM empresa`;
 
   return database.executar(instrucaoSql);
 }
 
-function buscarPorCnpj(cnpj) {
+function buscarPorCnpj(cnpj) { 
   var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
 
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+function cadastrar(nome, cnpj, codigo) {
+  var instrucaoSql = `INSERT INTO empresa (nome, cnpj, codigo) VALUES ('${nome}', '${cnpj}', '${codigo}')`;
 
   return database.executar(instrucaoSql);
 }

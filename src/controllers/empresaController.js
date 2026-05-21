@@ -1,6 +1,6 @@
 var empresaModel = require("../models/empresaModel");
 
-function buscarPorCnpj(req, res) {
+function buscarPorCnpj(req, res) { 
   var cnpj = req.query.cnpj;
 
   empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
@@ -14,7 +14,7 @@ function listar(req, res) {
   });
 }
 
-function buscarPorId(req, res) {
+function buscarPorId(req, res) { // nao sabemos se vai usar
   var id = req.params.id;
 
   empresaModel.buscarPorId(id).then((resultado) => {
@@ -23,8 +23,9 @@ function buscarPorId(req, res) {
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+  var cnpj = req.body.cnpjServer;
+  var nome = req.body.nomeServer;
+  var codigo = req.body.codigoServer;
 
   empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
     if (resultado.length > 0) {
@@ -32,7 +33,7 @@ function cadastrar(req, res) {
         .status(401)
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
+      empresaModel.cadastrar(nome, cnpj, codigo).then((resultado) => {
         res.status(201).json(resultado);
       });
     }
