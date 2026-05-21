@@ -115,11 +115,13 @@
 
     function mostrarUsu(){
         opcoes_cad.style.display = 'none'
+        cad_emp.style.display = "none";
         cad_usu.style.display = "flex";
     }
 
     function mostrarEmp(){
         opcoes_cad.style.display = 'none'
+        cad_usu.style.display = "none";
         cad_emp.style.display = "flex";
     }
     function validarCNPJ(){
@@ -211,15 +213,16 @@
         if(verif == 5 && usuario != ''&& codigo != ''){
 
             let verifCod = false;
+
     for (let i = 0; i < codigosEmpresa.length; i++) {
       if (codigosEmpresa[i].codigo == codigo) {
         idEmpresaVincular = codigosEmpresa[i].idEmpresa
         console.log("Código de ativação válido.");
-        verifTime = true;
+        verifCod = true;
         break;
       }
     }
-    if(!verifTime){
+    if(!verifCod){
       alert('Empresa Inválida')
     //   but_cadastrar.disabled = false;
     }else{
@@ -252,7 +255,7 @@
 
             setTimeout(()=>{
                 
-                window.open('login.html');
+                window.location = 'login.html';
 
             })
 
@@ -272,7 +275,6 @@
         
         if(verifcnpj == 1 && nome != '' && galpoes != ''){
 
-            alert(`Cadastrado com sucesso`);
             let codigo = '';
             
         for(let i = 0;i < 5;i++){
@@ -316,15 +318,16 @@
             if(resposta.ok){
 
                 alert('Empresa cadastrada com sucesso!');
-                alert(`Código da sua empresa\n${codigo}`)
+                alert(`Código da sua empresa\n${codigo}`);
 
             }
 
             setTimeout(()=>{
                 
-                window.open('cadastro.html');
+                // window.location = './cadastro.html';
+                mostrarUsu();
 
-            })
+            }, 2000);
 
         })
             
