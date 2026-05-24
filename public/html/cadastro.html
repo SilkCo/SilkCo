@@ -161,11 +161,24 @@
 
     function alternarFormulario(form){
 
+            ipt_codigo.value = '';
+            ipt_usuario.value = '';
+            ipt_email.value = '';
+            ipt_senha.value = '';
+            ipt_nome.value = '';
+            ipt_cnpj.value = '';
+            ipt_qtd_enderecos.value = '';
+            ipt_cep.value = '';
+            ipt_logradouro.value = '';
+            ipt_numero.value = '';
+            ipt_qtd_galpoes.value = '';
+
         if(form == 'empresa'){
 
             cad_usu.style.display = 'none';
             cad_emp.style.display = 'flex';
             cad_enderecos.style.display = 'none';
+
 
         } else if(form == 'usuario'){
             
@@ -326,11 +339,14 @@
 
         }
     }
+
+    let qtdEnderecos = 0;
+
     function cadastrarEmp(){
         
         let nome = ipt_nome.value;
         let cnpj = ipt_cnpj.value;
-        let qtdEnderecos = ipt_qtd_enderecos.value;
+        qtdEnderecos = ipt_qtd_enderecos.value;
         // let galpoes = ipt_galpao.value;
         
         if(verifcnpj == 1 && nome != ''){
@@ -456,6 +472,21 @@
         console.log('Resposta: ', resposta);
 
     })
+
+    qtdEnderecos--;
+
+    if(qtdEnderecos > 0){
+
+        alert('Endereço cadastrado! Cadastre o próximo endereço.');
+        alternarFormulario('endereco');
+
+    } else{
+
+        alert('Todos os endereços foram cadastrados!');
+
+        window.location = 'login.html';
+
+    }
 
   }
 </script>
