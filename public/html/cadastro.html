@@ -435,7 +435,7 @@
       });
   }
 
-  function cadastrarEndereco(){
+  async function cadastrarEndereco(){
 
     let logradouro = ipt_logradouro.value;
     let numero = ipt_numero.value;
@@ -455,7 +455,7 @@
 
     console.log(idEmpresa);
 
-    fetch('/empresas/cadastrarEndereco', {
+    await fetch('/empresas/cadastrarEndereco', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -473,6 +473,11 @@
 
     })
 
+    while(qtdGalpoes > 0){
+        cadastrarGalpao(logradouro, numero, cep);
+        qtdGalpoes--;
+    }
+
     qtdEnderecos--;
 
     if(qtdEnderecos > 0){
@@ -487,6 +492,27 @@
         window.location = 'login.html';
 
     }
+
+  }
+
+  function cadastrarGalpao(logradouro, numero, cep){
+
+    console.log(logradouro, numero, cep);
+
+    fetch('/empresas/cadastrarGalpao', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify({
+            logradouro: logradouro,
+            numero: numero,
+            cep: cep,
+        }),
+    })
+    .then(function(resposta){
+
+    })
 
   }
 </script>

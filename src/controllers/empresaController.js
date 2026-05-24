@@ -52,13 +52,42 @@ function cadastrarEndereco(req, res){
   empresaModel.buscarPorCnpj(cnpjEmpresa)
   .then(function(resposta){
 
-    if(resposta.length > 0){
+    if(resposta.length == 1){
 
       empresaModel.cadastrarEndereco(resposta[0].idEmpresa, logradouro, numero, cep)
       .then(function (resultado){
         res.status(201).json(resultado);
-      })
+      });
       
+    }
+
+  });
+
+}
+
+function cadastrarGalpao(req, res){
+
+  var logradouro = req.body.logradouro;
+  var numero = req.body.numero;
+  var cep = req.body.cep;
+
+  console.log('entrei no cadastrarGalpao controller', logradouro, numero, cep);
+
+  empresaModel.buscarEndereco(logradouro, numero, cep)
+  .then(function(resposta){
+
+    if(resposta.length == 1){
+
+      console.log(resposta);
+
+      let fkEmpresa = resposta[0].fkEmpresa;
+      let fkEndereco = resposta[0].idEndereco;
+
+      empresaModel.cadastrarGalpao(fkEmpresa, fkEndereco)
+      .then(function(resultado){
+        res.status(201).json(resultado);
+      });
+
     }
 
   });
@@ -71,4 +100,5 @@ module.exports = {
   cadastrar,
   listar,
   cadastrarEndereco,
+  cadastrarGalpao,
 };

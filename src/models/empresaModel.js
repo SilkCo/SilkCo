@@ -36,4 +36,26 @@ function cadastrarEndereco(fkEmpresa, logradouro, numero, cep){
 
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEndereco };
+function buscarEndereco(logradouro, numero, cep){
+
+  var instrucaoSql = 
+  `
+    SELECT fkEmpresa, idEndereco FROM endereco WHERE logradouro = '${logradouro}' AND numero = ${numero} AND cep = '${cep}';
+  `;
+
+  return database.executar(instrucaoSql);
+
+}
+
+function cadastrarGalpao(fkEmpresa, fkEndereco){
+
+  var instrucaoSql = 
+  `
+    INSERT INTO galpao (fkEmpresa, fkEndereco) VALUES (${fkEmpresa}, ${fkEndereco});
+  `;
+
+  return database.executar(instrucaoSql);
+
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEndereco, buscarEndereco, cadastrarGalpao };
