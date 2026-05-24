@@ -20,18 +20,27 @@
     </header>
 
     <main class="cadastro">
-        <div class="opcoes_cad" id="opcoes_cad">
-            <h1 class="form-title">Cadastrar</h1>
-            <button class="submit-button" onclick="mostrarEmp()">Empresa</button>
-            <button class="submit-button" onclick="mostrarUsu()">Usuário</button>
-        </div>
-        <div class="main-content" id="cad_usu" style="display: none;">
-            <div class="redirect">
-                <span>Já possui uma conta?</span>
-                <a href="login.html"><button class="redirect-button">Login</button></a>
+        <div class="main-content">
+            <div class="opcoes-cad" id="opcoes_cad">
+                <span>Cadastrar</span>
+                <div>
+                    <button class="submit-button" onclick="alternarFormulario('empresa')">Empresa</button>
+                    <button class="submit-button" onclick="alternarFormulario('usuario')">Usuário</button>
+                </div>
+                <div>
+                    <span>Já possui uma conta?</span>
+                    <a href="login.html">
+                        <button class="submit-button">Login</button>
+                    </a>
+                </div>
             </div>
 
-            <div class="form-box">
+            <!-- <div class="redirect">
+                <span>Já possui uma conta?</span>
+                <a href="login.html"><button class="redirect-button">Login</button></a>
+            </div> -->
+
+            <div class="form-box" id="cad_usu" style="display: none">
                 <div class="form-section1">
                     <h1 class="form-title">Cadastro do Usuário</h1>
 
@@ -41,7 +50,7 @@
                             <input type="text" class="input" placeholder="Digite o código da empresa" id="ipt_codigo">
                         </div>
 
-                    <div class="input-section">
+                    <!-- <div class="input-section"> -->
                         <div class="input">
                             <span>Usuário: </span>
                             <input type="text" class="input" placeholder="Digite seu usuário" id="ipt_usuario">
@@ -65,10 +74,9 @@
                     <button class="submit-button" onclick="cadastrarUsu()">Cadastrar</button>
                 </div>
             </div>
-        </div>
-        </div>
-        <div class="main-content" id="cad_emp" style="display: none;">
-            <div class="form-box">
+        <!-- </div> -->
+
+            <div class="form-box" id="cad_emp" style="display: none;">
                 <div class="form-section1">
                     <h1 class="form-title">Cadastro da Empresa</h1>
 
@@ -84,10 +92,10 @@
                             <span id="txt_cnpj" class="parametros"></span>
                         </div>
 
-                        <div class="input">
+                        <!-- <div class="input">
                             <span>Quantidade de Galpões:</span>
                             <input type="number" class="input" placeholder="Digite a quantidade de galpões" id="ipt_galpao">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -113,17 +121,22 @@
     let verifmin = 0;
     let verifcnpj = 0;
 
-    function mostrarUsu(){
-        opcoes_cad.style.display = 'none'
-        cad_emp.style.display = "none";
-        cad_usu.style.display = "flex";
+    function alternarFormulario(form){
+
+        if(form == 'empresa'){
+
+            cad_usu.style.display = 'none';
+            cad_emp.style.display = 'flex';
+
+        } else{
+            
+            cad_usu.style.display = 'flex';
+            cad_emp.style.display = 'none';
+
+        }
+
     }
 
-    function mostrarEmp(){
-        opcoes_cad.style.display = 'none'
-        cad_usu.style.display = "none";
-        cad_emp.style.display = "flex";
-    }
     function validarCNPJ(){
         let cnpj = ipt_cnpj.value;
         if(cnpj.length < 14){
@@ -206,9 +219,9 @@
 
         let email = ipt_email.value;
 
-        let senha = ipt_senha.value
+        let senha = ipt_senha.value;
 
-        let idEmpresaVincular
+        let idEmpresaVincular;
 
         if(verif == 5 && usuario != ''&& codigo != ''){
 
@@ -271,9 +284,9 @@
         
         let nome = ipt_nome.value;
         let cnpj = ipt_cnpj.value;
-        let galpoes = ipt_galpao.value;
+        // let galpoes = ipt_galpao.value;
         
-        if(verifcnpj == 1 && nome != '' && galpoes != ''){
+        if(verifcnpj == 1 && nome != ''){
 
             let codigo = '';
             
@@ -325,7 +338,8 @@
             setTimeout(()=>{
                 
                 // window.location = './cadastro.html';
-                mostrarUsu();
+                // mostrarUsu();
+                alternarFormulario('usuario');
 
             }, 2000);
 
