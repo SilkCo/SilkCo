@@ -188,11 +188,12 @@ main.cadastro{
     box-shadow: 0 5px 10px var(--shadow-color);
     cursor: pointer;
 }
+
 .opcoes-cad{
     /* margin-top: 16vh; */
     height: fit-content;
     width: fit-content;
-    padding: 15px;
+    padding: 30px 15px;
     background-color: white;
     display: flex;
     flex-direction: column;

@@ -41,7 +41,7 @@
             </div> -->
 
             <div class="form-box" id="cad_usu" style="display: none">
-                <div class="form-section1">
+                <div class="form-section-1">
                     <h1 class="form-title">Cadastro do Usuário</h1>
 
                     <div class="input-section">
@@ -77,7 +77,7 @@
         <!-- </div> -->
 
             <div class="form-box" id="cad_emp" style="display: none;">
-                <div class="form-section1">
+                <div class="form-section-1">
                     <h1 class="form-title">Cadastro da Empresa</h1>
 
                     <div class="input-section">
@@ -101,6 +101,34 @@
 
                 <div class="form-section-2">
                     <button class="submit-button" onclick="cadastrarEmp()">Cadastrar</button>
+                </div>
+            </div>
+
+            <div class="form-box" id="cad_enderecos">
+                <div class="form-section-1">
+                    <h1 class="form-title">Cadastro de Endereços</h1>
+                    <span id="span_enderecos">Cadastre os endereços das produções da empresa</span>
+
+                    <div class="input-section">
+                        <div class="input">
+                            <span>CEP:</span>
+                            <input type="text" id="ipt_cep" placeholder="Digite o CEP" maxlength="8">
+                        </div>
+
+                        <div class="input">
+                            <span>Logradouro:</span>
+                            <input type="text" id="ipt_rua" placeholder="Digite o logradouro">
+                        </div>
+
+                        <div class="input">
+                            <span>Número:</span>
+                            <input type="text" id="ipt_numero" placeholder="Digite o número">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section-2">
+                    <button class="submit-button">Cadastrar Endereço</button>
                 </div>
             </div>
         </div>
