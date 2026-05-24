@@ -92,6 +92,11 @@
                             <span id="txt_cnpj" class="parametros"></span>
                         </div>
 
+                        <div class="input">
+                            <span>Quantidade de endereços a cadastrar:</span>
+                            <input type="number" id="ipt_qtd_enderecos">
+                        </div>
+
                         <!-- <div class="input">
                             <span>Quantidade de Galpões:</span>
                             <input type="number" class="input" placeholder="Digite a quantidade de galpões" id="ipt_galpao">
@@ -104,7 +109,7 @@
                 </div>
             </div>
 
-            <div class="form-box" id="cad_enderecos">
+            <div class="form-box" id="cad_enderecos" style="display: none;">
                 <div class="form-section-1">
                     <h1 class="form-title">Cadastro de Endereços</h1>
                     <span id="span_enderecos">Cadastre os endereços das produções da empresa</span>
@@ -117,18 +122,23 @@
 
                         <div class="input">
                             <span>Logradouro:</span>
-                            <input type="text" id="ipt_rua" placeholder="Digite o logradouro">
+                            <input type="text" id="ipt_logradouro" placeholder="Digite o logradouro">
                         </div>
 
                         <div class="input">
                             <span>Número:</span>
                             <input type="text" id="ipt_numero" placeholder="Digite o número">
                         </div>
+
+                        <div class="input">
+                            <span>Quantidade de Galpões:</span>
+                            <input type="number" id="ipt_qtd_galpoes" placeholder="Digite a quantidade de galpões">
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-section-2">
-                    <button class="submit-button">Cadastrar Endereço</button>
+                    <button class="submit-button" onclick="cadastrarEndereco()">Cadastrar Endereço</button>
                 </div>
             </div>
         </div>
@@ -155,11 +165,19 @@
 
             cad_usu.style.display = 'none';
             cad_emp.style.display = 'flex';
+            cad_enderecos.style.display = 'none';
 
-        } else{
+        } else if(form == 'usuario'){
             
             cad_usu.style.display = 'flex';
             cad_emp.style.display = 'none';
+            cad_enderecos.style.display = 'none';
+
+        } else{
+
+            cad_usu.style.display = 'none';
+            cad_emp.style.display = 'none';
+            cad_enderecos.style.display = 'flex';
 
         }
 
@@ -279,7 +297,7 @@
                 nomeServer: usuario,
                 emailServer: email,
                 senhaServer: senha,
-                idEmpresaVincularServer: idEmpresaVincular
+                idEmpresaVincularServer: idEmpresaVincular,
 
             }),
 
@@ -312,6 +330,7 @@
         
         let nome = ipt_nome.value;
         let cnpj = ipt_cnpj.value;
+        let qtdEnderecos = ipt_qtd_enderecos.value;
         // let galpoes = ipt_galpao.value;
         
         if(verifcnpj == 1 && nome != ''){
@@ -361,13 +380,16 @@
                 alert('Empresa cadastrada com sucesso!');
                 alert(`Código da sua empresa\n${codigo}`);
 
+                // sessionStorage.COD_EMPRESA = codigo;
+
             }
 
             setTimeout(()=>{
                 
                 // window.location = './cadastro.html';
                 // mostrarUsu();
-                alternarFormulario('usuario');
+                sessionStorage.CNPJ_EMPRESA = cnpj;
+                alternarFormulario('enderecos');
 
             }, 2000);
 
@@ -395,5 +417,45 @@
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
+  }
+
+  function cadastrarEndereco(){
+
+    let logradouro = ipt_logradouro.value;
+    let numero = ipt_numero.value;
+    let cep = ipt_cep.value;
+    let qtdGalpoes = ipt_qtd_galpoes.value;
+
+    let cnpjEmpresa = sessionStorage.CNPJ_EMPRESA;
+    console.log(cnpjEmpresa);
+    let idEmpresa = null;
+
+    // fetch(`/empresas/buscarPorCodigo/${codigoEmpresa}`, {
+    //     method: 'GET',
+    // })
+    // .then(function(resposta){
+
+    // })
+
+    console.log(idEmpresa);
+
+    fetch('/empresas/cadastrarEndereco', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            logradouro: logradouro,
+            numero: numero,
+            cep: cep,
+            cnpjEmpresa: cnpjEmpresa,
+        }),
+    })
+    .then(function(resposta){
+
+        console.log('Resposta: ', resposta);
+
+    })
+
   }
 </script>

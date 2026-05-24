@@ -40,9 +40,35 @@ function cadastrar(req, res) {
   });
 }
 
+
+
+function cadastrarEndereco(req, res){
+
+  var cnpjEmpresa = req.body.cnpjEmpresa;
+  var logradouro = req.body.logradouro;
+  var cep = req.body.cep;
+  var numero = req.body.numero;
+
+  empresaModel.buscarPorCnpj(cnpjEmpresa)
+  .then(function(resposta){
+
+    if(resposta.length > 0){
+
+      empresaModel.cadastrarEndereco(resposta[0].idEmpresa, logradouro, numero, cep)
+      .then(function (resultado){
+        res.status(201).json(resultado);
+      })
+      
+    }
+
+  });
+
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
   cadastrar,
   listar,
+  cadastrarEndereco,
 };

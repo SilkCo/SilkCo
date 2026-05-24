@@ -24,4 +24,16 @@ function cadastrar(nome, cnpj, codigo) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+function cadastrarEndereco(fkEmpresa, logradouro, numero, cep){
+
+  var instrucaoSql = 
+  `
+    INSERT INTO endereco (logradouro, numero, cep, fkEmpresa) VALUES
+    ('${logradouro}', ${numero}, '${cep}', ${fkEmpresa});
+  `;
+
+  return database.executar(instrucaoSql);
+
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEndereco };
