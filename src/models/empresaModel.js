@@ -58,4 +58,36 @@ function cadastrarGalpao(fkEmpresa, fkEndereco){
 
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEndereco, buscarEndereco, cadastrarGalpao };
+function buscarGalpao(fkEmpresa, fkEndereco){
+
+  var instrucaoSql = 
+  `
+    SELECT idGalpao FROM galpao WHERE fkEmpresa = ${fkEmpresa} AND fkEndereco = ${fkEndereco};
+  `;
+
+  return database.executar(instrucaoSql);
+
+}
+
+function cadastrarSensor(idGalpao){
+
+  var instrucaoSql =
+  `
+    INSERT INTO sensor (statusSensor, modeloSensor, fkGalpao) VALUES ('Ativo', 'DHT11', ${idGalpao});
+  `;
+
+  return database.executar(instrucaoSql);
+
+}
+
+module.exports = { 
+  buscarPorCnpj, 
+  buscarPorId, 
+  cadastrar, 
+  listar, 
+  cadastrarEndereco, 
+  buscarEndereco, 
+  cadastrarGalpao, 
+  buscarGalpao, 
+  cadastrarSensor 
+};

@@ -85,10 +85,65 @@ function cadastrarGalpao(req, res){
 
       empresaModel.cadastrarGalpao(fkEmpresa, fkEndereco)
       .then(function(resultado){
+
         res.status(201).json(resultado);
+
+
       });
 
     }
+
+  });
+
+}
+
+function buscarGalpao(req, res){
+
+  var parametros = JSON.parse(req.params.parametros);
+  console.log(parametros);
+
+  var logradouro = parametros.logradouro;
+  var numero = parametros.numero;
+  var cep = parametros.cep;
+
+  empresaModel.buscarEndereco(logradouro, numero, cep)
+  .then(function(resposta){
+    console.log('abelardo', logradouro, numero, cep);
+
+    if(resposta.length == 1){
+      
+      fkEndereco = resposta[0].idEndereco;
+      fkEmpresa = resposta[0].fkEmpresa;
+      
+      console.log('Executando model do buscarGalpao agora');
+      
+      empresaModel.buscarGalpao(fkEmpresa, fkEndereco)
+      .then(function(resposta){
+
+        console.log('model do buscarGalpao executado');
+
+        if(resposta.length > 0){
+
+          res.status(200).json(resposta);
+
+        }
+
+      });
+      
+    }
+
+  });
+
+}
+
+function cadastrarSensor(req, res){
+
+  var idGalpao = req.body.idGalpao;
+
+  empresaModel.cadastrarSensor(idGalpao)
+  .then(function(resultado){
+
+    res.status(201);
 
   });
 
@@ -101,4 +156,6 @@ module.exports = {
   listar,
   cadastrarEndereco,
   cadastrarGalpao,
+  buscarGalpao,
+  cadastrarSensor,
 };

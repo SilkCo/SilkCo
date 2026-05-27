@@ -28,4 +28,12 @@ router.post('/cadastrarGalpao', function (req, res){
   empresaController.cadastrarGalpao(req, res);
 });
 
+router.get('/buscarGalpao/:parametros', function(req, res){
+  empresaController.buscarGalpao(req, res);
+});
+
+router.post('/cadastrarSensor', function(req, res){
+  empresaController.cadastrarSensor(req, res);
+});
+
 module.exports = router;

@@ -435,12 +435,13 @@
       });
   }
 
-  async function cadastrarEndereco(){
+  function cadastrarEndereco(){
 
     let logradouro = ipt_logradouro.value;
     let numero = ipt_numero.value;
     let cep = ipt_cep.value;
     let qtdGalpoes = ipt_qtd_galpoes.value;
+    let qtdSensores = qtdGalpoes;
 
     let cnpjEmpresa = sessionStorage.CNPJ_EMPRESA;
     console.log(cnpjEmpresa);
@@ -455,7 +456,7 @@
 
     console.log(idEmpresa);
 
-    await fetch('/empresas/cadastrarEndereco', {
+    fetch('/empresas/cadastrarEndereco', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -471,27 +472,32 @@
 
         console.log('Resposta: ', resposta);
 
-    })
+        while(qtdGalpoes > 0){
 
-    while(qtdGalpoes > 0){
-        cadastrarGalpao(logradouro, numero, cep);
-        qtdGalpoes--;
-    }
+            cadastrarGalpao(logradouro, numero, cep);
 
-    qtdEnderecos--;
+            qtdGalpoes--;
 
-    if(qtdEnderecos > 0){
+        }
 
-        alert('Endereço cadastrado! Cadastre o próximo endereço.');
-        alternarFormulario('endereco');
+        buscarGalpao(logradouro, numero, cep); // função que busca os ids dos galpões e chama a função de cadastrar sensor 
 
-    } else{
+        qtdEnderecos--;
 
-        alert('Todos os endereços foram cadastrados!');
+        if(qtdEnderecos > 0){
 
-        window.location = 'login.html';
+            alert('Endereço cadastrado! Cadastre o próximo endereço.');
+            alternarFormulario('endereco');
 
-    }
+        } else{
+
+            alert('Todos os endereços foram cadastrados!');
+
+            window.location = 'login.html';
+
+        }
+
+    });
 
   }
 
@@ -512,7 +518,78 @@
     })
     .then(function(resposta){
 
+        if(resposta.status == 201){
+
+            console.log('Galpão cadastrado')
+            // buscarGalpao(logradouro, numero, cep);
+
+        }
+        
     })
+    
+    
+  }
+
+  function buscarGalpao(logradouro, numero, cep){
+
+    console.log('Entrei na função buscarGalpao', logradouro, numero, cep);
+
+    let parametros = {
+        "logradouro": logradouro,
+        "numero": numero,
+        "cep": cep
+    };
+
+    fetch(`/empresas/buscarGalpao/${JSON.stringify(parametros)}`, {
+        method: 'GET',
+    })
+    .then(function(resposta){
+
+        console.log('Cheguei no then do buscarGalpao');
+
+        if(resposta.status == 200){
+            resposta.json().then(function (resposta){
+
+                let idsGalpao = resposta;
+                console.log('IDs Galpões: ', idsGalpao);
+                
+                for(let i = 0; i < idsGalpao.length; i++){
+
+                    let idGalpao = idsGalpao[i].idGalpao;
+                    cadastrarSensor(idGalpao);
+                    
+                }
+            });
+
+        } else{
+            console.log('buscar galpão deu errado');
+        }
+        
+    });
+
+    
+  }
+
+  function cadastrarSensor(idGalpao){
+
+    console.log('Entrei na função cadastrarSensor');
+
+    fetch('/empresas/cadastrarSensor', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify({
+            idGalpao: idGalpao,
+        }),
+    })
+    .then(function(resultado){
+
+        if(resultado.status == 201){
+            console.log('Sensor cadastrado');
+        }
+
+    });
 
   }
 </script>
