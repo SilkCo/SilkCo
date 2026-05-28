@@ -55,12 +55,16 @@
                 <span>Dashboard</span>
             </div>
             <div class="page-header">
+                <span>Selecione o Endereço: </span>
+
+                <select name="enderecos" id="select_endereco" oninput="selecionarGalpao()">
+                    <option hidden disabled selected>Selecione</option>
+                </select>
+
                 <span>Selecione o Galpão: </span>
 
-                <select name="galpao" id="select_galpao" oninput="selecionarGalpao()">
+                <select name="galpoes" id="select_galpao" oninput="">
                     <option hidden disabled selected>Selecione</option>
-                    <option value="1">Galpão 1</option>
-                    <option value="2">Galpão 2</option>
                 </select>
             </div>
             <div class="dashboard-section">
@@ -192,7 +196,66 @@
 </html>
 
 <script>
+
+    window.onload = exibirEnderecos();
     
+    function exibirEnderecos(){
+        console.log('exibir endercos galpao executada')
+
+        let enderecos = [];
+        let galpoes = [];
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+
+        fetch(`/medidas/buscarEnderecosGalpao/${idEmpresa}`,{
+            method:"GET",
+        })
+        .then(function(resultado){
+            console.log('entrei no then')
+            if(resultado.status == 200){
+                console.log('entrei no if')
+
+                resultado.json().then(function (dadosEndereco){
+                    console.log('entrei ')
+                    for(let i = 0; i < dadosEndereco.length; i++){
+
+                        let endereco = {
+
+                            idEndereco: dadosEndereco[i].idEndereco,
+                            logradouro: dadosEndereco[i].logradouro,
+                            numero: dadosEndereco[i].numero,
+                            cep: dadosEndereco[i].cep,
+
+                        } 
+
+                        enderecos.push(endereco);
+
+                        select_endereco.innerHTML += 
+                        `
+                            <option>${endereco.logradouro}, ${endereco.numero}</option>
+                        `;
+
+                        console.log(endereco);
+
+                    }
+
+                    setTimeout(()=>{
+                        exibirGalpoes(idEndereco);
+                    }, 1500);
+
+                })
+
+            }
+        })
+
+        
+    }
+
+    function exibirGalpoes(idEndereco){
+
+        fetch()
+
+    }
+
 
     const canvasTemp = document.getElementById('grafico_temperatura');
 
@@ -300,79 +363,6 @@
      let esconder = document.getElementById("esconder");
     let details = document.getElementById("abrir-fechar")
     function selecionarGalpao(){
-        let galpao = select_galpao.value;
-
-        let maiorTemp = 0;
-        let menorTemp = 0;
-        let mediaTemp = 0;
-
-        let maiorUmid = 0;
-        let menorUmid = 0;
-        let mediaUmid = 0;
-
-        let tempData = [];
-        let umidData = [];
-        let tempMedioData= [];
-        let umiMedioData= [];
-
-        if(galpao == 1){
-            tempData = [10,20,12,16];
-            umidData = [75,66,71,78];
-            tempMedioData = [22,23,21,26,27,26,26];
-            umiMedioData = [80,81,85,79,79,80,82];
-
-            maiorTemp = 20;
-            menorTemp = 10;
-            mediaTemp = 14;
-
-            maiorUmid = 78;
-            menorUmid = 66;
-            mediaUmid = 72.5;
-
-        } else if(galpao == 2){
-            tempData = [15,22,17,13];
-            umidData = [87,75,77,81];
-            tempMedioData= [20,21,20,26,25, 26, 22];
-            umiMedioData = [77,86,85,81,83,81,82];
-
-            maiorTemp = 22;
-            menorTemp = 13;
-            mediaTemp = 16.75;
-
-            maiorUmid = 87;
-            menorUmid = 75;
-            mediaUmid = 80;
-        }
-
-        maior_temp.innerHTML = `${maiorTemp}º`;
-        menor_temp.innerHTML = `${menorTemp}º`;
-        media_temp.innerHTML = `${mediaTemp}º`;
-
-        maior_umid.innerHTML = `${maiorUmid}%`;
-        menor_umid.innerHTML = `${menorUmid}%`;
-        media_umid.innerHTML = `${mediaUmid}%`;
-
-        chartTemp.data.datasets[0].data = tempData;
-        chartUmid.data.datasets[0].data = umidData;
-        chartTempMedio.data.datasets[0].data = tempMedioData;
-        chartUmiMedio.data.datasets[0].data = umiMedioData;
-
-        chartTemp.update();
-        chartUmid.update();
-        chartTempMedio.update();
-        chartUmiMedio.update();
-
-         if (maiorTemp > 15 || maiorUmid > 75) {
-             details.open = true
-            esconder.style.display = "flex"
-
-        } else {
-             details.open = false
-             esconder.style.display = "none"
-
-         }
-
-       
     }
     
     ;

@@ -29,7 +29,23 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarEnderecosGalpao(idEmpresa){
+    // var instrucaoSql = `SELECT
+    //     endereco.*,galpao.*
+    //     FROM endereco JOIN galpao ON fkEndereco = idEndereco WHERE endereco.fkEmpresa = ${idEmpresa}
+    // `
+
+    var instrucaoSql = 
+    `
+        SELECT * FROM endereco WHERE fkEmpresa = ${idEmpresa};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarEnderecosGalpao
 }
