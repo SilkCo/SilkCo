@@ -15,4 +15,8 @@ router.get("/buscarEnderecosGalpao/:idEmpresa", function (req, res) {
     medidaController.buscarEnderecosGalpao(req, res);
 })
 
+router.get('/buscarGalpoes/:idEndereco', function(req, res){
+    medidaController.buscarGalpoes(req, res);
+})
+
 module.exports = router;

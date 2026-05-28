@@ -57,7 +57,7 @@
             <div class="page-header">
                 <span>Selecione o Endereço: </span>
 
-                <select name="enderecos" id="select_endereco" oninput="selecionarGalpao()">
+                <select name="enderecos" id="select_endereco" oninput="selecionarEndereco(select_endereco.value)">
                     <option hidden disabled selected>Selecione</option>
                 </select>
 
@@ -231,28 +231,50 @@
 
                         select_endereco.innerHTML += 
                         `
-                            <option>${endereco.logradouro}, ${endereco.numero}</option>
+                            <option value="${endereco.idEndereco}">${endereco.logradouro}, ${endereco.numero}</option>
                         `;
 
                         console.log(endereco);
 
                     }
 
-                    setTimeout(()=>{
-                        exibirGalpoes(idEndereco);
-                    }, 1500);
-
-                })
+                });
 
             }
-        })
+        });
 
         
     }
 
+    function selecionarEndereco(idEndereco){
+
+        exibirGalpoes(idEndereco);
+
+    }
+
     function exibirGalpoes(idEndereco){
 
-        fetch()
+        select_galpao.innerHTML = '';
+
+        fetch(`/medidas/buscarGalpoes/${idEndereco}`, {
+            method: 'GET',
+        }).then(function(resultado){
+
+            if(resultado.status == 200){
+
+                resultado.json().then(function (dadosGalpoes){
+
+                    for(let i = 0; i < dadosGalpoes.length; i++){
+
+                        select_galpao.innerHTML += `<option value=${dadosGalpoes[i].idGalpao}>Galpão ${i + 1}</option>`;
+
+                    }
+
+                })
+
+            }
+
+        })
 
     }
 

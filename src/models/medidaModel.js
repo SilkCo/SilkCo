@@ -44,8 +44,20 @@ function buscarEnderecosGalpao(idEmpresa){
     return database.executar(instrucaoSql);
 }
 
+function buscarGalpoes(idEndereco){
+
+    var instrucaoSql =
+    `
+        SELECT * FROM galpao WHERE fkEndereco = ${idEndereco};
+    `;
+
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarEnderecosGalpao
+    buscarEnderecosGalpao,
+    buscarGalpoes
 }
