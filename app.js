@@ -1,5 +1,11 @@
+// chamando api da ia
+const { GoogleGenAI } = require("@google/genai");
+const chatIA = new GoogleGenAI({ apiKey: process.env.MINHA_CHAVE });
+
+
 // var ambiente_processo = 'producao';
 var ambiente_processo = 'desenvolvimento';
+
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
@@ -21,6 +27,7 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
+var bobRouter = require("./src/routes/bob");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,6 +41,7 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
+app.use("/bob", bobRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
