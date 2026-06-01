@@ -4,19 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BobIA</title>
-    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="../../src/css/global-style.css">
+    <link rel="stylesheet" href="../../src/css/plataforma-style.css">
+    <link rel="stylesheet" href="../src/css/bobia.css">
+    <script src="../../src/js/script.js"></script>
 </head>
 <body>
+    <div class="left-menu" id="left_menu">
+        <div class="left-menu-content">
+            <div class="left-menu-header">
+                <button onclick="menuOnOff()" id="button_on_off">
+                    <span>|||</span>
+                </button>
+            </div>
 
-    <div id="container">
-        <h1>BobIA</h1>
+            <nav id="nav">
+                <div class="nav-item">
+                    <a href="../html/plataforma/dashboard.html" id="a">
+                        <span class="nav-icon">
+                            <img src="../../src/img/icon/dash-icon.png">
+                        </span>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="../html/plataforma/empresa.html">
+                        <span class="nav-icon">
+                            <img src="../../src/img/icon/empresa-icon.png" alt="">
+                        </span>
+                        <span class="nav-text">
+                            Empresa
+                        </span>
+                    </a>
+                </div>
+
+                <div class="nav-item active">
+                    <a href="#">
+                        <span class="nav-icon">
+                            <img src="../../src/img/icon/ia.png" alt="">
+                        </span>
+                        <span class="nav-text">
+                            bobIA
+                        </span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <main>
+         <div class="main-content">
+        <h1 class="page-title">BobIA</h1>
         <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
         <br><br>
-        <button onclick="gerarResposta()">Gerar Resposta</button>
-        <h3>Resposta da IA:</h3>
+        <button onclick="gerarResposta()" id="but_perguntar">Gerar Resposta</button>
+        <h3>Resposta do Bob:</h3>
         <div id="resposta"></div>
     </div>
-
+    </main>
     <script>
         
         async function gerarResposta() {

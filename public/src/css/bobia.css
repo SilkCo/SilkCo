@@ -1,0 +1,32 @@
+#pergunta{
+    width: 50vw;
+    height: 10vh;
+    font-size: large;
+    border-radius: 10px;
+    border-width: 3px;
+}
+#but_perguntar{
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--button-color);
+    font-size: 17px;
+    color: var(--alt-color-1);
+    font-weight: bold;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    cursor: pointer;
+}
+#resposta{
+    font-size: large;
+    height: fit-content;
+    width: 50vw;
+    border-radius: 10px;
+    color: black;
+    border: solid 3px gray;
+    margin-bottom: 3vh;
+}
+.main-content{
+     border: solid 3px gray;
+     border-radius: 10px;
+}
