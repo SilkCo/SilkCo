@@ -74,9 +74,46 @@ function buscarGalpoes(req, res){
 
 }
 
+function exibirQuantidadeAlerta(req, res){
+    var quantidadeAlerta= req.params.quantidadeAlerta;
+
+    medidaModel.exibirQuantidadeAlerta(quantidadeAlerta).then(function(resultado){
+        if(quantidadeAlerta.length > 0){
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado foi encontrado da quantidade de alertas")
+        }
+    }).catch(function(erro){
+        console.log(erro);
+        console.log("Houve um erro ao buscar a quntidade de alertas", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarKpi(req, res){
+    var idGalpao= req.params.idGalpao;
+
+
+    medidaModel.buscarIdSensor(idGalpao).then(function(resultado){
+        if(resultado.length == 1){
+            var idSensor= resultado[0].idSensor;
+            medidaModel.buscarKpi(idSensor).then(function(resultado){
+                if(resultado.length > 0){
+                    res.status(200).json(resultado);
+                }else{
+                    res.status(204).send("Nenhuma kpi foi encontrado da quantidade de alertas");
+                }
+            });
+        }
+    });
+}
+
+
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    buscarKpi,
     buscarEnderecosGalpao,
-    buscarGalpoes
+    buscarGalpoes,
+    exibirQuantidadeAlerta,
+    buscarUltimasMedidas,
+    buscarMedidasEmTempoReal
 }

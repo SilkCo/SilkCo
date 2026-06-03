@@ -63,7 +63,7 @@
 
                 <span>Selecione o Galpão: </span>
 
-                <select name="galpoes" id="select_galpao" oninput="">
+                <select name="galpoes" id="select_galpao" oninput="selecionarGalpao(select_galpao.value)">
                     <option hidden disabled selected>Selecione</option>
                 </select>
             </div>
@@ -77,18 +77,21 @@
                             <span class="sensorAlerta">SENSOR: S1 </span><br>
                             <span class="galpaoAlerta">GALPÃO: G1</span><br>
                             <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
+                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
                         </div>
                         <div class="alertas">
                             <h1>ALERTA!</h1>
                             <span class="sensorAlerta">SENSOR: S1 </span><br>
                             <span class="galpaoAlerta">GALPÃO: G1</span><br>
                             <span class="metricaAlerta">UMIDADE > 75ºC</span>
+                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
                         </div>
                           <div class="alertas">
                             <h1>ALERTA!</h1>
                             <span class="sensorAlerta">SENSOR: S1 </span><br>
                             <span class="galpaoAlerta">GALPÃO: G1</span><br>
                             <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
+                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
                         </div>
                         </div>
                         </div>
@@ -110,7 +113,7 @@
                             <th>Menor Temperatura</th>
                         </tr>
                         <tr>
-                            <td id="maior_umid">' '</td>
+                            <td id="menor_temp">' '</td>
                         </tr>
                         </table>
                         <table>
@@ -118,7 +121,7 @@
                             <th>Temperatura mais recente</th>
                         </tr>
                         <tr>
-                            <td id="media_temp">' '</td>
+                            <td id="temp_recente">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -128,7 +131,7 @@
                             <th>Maior Umidade</th>
                         </tr>
                         <tr>
-                            <td id="maior_temp">' '</td>
+                            <td id="maior_umidade">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -136,7 +139,7 @@
                             <th>Menor Umidade</th>
                         </tr>
                         <tr>
-                            <td id="menor_temp">' '</td>
+                            <td id="menor_umid">' '</td>
                         </tr>
                         </table>
                         <table>
@@ -144,7 +147,7 @@
                             <th>Umidade mais recente</th>
                         </tr>
                         <tr>
-                            <td id="media_temp">' '</td>
+                            <td id="umid_recente">' '</td>
                         </tr>
                     </table>
                 </div>
@@ -195,7 +198,7 @@
 </body>
 </html>
 
-<script>
+<script>    
 
     window.onload = exibirEnderecos();
     
@@ -249,7 +252,6 @@
     function selecionarEndereco(idEndereco){
 
         exibirGalpoes(idEndereco);
-
     }
 
     function exibirGalpoes(idEndereco){
@@ -276,6 +278,30 @@
 
         })
 
+    }
+
+    function exibirQuantidadeAlerta(){
+        fetch(`/medidas/exibirQuantidadeAlerta`, {
+            method: 'GET'
+        })
+    }
+
+    function buscarKpi(idGalpao){
+        fetch(`/medidas/buscarKpi/${idGalpao}`, {
+            method: 'GET'
+        }).then(function(resultado){
+            if(resultado.status == 200){
+                console.log("deu certo")
+                document.getElementById('maior_temp').innerHTML= resultado.maior_temp;
+            }else{
+                console.log("deu errado")
+            }
+        })
+
+    }
+
+    function selecionarGalpao(idGalpao){
+        buscarKpi(idGalpao);
     }
 
 
@@ -346,7 +372,7 @@
     const chartTempMedio = new Chart(canvasTempMedio, {
         type: 'line',
         data: {
-            labels: ['12/05','13/05','14/05','15/05', '16/05', '17/05', '18/05'],
+            labels: ['18/06/2026 10:00','18/06/2026 10:01','18/06/2026 10:02','18/06/2026 10:03', '18/06/2026 10:04', '18/06/2026 10:05', '18/06/2026 10:06'],
             datasets: [
                 {
                     label: 'Temperatura',
@@ -367,7 +393,7 @@
     const chartUmiMedio = new Chart(canvasUmiMedio, {
         type: 'line',
         data: {
-            labels: ['12/05','13/05','14/05','15/05', '16/05', '17/05', '18/05'],
+            labels: ['18/06/2026 10:00','18/06/2026 10:01','18/06/2026 10:02','18/06/2026 10:03', '18/06/2026 10:04', '18/06/2026 10:05', '18/06/2026 10:06'],
             datasets: [
                 {
                     label: 'Umidade',
@@ -384,8 +410,6 @@
     });
      let esconder = document.getElementById("esconder");
     let details = document.getElementById("abrir-fechar")
-    function selecionarGalpao(){
-    }
     
     ;
 </script>
