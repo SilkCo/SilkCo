@@ -60,3 +60,29 @@ CREATE TABLE leitura_sensor (
 		FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
+CREATE VIEW vw_buscarMedidas AS
+SELECT 
+    fkSensor as idSensor,
+    DATE_FORMAT(dtColeta,"%d/%m") as DataColeta,
+    MAX(temperatura) as MaiorTemperatura,
+    MIN(temperatura) as MenorTemperatura,
+    (
+        SELECT 
+            temperatura 
+        FROM leitura_sensor 
+        WHERE fkSensor = idSensor 
+        ORDER BY dtColeta DESC 
+        LIMIT 1
+    ) as UltimaTemperatura,
+    MAX(umidade) as MaiorUmidade,
+    MIN(umidade) as MenorUmidade,
+    (
+        SELECT 
+            umidade 
+        FROM leitura_sensor 
+        WHERE fkSensor = idSensor 
+        ORDER BY dtColeta DESC 
+        LIMIT 1
+    ) as UltimaUmidade
+FROM leitura_sensor
+GROUP BY idSensor, DataColeta;
