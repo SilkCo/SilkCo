@@ -63,26 +63,26 @@ CREATE TABLE leitura_sensor (
 CREATE VIEW vw_buscarMedidas AS
 SELECT 
     fkSensor as idSensor,
-    DATE_FORMAT(dtColeta,"%d/%m") as DataColeta,
-    MAX(temperatura) as MaiorTemperatura,
-    MIN(temperatura) as MenorTemperatura,
+    DATE_FORMAT(dtColeta,"%d/%m") as dataColeta,
+    TRUNCATE(MAX(temperatura), 0) as maiorTemperatura,
+    TRUNCATE(MIN(temperatura), 0) as menorTemperatura,
     (
         SELECT 
-            temperatura 
+            TRUNCATE(temperatura, 0) 
         FROM leitura_sensor 
         WHERE fkSensor = idSensor 
         ORDER BY dtColeta DESC 
         LIMIT 1
-    ) as UltimaTemperatura,
-    MAX(umidade) as MaiorUmidade,
-    MIN(umidade) as MenorUmidade,
+    ) as ultimaTemperatura,
+    TRUNCATE(MAX(umidade), 0) as maiorUmidade,
+    TRUNCATE(MIN(umidade), 0) as menorUmidade,
     (
         SELECT 
-            umidade 
+            TRUNCATE(umidade, 0)
         FROM leitura_sensor 
         WHERE fkSensor = idSensor 
         ORDER BY dtColeta DESC 
         LIMIT 1
-    ) as UltimaUmidade
+    ) as ultimaUmidade
 FROM leitura_sensor
-GROUP BY idSensor, DataColeta;
+GROUP BY idSensor, dataColeta;

@@ -131,7 +131,7 @@
                             <th>Maior Umidade</th>
                         </tr>
                         <tr>
-                            <td id="maior_umidade">' '</td>
+                            <td id="maior_umid">' '</td>
                         </tr>
                     </table>
                     <table>
@@ -291,8 +291,20 @@
             method: 'GET'
         }).then(function(resultado){
             if(resultado.status == 200){
-                console.log("deu certo")
-                document.getElementById('maior_temp').innerHTML= resultado.maior_temp;
+
+                resultado.json().then(function(dadosKpi){
+
+                    console.log(dadosKpi);
+                    document.getElementById('maior_temp').innerHTML = dadosKpi[0].maiorTemperatura;
+                    document.getElementById('menor_temp').innerHTML = dadosKpi[0].menorTemperatura;
+                    document.getElementById('temp_recente').innerHTML = dadosKpi[0].ultimaTemperatura;
+
+                    document.getElementById('maior_umid').innerHTML = dadosKpi[0].maiorUmidade;
+                    document.getElementById('menor_umid').innerHTML = dadosKpi[0].menorUmidade;
+                    document.getElementById('umid_recente').innerHTML = dadosKpi[0].ultimaUmidade;
+
+                })
+                
             }else{
                 console.log("deu errado")
             }
