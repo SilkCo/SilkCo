@@ -370,7 +370,15 @@
 
                     }
 
-                    criarGraficosUltimasMedidas();
+                    chartTemp.data.datasets[0].data = ultimasMedidasTemperatura;
+                    chartTemp.data.labels = dataUltimasMedidas;
+
+                    chartUmid.data.datasets[0].data = ultimasMedidasUmidade;
+                    chartUmid.data.labels = dataUltimasMedidas;
+                    
+                    chartTemp.update();
+                    chartUmid.update();
+                    // criarGraficosUltimasMedidas();
 
                 })
 
@@ -382,9 +390,6 @@
 
     // window.onload = criarGraficosUltimasMedidas();
 
-    function criarGraficosUltimasMedidas(){
-
-    
         const canvasTemp = document.getElementById('grafico_temperatura');
 
         const chartTemp = new Chart(canvasTemp, {
@@ -427,9 +432,7 @@
             }
         });
 
-    }
-
-    const chartSensor = document.getElementById('grafico_sensores');
+    // const chartSensor = document.getElementById('grafico_sensores');
 
     // new Chart(chartSensor, {
     //     type: 'pie',
