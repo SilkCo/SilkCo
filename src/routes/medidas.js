@@ -23,4 +23,8 @@ router.get(`/buscarUltimasMedidas/:idGalpao`, function(req, res){
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+router.get(`/buscarMedias/:idGalpao`, function(req, res){
+    medidaController.buscarMedias(req, res);
+});
+
 module.exports = router;

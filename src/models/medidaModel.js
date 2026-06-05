@@ -16,6 +16,24 @@ function buscarKpi(fkSensor) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMedias(fkSensor){
+
+    var instrucaoSql =
+    `SELECT 
+	fkSensor,
+    DATE(dtColeta) as dataColetaComp,
+    DATE_FORMAT(dtColeta,"%d/%m") as dataColeta,
+    ROUND(AVG(temperatura), 0) as mediaTemperatura,
+    ROUND(AVG(umidade), 0) as mediaUmidade
+FROM leitura_sensor
+WHERE fkSensor = ${fkSensor}
+GROUP BY fkSensor, dataColetaComp, dataColeta
+ORDER BY dataColetaComp DESC
+LIMIT 7;`
+
+    return database.executar(instrucaoSql);
+}
+
 function buscarUltimasMedidas(fkSensor) {
 
     var instrucaoSql =
@@ -76,4 +94,5 @@ module.exports = {
     buscarGalpoes,
     exibirQuantidadeAlerta,
     buscarUltimasMedidas,
+    buscarMedias
 }

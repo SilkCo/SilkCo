@@ -140,6 +140,24 @@ function buscarKpi(req, res){
     });
 }
 
+function buscarMedias(req, res){
+    var idGalpao= req.params.idGalpao;
+
+
+    medidaModel.buscarIdSensor(idGalpao).then(function(resultado){
+        if(resultado.length == 1){
+            var idSensor= resultado[0].idSensor;
+            medidaModel.buscarMedias(idSensor).then(function(resultado){
+                if(resultado.length > 0){
+                    res.status(200).json(resultado);
+                }else{
+                    res.status(204).send("Nenhuma kpi foi encontrado da quantidade de alertas");
+                }
+            });
+        }       
+    });
+}
+
 
 module.exports = {
     buscarKpi,
@@ -147,5 +165,6 @@ module.exports = {
     buscarGalpoes,
     exibirQuantidadeAlerta,
     buscarUltimasMedidas,
+    buscarMedias
     // buscarMedidasEmTempoReal
 }
