@@ -45,6 +45,16 @@
                         </span>
                     </a>
                 </div>
+                 <div id="linkBob" class="nav-item">
+                    <a href="#">
+                        <span class="nav-icon">
+                            <img src="../../src/img/icon/ia.png" alt="">
+                        </span>
+                        <span class="nav-text">
+                            bobIA
+                        </span>
+                    </a>
+                </div>
             </nav>
         </div>
     </div>
@@ -200,7 +210,19 @@
 
 <script>    
 
-    window.onload = exibirEnderecos();
+    window.onload = exibirEnderecos(), conferirUsuario();
+
+       function conferirUsuario() {
+
+            let tecnico = sessionStorage.TECNICO;
+
+            if (tecnico == '0') {
+
+                linkBob.style.display = 'none'
+            } 
+
+
+        }
     
     function exibirEnderecos(){
         console.log('exibir endercos galpao executada')

@@ -43,6 +43,16 @@
                         </span>
                     </a>
                 </div>
+                      <div id="linkBob" class="nav-item">
+                    <a href="./bobia.html">
+                        <span class="nav-icon">
+                            <img src="../../src/img/icon/ia.png" alt="">
+                        </span>
+                        <span class="nav-text">
+                            bobIA
+                        </span>
+                    </a>
+                </div>
             </nav>
         </div>
     </div>
@@ -133,7 +143,7 @@
 <script>
     let verifCNPJ = 0;
     let verifTelefone = 0;
-    window.onload = function exibirForm(){
+    window.onload = conferirUsuario(),function exibirForm(){
 
         // escolher qual formulário de empresa vai aparecer
         // formulario = 'cadastrar' para cadastrar empresa
@@ -161,6 +171,21 @@
             form_entrar.style.display = 'flex';
         }
     }
+
+    function conferirUsuario() {
+
+            let tecnico = sessionStorage.TECNICO;
+
+            let bob = document.getElementById('linkBob')
+
+            if (tecnico == 0) {
+
+                bob.style.display = 'none'
+            } 
+
+
+        }
+
     function validarCNPJ(){
         let cnpj = ipt_cnpj.value;
 

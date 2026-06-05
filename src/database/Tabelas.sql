@@ -29,12 +29,15 @@ CONSTRAINT chFkEmpresaGalpao
 	FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
+
+
 CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(40) NOT NULL,
     email VARCHAR(40) NOT NULL UNIQUE,
     senha VARCHAR(30) NOT NULL,
     fkEmpresa INT,
+    tecnico BOOLEAN,	
     CONSTRAINT chFkEmpresaUsuario 
 		FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
@@ -60,29 +63,3 @@ CREATE TABLE leitura_sensor (
 		FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
-CREATE VIEW vw_buscarMedidas AS
-SELECT 
-    fkSensor as idSensor,
-    DATE_FORMAT(dtColeta,"%d/%m") as dataColeta,
-    TRUNCATE(MAX(temperatura), 0) as maiorTemperatura,
-    TRUNCATE(MIN(temperatura), 0) as menorTemperatura,
-    (
-        SELECT 
-            TRUNCATE(temperatura, 0) 
-        FROM leitura_sensor 
-        WHERE fkSensor = idSensor 
-        ORDER BY dtColeta DESC 
-        LIMIT 1
-    ) as ultimaTemperatura,
-    TRUNCATE(MAX(umidade), 0) as maiorUmidade,
-    TRUNCATE(MIN(umidade), 0) as menorUmidade,
-    (
-        SELECT 
-            TRUNCATE(umidade, 0)
-        FROM leitura_sensor 
-        WHERE fkSensor = idSensor 
-        ORDER BY dtColeta DESC 
-        LIMIT 1
-    ) as ultimaUmidade
-FROM leitura_sensor
-GROUP BY idSensor, dataColeta;

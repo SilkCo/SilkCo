@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BobIA</title>
-     <link rel="stylesheet" href="../../src/css/global-style.css">
+    <link rel="stylesheet" href="../../src/css/global-style.css">
     <link rel="stylesheet" href="../../src/css/plataforma-style.css">
-    <link rel="stylesheet" href="../src/css/bobia.css">
+    <link rel="stylesheet" href="../../src/css/bobia.css">
     <script src="../../src/js/script.js"></script>
 </head>
+
 <body>
     <div class="left-menu" id="left_menu">
         <div class="left-menu-content">
@@ -20,7 +22,7 @@
 
             <nav id="nav">
                 <div class="nav-item">
-                    <a href="../html/plataforma/dashboard.html" id="a">
+                    <a href="./dashboard.html" id="a">
                         <span class="nav-icon">
                             <img src="../../src/img/icon/dash-icon.png">
                         </span>
@@ -31,7 +33,7 @@
                 </div>
 
                 <div class="nav-item">
-                    <a href="../html/plataforma/empresa.html">
+                    <a href="./empresa.html">
                         <span class="nav-icon">
                             <img src="../../src/img/icon/empresa-icon.png" alt="">
                         </span>
@@ -41,7 +43,7 @@
                     </a>
                 </div>
 
-                <div class="nav-item active">
+                <div id="linkBob" class="nav-item active">
                     <a href="#">
                         <span class="nav-icon">
                             <img src="../../src/img/icon/ia.png" alt="">
@@ -55,17 +57,17 @@
         </div>
     </div>
     <main>
-         <div class="main-content">
-        <h1 class="page-title">BobIA</h1>
-        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-        <br><br>
-        <button onclick="gerarResposta()" id="but_perguntar">Gerar Resposta</button>
-        <h3>Resposta do Bob:</h3>
-        <div id="resposta"></div>
-    </div>
+        <div class="main-content">
+            <h1 class="page-title">BobIA</h1>
+            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+            <br><br>
+            <button onclick="gerarResposta()" id="but_perguntar">Gerar Resposta</button>
+            <h3>Resposta do Bob:</h3>
+            <div id="resposta"></div>
+        </div>
     </main>
     <script>
-        
+
         async function gerarResposta() {
             const pergunta = document.getElementById('pergunta').value;
 
@@ -84,6 +86,7 @@
         }
 
     </script>
-    
+
 </body>
+
 </html>

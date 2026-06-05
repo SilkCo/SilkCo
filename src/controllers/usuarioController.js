@@ -4,6 +4,7 @@ var aquarioModel = require("../models/aquarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var tecnico = req.body.tecnicoServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -24,7 +25,8 @@ function autenticar(req, res) {
                             idUsuario: resultadoAutenticar[0].idUsuario,
                             idEmpresa: resultadoAutenticar[0].idEmpresa,
                             nomeUsuario: resultadoAutenticar[0].nome,
-                            email: resultadoAutenticar[0].email
+                            email: resultadoAutenticar[0].email,
+                            tecnico: resultadoAutenticar[0].tecnico
                         });
                         
                     } else if (resultadoAutenticar.length == 0) {
@@ -50,6 +52,7 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var fkEmpresa = req.body.idEmpresaVincularServer;
+    var tecnico = req.body.tecnicoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -60,10 +63,12 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else if (fkEmpresa == undefined) {
         res.status(400).send("Sua empresa a vincular está undefined!");
+    }else if (tecnico == undefined) {
+        res.status(400).send("Seu técnico está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, email, senha, fkEmpresa, tecnico)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -67,6 +67,13 @@
                             <input type="password" class="input" placeholder="Digite sua senha" id="ipt_senha" oninput="validarSenha()">
                             <span id="txt_senha" class="parametros"></span>
                         </div>
+                        <div class="input">
+                            <span>Técnico?</span>
+                            <select  name="" id="ipt_tecnico">
+                                <option value="SIM">SIM</option>
+                                <option value="NÃO">NÃO</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -282,6 +289,17 @@
 
         let idEmpresaVincular;
 
+        let tecnico = ipt_tecnico.value;
+
+        if (tecnico == 'NÃO') {
+
+            tecnico = false
+        }
+        else if (tecnico == 'SIM') {
+
+            tecnico = true
+        }
+
         if(verif == 5 && usuario != ''&& codigo != ''){
 
             let verifCod = false;
@@ -311,6 +329,7 @@
                 emailServer: email,
                 senhaServer: senha,
                 idEmpresaVincularServer: idEmpresaVincular,
+                tecnicoServer: tecnico,
 
             }),
 

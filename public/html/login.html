@@ -81,7 +81,8 @@
                 resposta.json().then(json => {
 
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.TECNICO = json.tecnico;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.ID_EMPRESA = json.idEmpresa;
 
