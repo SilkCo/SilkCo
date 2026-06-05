@@ -2,25 +2,38 @@ var database = require("../database/config");
 
 function buscarIdSensor(fkGalpao) {
     var instrucaoSql =
-        `
-    SELECT idSensor FROM sensor WHERE fkGalpao=${fkGalpao}; 
-        `
+    `
+        SELECT idSensor FROM sensor WHERE fkGalpao=${fkGalpao}; 
+    `
        return database.executar(instrucaoSql);
 }
 
 function buscarKpi(fkSensor) {
     var instrucaoSql =
-        `
-    SELECT * FROM vw_buscarMedidas WHERE idSensor = ${fkSensor} ORDER BY DataColeta DESC LIMIT 1;
+    `
+        SELECT * FROM vw_buscarMedidas WHERE idSensor = ${fkSensor} ORDER BY DataColeta DESC LIMIT 1;
     `
     return database.executar(instrucaoSql);
 }
 
-function buscarDashboard(fkSensor) {
-    var instrucaoSql =
-        `
+function buscarUltimasMedidas(fkSensor) {
 
+    var instrucaoSql =
     `
+        SELECT
+            idColeta,
+            temperatura,
+            umidade,
+            # CONCAT(DAY(dtColeta), '/', MONTH(dtColeta), ' ', TIME(dtColeta)) AS dataColeta
+            CONCAT(DATE_FORMAT(dtColeta, '%d/%m'), ' ', DATE_FORMAT(dtColeta, '%H:%i')) AS dataColeta
+        FROM leitura_sensor
+        WHERE fkSensor = ${fkSensor}
+        ORDER BY dataColeta DESC
+        LIMIT 12;
+    `
+
+    return database.executar(instrucaoSql); 
+
 }
 
 function buscarEnderecosGalpao(idEmpresa) {
@@ -30,7 +43,7 @@ function buscarEnderecosGalpao(idEmpresa) {
     // `
 
     var instrucaoSql =
-        `
+    `
         SELECT * FROM endereco WHERE fkEmpresa = ${idEmpresa};
     `;
 
@@ -61,5 +74,6 @@ module.exports = {
     buscarKpi,
     buscarEnderecosGalpao,
     buscarGalpoes,
-    exibirQuantidadeAlerta
+    exibirQuantidadeAlerta,
+    buscarUltimasMedidas,
 }

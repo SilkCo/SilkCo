@@ -295,13 +295,13 @@
                 resultado.json().then(function(dadosKpi){
 
                     console.log(dadosKpi);
-                    document.getElementById('maior_temp').innerHTML = dadosKpi[0].maiorTemperatura;
-                    document.getElementById('menor_temp').innerHTML = dadosKpi[0].menorTemperatura;
-                    document.getElementById('temp_recente').innerHTML = dadosKpi[0].ultimaTemperatura;
+                    document.getElementById('maior_temp').innerHTML = `${dadosKpi[0].maiorTemperatura}ºC`;
+                    document.getElementById('menor_temp').innerHTML = `${dadosKpi[0].menorTemperatura}ºC`;
+                    document.getElementById('temp_recente').innerHTML = `${dadosKpi[0].ultimaTemperatura}ºC`;
 
-                    document.getElementById('maior_umid').innerHTML = dadosKpi[0].maiorUmidade;
-                    document.getElementById('menor_umid').innerHTML = dadosKpi[0].menorUmidade;
-                    document.getElementById('umid_recente').innerHTML = dadosKpi[0].ultimaUmidade;
+                    document.getElementById('maior_umid').innerHTML = `${dadosKpi[0].maiorUmidade}%`;
+                    document.getElementById('menor_umid').innerHTML = `${dadosKpi[0].menorUmidade}%`;
+                    document.getElementById('umid_recente').innerHTML = `${dadosKpi[0].ultimaUmidade}%`;
 
                 })
                 
@@ -314,70 +314,117 @@
 
     function selecionarGalpao(idGalpao){
         buscarKpi(idGalpao);
+        buscarUltimasMedidas(idGalpao);
     }
 
+    let ultimasMedidasTemperatura = [];
+    let ultimasMedidasUmidade = [];
+    let dataUltimasMedidas = [];
 
-    const canvasTemp = document.getElementById('grafico_temperatura');
+    function buscarUltimasMedidas(idGalpao){
 
-    const chartTemp = new Chart(canvasTemp, {
-        type: 'line',
-        data: {
-            labels:  ['12:00','13:00','14:00','15:00'],
-            datasets: [
-                {
-                    label: 'Temperatura',
-                    data: [],
-                    borderWidth: 2,
-                    backgroundColor: 'yellow',
-                    borderColor: 'yellow',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
+        fetch(`/medidas/buscarUltimasMedidas/${idGalpao}`, {
+            method: 'GET',
+        })
+        .then(function(resultado){
 
-    const canvasUmid = document.getElementById('grafico_umidade');
+            if(resultado.status == 200){
 
-    const chartUmid = new Chart(canvasUmid, {
-        type: 'line',
-        data: {
-            labels: ['12:00','13:00','14:00','15:00'],
-            datasets: [
-                {
-                    label: 'Umidade',
-                    data: [],
-                    borderWidth: 2,
-                    backgroundColor: 'blue',
-                    borderColor: 'blue',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
+                resultado.json()
+                .then(function(dadosGraficos){
+
+                    console.log(dadosGraficos);
+
+                    ultimasMedidasTemperatura = [];
+                    ultimasMedidasUmidade = [];
+                    dataUltimasMedidas = [];
+
+                    for(let i = 0; i < dadosGraficos.length; i++){
+
+                        ultimasMedidasTemperatura.push(dadosGraficos[i].temperatura);
+                        ultimasMedidasUmidade.push(dadosGraficos[i].umidade);
+                        dataUltimasMedidas.push(dadosGraficos[i].dataColeta);
+
+                    }
+
+                    criarGraficosUltimasMedidas();
+
+                })
+
+            }
+
+        })
+
+    }
+
+    // window.onload = criarGraficosUltimasMedidas();
+
+    function criarGraficosUltimasMedidas(){
+
+    
+        const canvasTemp = document.getElementById('grafico_temperatura');
+
+        const chartTemp = new Chart(canvasTemp, {
+            type: 'line',
+            data: {
+                labels:  dataUltimasMedidas,
+                datasets: [
+                    {
+                        label: 'Temperatura',
+                        data: ultimasMedidasTemperatura,
+                        borderWidth: 2,
+                        backgroundColor: 'yellow',
+                        borderColor: 'yellow',
+                    },
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        const canvasUmid = document.getElementById('grafico_umidade');
+
+        const chartUmid = new Chart(canvasUmid, {
+            type: 'line',
+            data: {
+                labels: dataUltimasMedidas,
+                datasets: [
+                    {
+                        label: 'Umidade',
+                        data: ultimasMedidasUmidade,
+                        borderWidth: 2,
+                        backgroundColor: 'blue',
+                        borderColor: 'blue',
+                    },
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+    }
 
     const chartSensor = document.getElementById('grafico_sensores');
 
-    new Chart(chartSensor, {
-        type: 'pie',
-        data: {
-            datasets: [
-                {
-                    data: [3, 1],
-                    borderWidth: 1,
-                    borderColor: '#ff751f',
-                    backgroundColor: ['#56b77e', 'red'],
-                }
-            ],
-            labels: [
-                'Funcionando',
-                'Desligado',
-            ]
-        }
-    });
+    // new Chart(chartSensor, {
+    //     type: 'pie',
+    //     data: {
+    //         datasets: [
+    //             {
+    //                 data: [3, 1],
+    //                 borderWidth: 1,
+    //                 borderColor: '#ff751f',
+    //                 backgroundColor: ['#56b77e', 'red'],
+    //             }
+    //         ],
+    //         labels: [
+    //             'Funcionando',
+    //             'Desligado',
+    //         ]
+    //     }
+    // });
 
     const canvasTempMedio = document.getElementById('grafico_temperaturaMedio');
 
