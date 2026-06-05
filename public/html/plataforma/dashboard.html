@@ -362,7 +362,7 @@
                     ultimasMedidasUmidade = [];
                     dataUltimasMedidas = [];
 
-                    for(let i = 0; i < dadosGraficos.length; i++){
+                    for(let i = dadosGraficos.length - 1; i > 0; i--){
 
                         ultimasMedidasTemperatura.push(dadosGraficos[i].temperatura);
                         ultimasMedidasUmidade.push(dadosGraficos[i].umidade);
@@ -481,10 +481,22 @@
                         dataMedias.push(dadosGraficos[i].dataColeta);
 
                     }
+                    
+
                     dataMedias.reverse();
                     mediasTemperatura.reverse();
                     mediasUmidade.reverse();
-                    criarGraficosMedias();
+
+                    chartTempMedio.data.labels = dataMedias;
+                    chartTempMedio.data.datasets[0].data = mediasTemperatura;
+
+                    chartUmiMedio.data.labels = dataMedias;
+                    chartUmiMedio.data.datasets[0].data = mediasUmidade;
+
+                    chartTempMedio.update();
+                    chartUmiMedio.update();
+
+                    // criarGraficosMedias();
 
                 })
 
@@ -494,7 +506,6 @@
 
     }
 
-     function criarGraficosMedias(){
     const canvasTempMedio = document.getElementById('grafico_temperaturaMedio');
 
     const chartTempMedio = new Chart(canvasTempMedio, {
@@ -536,7 +547,6 @@
             responsive: true
         }
     });
-     }
 
 
      let esconder = document.getElementById("esconder");

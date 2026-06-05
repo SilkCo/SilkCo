@@ -42,11 +42,10 @@ function buscarUltimasMedidas(fkSensor) {
             idColeta,
             temperatura,
             umidade,
-            # CONCAT(DAY(dtColeta), '/', MONTH(dtColeta), ' ', TIME(dtColeta)) AS dataColeta
             CONCAT(DATE_FORMAT(dtColeta, '%d/%m/%Y'), ' ', DATE_FORMAT(dtColeta, '%H:%i')) AS dataColeta
         FROM leitura_sensor
         WHERE fkSensor = ${fkSensor}
-        ORDER BY dtColeta ASC
+        ORDER BY dtColeta DESC
         LIMIT 12;
     `
 
