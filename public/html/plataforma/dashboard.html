@@ -306,7 +306,8 @@
                                 <h1>ALERTA DE TEMPERATURA!</h1>
                                 <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
                                 <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
-                                <span class="metricaAlerta">TEMPERATURA: ${dadosAlerta[i].temperatura}</span>
+                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span><br>
+                                <span class="metricaAlerta">TEMPERATURA: ${dadosAlerta[i].temperatura}ºC</span>
                             </div>`
                         }
                          if (dadosAlerta[i].umidade > 75 || dadosAlerta[i].umidade < 60) {
@@ -314,6 +315,7 @@
                                 <h1>ALERTA DE UMIDADE!</h1>
                                 <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
                                 <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
+                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span><br>
                                 <span class="metricaAlerta">UMIDADE: ${dadosAlerta[i].umidade}</span>
                             </div>`
                         }
