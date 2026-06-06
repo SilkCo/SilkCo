@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="../../src/css/plataforma-style.css">
     <link rel="stylesheet" href="../../src/css/dashboard-style.css">
 </head>
+
 <body>
     <div class="left-menu" id="left_menu">
         <div class="left-menu-content">
@@ -45,7 +47,7 @@
                         </span>
                     </a>
                 </div>
-                 <div id="linkBob" class="nav-item">
+                <div id="linkBob" class="nav-item">
                     <a href="#">
                         <span class="nav-icon">
                             <img src="../../src/img/icon/ia.png" alt="">
@@ -78,217 +80,198 @@
                 </select>
             </div>
             <div class="dashboard-section">
-            <details id="abrir-fechar" open="true">
-                <summary>Alertas</summary>
-                <div class="card-alertas">
-                    <div id="esconder" style="display: flex;">
-                        <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span class="sensorAlerta">SENSOR: S1 </span><br>
-                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
-                            <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
-                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
-                        </div>
-                        <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span class="sensorAlerta">SENSOR: S1 </span><br>
-                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
-                            <span class="metricaAlerta">UMIDADE > 75ºC</span>
-                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
-                        </div>
-                          <div class="alertas">
-                            <h1>ALERTA!</h1>
-                            <span class="sensorAlerta">SENSOR: S1 </span><br>
-                            <span class="galpaoAlerta">GALPÃO: G1</span><br>
-                            <span class="metricaAlerta">TEMPERATURA > 33ºC</span>
-                            <span class="quantidadeAlerta">QUANTIDADE DE ALERTAS</span>
-                        </div>
-                        </div>
+                <details id="abrir-fechar" open="true">
+                    <summary>Alertas</summary>
+                    <div class="card-alertas">
+                        <div id="esconder" style="display: flex;">
                         </div>
                     </div>
-                </div>
-            </details>
-            <div class="dash-header">
-                <div class="card">
-                    <table>
-                        <tr>
-                            <th>Maior Temperatura</th>
-                        </tr>
-                        <tr>
-                            <td id="maior_temp">' '</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Menor Temperatura</th>
-                        </tr>
-                        <tr>
-                            <td id="menor_temp">' '</td>
-                        </tr>
-                        </table>
-                        <table>
-                          <tr>
-                            <th>Temperatura mais recente</th>
-                        </tr>
-                        <tr>
-                            <td id="temp_recente">' '</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="card">
-                   <table>
-                        <tr>
-                            <th>Maior Umidade</th>
-                        </tr>
-                        <tr>
-                            <td id="maior_umid">' '</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Menor Umidade</th>
-                        </tr>
-                        <tr>
-                            <td id="menor_umid">' '</td>
-                        </tr>
-                        </table>
-                        <table>
-                          <tr>
-                            <th>Umidade mais recente</th>
-                        </tr>
-                        <tr>
-                            <td id="umid_recente">' '</td>
-                        </tr>
-                    </table>
-                </div>
             </div>
-            </div><!-- fim dashboard-section -->
-
-            <div class="charts">
-                <div class="charts-section">
-                    <div class="chart">
-                        <span class="chart-title">
-                            Temperatura
-                        </span>
-                        <canvas id="grafico_temperatura"></canvas>
-                    </div>
-
-                    <div class="chart">
-                        <span class="chart-title">
-                            Umidade
-                        </span>
-                        <canvas id="grafico_umidade"></canvas>
-                    </div>
-
-                </div>
-                <div class="charts-section">
-                    <div>
-                        <div class="chartMedio">
-                            <span class="chart-title">
-                                Temperatura média em 7 dias
-                            </span>
-                            <canvas id="grafico_temperaturaMedio"></canvas>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="chartMedio">
-                            <span class="chart-title">
-                                Umidade média em 7 dias
-                            </span>
-                            <canvas id="grafico_umidadeMedio"></canvas>
-                        </div>
-                    </div>
-
-
-                </div>
+        </div>
+        </details>
+        <div class="dash-header">
+            <div class="card">
+                <table>
+                    <tr>
+                        <th>Maior Temperatura</th>
+                    </tr>
+                    <tr>
+                        <td id="maior_temp">' '</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Menor Temperatura</th>
+                    </tr>
+                    <tr>
+                        <td id="menor_temp">' '</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Temperatura mais recente</th>
+                    </tr>
+                    <tr>
+                        <td id="temp_recente">' '</td>
+                    </tr>
+                </table>
             </div>
+            <div class="card">
+                <table>
+                    <tr>
+                        <th>Maior Umidade</th>
+                    </tr>
+                    <tr>
+                        <td id="maior_umid">' '</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Menor Umidade</th>
+                    </tr>
+                    <tr>
+                        <td id="menor_umid">' '</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Umidade mais recente</th>
+                    </tr>
+                    <tr>
+                        <td id="umid_recente">' '</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div><!-- fim dashboard-section -->
+
+        <div class="charts">
+            <div class="charts-section">
+                <div class="chart">
+                    <span class="chart-title">
+                        Temperatura
+                    </span>
+                    <canvas id="grafico_temperatura"></canvas>
+                </div>
+
+                <div class="chart">
+                    <span class="chart-title">
+                        Umidade
+                    </span>
+                    <canvas id="grafico_umidade"></canvas>
+                </div>
+
+            </div>
+            <div class="charts-section">
+                <div>
+                    <div class="chartMedio">
+                        <span class="chart-title">
+                            Temperatura média em 7 dias
+                        </span>
+                        <canvas id="grafico_temperaturaMedio"></canvas>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chartMedio">
+                        <span class="chart-title">
+                            Umidade média em 7 dias
+                        </span>
+                        <canvas id="grafico_umidadeMedio"></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
         </div>
     </main>
 </body>
+
 </html>
 
-<script>    
-
-    window.onload = exibirEnderecos(), conferirUsuario();
-
-       function conferirUsuario() {
-
-            let tecnico = sessionStorage.TECNICO;
-
-            if (tecnico == '0') {
-
-                linkBob.style.display = 'none'
-            } 
+<script>
 
 
+    window.onload = exibirEnderecos(), conferirUsuario(), buscarAlertas();
+
+    function conferirUsuario() {
+
+        let tecnico = sessionStorage.TECNICO;
+
+        if (tecnico == '0') {
+
+            linkBob.style.display = 'none'
         }
-    
-    function exibirEnderecos(){
+
+
+    }
+
+    function exibirEnderecos() {
         console.log('exibir endercos galpao executada')
 
         let enderecos = [];
         let galpoes = [];
         var idEmpresa = sessionStorage.ID_EMPRESA;
 
-        fetch(`/medidas/buscarEnderecosGalpao/${idEmpresa}`,{
-            method:"GET",
+        fetch(`/medidas/buscarEnderecosGalpao/${idEmpresa}`, {
+            method: "GET",
         })
-        .then(function(resultado){
-            console.log('entrei no then')
-            if(resultado.status == 200){
-                console.log('entrei no if')
+            .then(function (resultado) {
+                console.log('entrei no then')
+                if (resultado.status == 200) {
+                    console.log('entrei no if')
 
-                resultado.json().then(function (dadosEndereco){
-                    console.log('entrei ')
-                    for(let i = 0; i < dadosEndereco.length; i++){
+                    resultado.json().then(function (dadosEndereco) {
+                        console.log('entrei ')
+                        for (let i = 0; i < dadosEndereco.length; i++) {
 
-                        let endereco = {
+                            let endereco = {
 
-                            idEndereco: dadosEndereco[i].idEndereco,
-                            logradouro: dadosEndereco[i].logradouro,
-                            numero: dadosEndereco[i].numero,
-                            cep: dadosEndereco[i].cep,
+                                idEndereco: dadosEndereco[i].idEndereco,
+                                logradouro: dadosEndereco[i].logradouro,
+                                numero: dadosEndereco[i].numero,
+                                cep: dadosEndereco[i].cep,
 
-                        } 
+                            }
 
-                        enderecos.push(endereco);
+                            enderecos.push(endereco);
 
-                        select_endereco.innerHTML += 
-                        `
+                            select_endereco.innerHTML +=
+                                `
                             <option value="${endereco.idEndereco}">${endereco.logradouro}, ${endereco.numero}</option>
                         `;
 
-                        console.log(endereco);
+                            console.log(endereco);
 
-                    }
+                        }
 
-                });
+                    });
 
-            }
-        });
+                }
+            });
 
-        
+
     }
 
-    function selecionarEndereco(idEndereco){
+    function selecionarEndereco(idEndereco) {
 
         exibirGalpoes(idEndereco);
     }
 
-    function exibirGalpoes(idEndereco){
+    function exibirGalpoes(idEndereco) {
 
         select_galpao.innerHTML = '';
 
         fetch(`/medidas/buscarGalpoes/${idEndereco}`, {
             method: 'GET',
-        }).then(function(resultado){
+        }).then(function (resultado) {
 
-            if(resultado.status == 200){
+            if (resultado.status == 200) {
 
-                resultado.json().then(function (dadosGalpoes){
+                resultado.json().then(function (dadosGalpoes) {
                     select_galpao.innerHTML = `<option hidden disabled selected>Selecione</option>`;
-                    for(let i = 0; i < dadosGalpoes.length; i++){
+                    for (let i = 0; i < dadosGalpoes.length; i++) {
 
                         select_galpao.innerHTML += `<option value=${dadosGalpoes[i].idGalpao}>Galpão ${i + 1}</option>`;
 
@@ -302,19 +285,51 @@
 
     }
 
-    function exibirQuantidadeAlerta(){
+    function exibirQuantidadeAlerta() {
         fetch(`/medidas/exibirQuantidadeAlerta`, {
             method: 'GET'
         })
     }
 
-    function buscarKpi(idGalpao){
+    function buscarAlertas(idEmpresa) {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        fetch(`/medidas/buscarAlertas/${idEmpresa}`, {
+            method: 'GET'
+        }).then(function (resultado) {
+            if (resultado.status == 200) {
+                resultado.json().then(function (dadosAlerta) {
+                    console.log(dadosAlerta);
+                    let valoresAlertas = document.getElementById("esconder")
+                    for (let i = 0; i < dadosAlerta.length; i++){
+                        if (dadosAlerta[i].temperatura > 26 || dadosAlerta[i].temperatura < 20) {
+                            valoresAlertas.innerHTML += ` <div class="alertas">
+                                <h1>ALERTA DE TEMPERATURA!</h1>
+                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
+                                <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
+                                <span class="metricaAlerta">TEMPERATURA: ${dadosAlerta[i].temperatura}</span>
+                            </div>`
+                        }
+                         if (dadosAlerta[i].umidade > 75 || dadosAlerta[i].umidade < 60) {
+                            valoresAlertas.innerHTML += ` <div class="alertas">
+                                <h1>ALERTA DE UMIDADE!</h1>
+                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
+                                <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
+                                <span class="metricaAlerta">UMIDADE: ${dadosAlerta[i].umidade}</span>
+                            </div>`
+                        }
+
+                }})
+            }
+        })
+    }
+
+    function buscarKpi(idGalpao) {
         fetch(`/medidas/buscarKpi/${idGalpao}`, {
             method: 'GET'
-        }).then(function(resultado){
-            if(resultado.status == 200){
+        }).then(function (resultado) {
+            if (resultado.status == 200) {
 
-                resultado.json().then(function(dadosKpi){
+                resultado.json().then(function (dadosKpi) {
 
                     console.log(dadosKpi);
                     document.getElementById('maior_temp').innerHTML = `${dadosKpi[0].maiorTemperatura}ºC`;
@@ -326,15 +341,15 @@
                     document.getElementById('umid_recente').innerHTML = `${dadosKpi[0].ultimaUmidade}%`;
 
                 })
-                
-            }else{
+
+            } else {
                 console.log("deu errado")
             }
         })
 
     }
 
-    function selecionarGalpao(idGalpao){
+    function selecionarGalpao(idGalpao) {
         buscarKpi(idGalpao);
         buscarUltimasMedidas(idGalpao);
         buscarMedias(idGalpao)
@@ -344,93 +359,93 @@
     let ultimasMedidasUmidade = [];
     let dataUltimasMedidas = [];
 
-    function buscarUltimasMedidas(idGalpao){
+    function buscarUltimasMedidas(idGalpao) {
 
         fetch(`/medidas/buscarUltimasMedidas/${idGalpao}`, {
             method: 'GET',
         })
-        .then(function(resultado){
+            .then(function (resultado) {
 
-            if(resultado.status == 200){
+                if (resultado.status == 200) {
 
-                resultado.json()
-                .then(function(dadosGraficos){
+                    resultado.json()
+                        .then(function (dadosGraficos) {
 
-                    console.log(dadosGraficos);
+                            console.log(dadosGraficos);
 
-                    ultimasMedidasTemperatura = [];
-                    ultimasMedidasUmidade = [];
-                    dataUltimasMedidas = [];
+                            ultimasMedidasTemperatura = [];
+                            ultimasMedidasUmidade = [];
+                            dataUltimasMedidas = [];
 
-                    for(let i = dadosGraficos.length - 1; i > 0; i--){
+                            for (let i = dadosGraficos.length - 1; i > 0; i--) {
 
-                        ultimasMedidasTemperatura.push(dadosGraficos[i].temperatura);
-                        ultimasMedidasUmidade.push(dadosGraficos[i].umidade);
-                        dataUltimasMedidas.push(dadosGraficos[i].dataColeta);
+                                ultimasMedidasTemperatura.push(dadosGraficos[i].temperatura);
+                                ultimasMedidasUmidade.push(dadosGraficos[i].umidade);
+                                dataUltimasMedidas.push(dadosGraficos[i].dataColeta);
 
-                    }
+                            }
 
-                    chartTemp.data.datasets[0].data = ultimasMedidasTemperatura;
-                    chartTemp.data.labels = dataUltimasMedidas;
+                            chartTemp.data.datasets[0].data = ultimasMedidasTemperatura;
+                            chartTemp.data.labels = dataUltimasMedidas;
 
-                    chartUmid.data.datasets[0].data = ultimasMedidasUmidade;
-                    chartUmid.data.labels = dataUltimasMedidas;
-                    
-                    chartTemp.update();
-                    chartUmid.update();
-                    // criarGraficosUltimasMedidas();
+                            chartUmid.data.datasets[0].data = ultimasMedidasUmidade;
+                            chartUmid.data.labels = dataUltimasMedidas;
 
-                })
+                            chartTemp.update();
+                            chartUmid.update();
+                            // criarGraficosUltimasMedidas();
 
-            }
+                        })
 
-        })
+                }
+
+            })
 
     }
 
     // window.onload = criarGraficosUltimasMedidas();
 
-        const canvasTemp = document.getElementById('grafico_temperatura');
+    const canvasTemp = document.getElementById('grafico_temperatura');
 
-        const chartTemp = new Chart(canvasTemp, {
-            type: 'line',
-            data: {
-                labels:  dataUltimasMedidas,
-                datasets: [
-                    {
-                        label: 'Temperatura',
-                        data: ultimasMedidasTemperatura,
-                        borderWidth: 2,
-                        backgroundColor: 'yellow',
-                        borderColor: 'yellow',
-                    },
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+    const chartTemp = new Chart(canvasTemp, {
+        type: 'line',
+        data: {
+            labels: dataUltimasMedidas,
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: ultimasMedidasTemperatura,
+                    borderWidth: 2,
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
 
-        const canvasUmid = document.getElementById('grafico_umidade');
+    const canvasUmid = document.getElementById('grafico_umidade');
 
-        const chartUmid = new Chart(canvasUmid, {
-            type: 'line',
-            data: {
-                labels: dataUltimasMedidas,
-                datasets: [
-                    {
-                        label: 'Umidade',
-                        data: ultimasMedidasUmidade,
-                        borderWidth: 2,
-                        backgroundColor: 'blue',
-                        borderColor: 'blue',
-                    },
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+    const chartUmid = new Chart(canvasUmid, {
+        type: 'line',
+        data: {
+            labels: dataUltimasMedidas,
+            datasets: [
+                {
+                    label: 'Umidade',
+                    data: ultimasMedidasUmidade,
+                    borderWidth: 2,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
 
     // const chartSensor = document.getElementById('grafico_sensores');
 
@@ -456,53 +471,53 @@
     let mediasUmidade = [];
     let dataMedias = [];
 
-    function buscarMedias(idGalpao){
+    function buscarMedias(idGalpao) {
 
         fetch(`/medidas/buscarMedias/${idGalpao}`, {
             method: 'GET',
         })
-        .then(function(resultado){
+            .then(function (resultado) {
 
-            if(resultado.status == 200){
+                if (resultado.status == 200) {
 
-                resultado.json()
-                .then(function(dadosGraficos){
+                    resultado.json()
+                        .then(function (dadosGraficos) {
 
-                    console.log(dadosGraficos);
+                            console.log(dadosGraficos);
 
-                    mediasTemperatura = [];
-                    mediasUmidade = [];
-                    dataMedias = [];
+                            mediasTemperatura = [];
+                            mediasUmidade = [];
+                            dataMedias = [];
 
-                    for(let i = 0; i < dadosGraficos.length; i++){
+                            for (let i = 0; i < dadosGraficos.length; i++) {
 
-                        mediasTemperatura.push(dadosGraficos[i].mediaTemperatura);
-                        mediasUmidade.push(dadosGraficos[i].mediaUmidade);
-                        dataMedias.push(dadosGraficos[i].dataColeta);
+                                mediasTemperatura.push(dadosGraficos[i].mediaTemperatura);
+                                mediasUmidade.push(dadosGraficos[i].mediaUmidade);
+                                dataMedias.push(dadosGraficos[i].dataColeta);
 
-                    }
-                    
+                            }
 
-                    dataMedias.reverse();
-                    mediasTemperatura.reverse();
-                    mediasUmidade.reverse();
 
-                    chartTempMedio.data.labels = dataMedias;
-                    chartTempMedio.data.datasets[0].data = mediasTemperatura;
+                            dataMedias.reverse();
+                            mediasTemperatura.reverse();
+                            mediasUmidade.reverse();
 
-                    chartUmiMedio.data.labels = dataMedias;
-                    chartUmiMedio.data.datasets[0].data = mediasUmidade;
+                            chartTempMedio.data.labels = dataMedias;
+                            chartTempMedio.data.datasets[0].data = mediasTemperatura;
 
-                    chartTempMedio.update();
-                    chartUmiMedio.update();
+                            chartUmiMedio.data.labels = dataMedias;
+                            chartUmiMedio.data.datasets[0].data = mediasUmidade;
 
-                    // criarGraficosMedias();
+                            chartTempMedio.update();
+                            chartUmiMedio.update();
 
-                })
+                            // criarGraficosMedias();
 
-            }
+                        })
 
-        })
+                }
+
+            })
 
     }
 
@@ -549,8 +564,8 @@
     });
 
 
-     let esconder = document.getElementById("esconder");
+    let esconder = document.getElementById("esconder");
     let details = document.getElementById("abrir-fechar")
-    
-    ;
+
+        ;
 </script>

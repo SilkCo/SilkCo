@@ -80,6 +80,8 @@ function cadastrarSensor(idGalpao){
 
 }
 
+
+
 module.exports = { 
   buscarPorCnpj, 
   buscarPorId, 

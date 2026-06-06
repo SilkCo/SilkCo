@@ -86,6 +86,25 @@ function exibirQuantidadeAlerta() {
     `
 }
 
+function buscarAlertas(idEmpresa){
+     var instrucaoSql =
+        `SELECT
+        galpao.idGalpao,
+        sensor.idSensor,
+        leitura_sensor.temperatura,
+        leitura_sensor.umidade,
+        endereco.logradouro
+        FROM endereco JOIN galpao ON galpao.fkEndereco = endereco.idEndereco
+        JOIN sensor ON sensor.fkGalpao = galpao.idGalpao 
+        JOIN leitura_sensor ON leitura_sensor.idColeta =
+        (SELECT MAX(leitura_sensor2.idColeta) FROM leitura_sensor AS leitura_sensor2 WHERE leitura_sensor2.fkSensor = sensor.idSensor)  
+        WHERE endereco.fkEmpresa = ${idEmpresa}
+    `
+    return database.executar(instrucaoSql);
+}
+
+
+
 module.exports = {
     buscarIdSensor,
     buscarKpi,
@@ -93,5 +112,6 @@ module.exports = {
     buscarGalpoes,
     exibirQuantidadeAlerta,
     buscarUltimasMedidas,
-    buscarMedias
+    buscarMedias,
+    buscarAlertas
 }

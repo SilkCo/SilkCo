@@ -100,6 +100,8 @@
 .alertas h1{
    color:  #e53935;
    margin: 15px;
+   text-align: center;
+   font-size: 25px;
 }
 .alertas span{
   font-weight: bold;

@@ -121,6 +121,23 @@ function exibirQuantidadeAlerta(req, res){
         res.status(500).json(erro.sqlMessage);
     });
 }
+function buscarAlertas(req, res){
+    var idEmpresa = req.params.idEmpresa;
+    console.log("CONTROLLER CHAMADO - idEmpresa:", idEmpresa);
+
+    medidaModel.buscarAlertas(idEmpresa).then(function(resultado){
+         if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+    }
+
 
 function buscarKpi(req, res){
     var idGalpao= req.params.idGalpao;
@@ -165,6 +182,7 @@ module.exports = {
     buscarGalpoes,
     exibirQuantidadeAlerta,
     buscarUltimasMedidas,
-    buscarMedias
+    buscarMedias,
+    buscarAlertas
     // buscarMedidasEmTempoReal
 }

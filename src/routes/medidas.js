@@ -26,5 +26,9 @@ router.get(`/buscarUltimasMedidas/:idGalpao`, function(req, res){
 router.get(`/buscarMedias/:idGalpao`, function(req, res){
     medidaController.buscarMedias(req, res);
 });
+router.get(`/buscarAlertas/:idEmpresa`, function(req, res){
+    console.log("ROTA FOI CHAMADA");
+    medidaController.buscarAlertas(req, res);
+});
 
 module.exports = router;
