@@ -12,6 +12,7 @@ function menuOnOff(){
         document.getElementsByClassName('nav-text')[0].style.display = 'none';
         document.getElementsByClassName('nav-text')[1].style.display = 'none';
         document.getElementsByClassName('nav-text')[2].style.display = 'none';
+        document.getElementsByClassName('nav-text')[3].style.display = 'none';
 
 
     } else{
@@ -24,7 +25,18 @@ function menuOnOff(){
         document.getElementsByClassName('nav-text')[0].style.display = 'inline-block';
         document.getElementsByClassName('nav-text')[1].style.display = 'inline-block';
         document.getElementsByClassName('nav-text')[2].style.display = 'inline-block';
+        document.getElementsByClassName('nav-text')[3].style.display = 'inline-block';
 
     }
+
+}
+
+function sair(){
+
+    sessionStorage.EMAIL_USUARIO = undefined;
+    sessionStorage.ID_EMPRESA = undefined;
+    sessionStorage.ID_USUARIO = undefined;
+    sessionStorage.NOME_USUARIO = undefined;
+    sessionStorage.TECNICO = undefined;
 
 }
