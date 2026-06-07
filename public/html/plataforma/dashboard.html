@@ -82,13 +82,14 @@
                 <select name="enderecos" id="select_endereco" oninput="selecionarEndereco(select_endereco.value)">
                     <option hidden disabled selected>Selecione</option>
                 </select>
-
+                    <br>
                 <span>Selecione o Galpão: </span>
 
                 <select name="galpoes" id="select_galpao" oninput="selecionarGalpao(select_galpao.value)">
                     <option hidden disabled selected>Selecione</option>
                 </select>
             </div>
+
             <div class="dashboard-section">
                 <details id="abrir-fechar" open="true">
                     <summary>Alertas</summary>
@@ -202,8 +203,100 @@
 
 <script>
 
+    let listaGalpoes = [];
 
-    window.onload = exibirEnderecos(), conferirUsuario(), buscarAlertas();
+    let ultimasMedidasTemperatura = [];
+    let ultimasMedidasUmidade = [];
+    let dataUltimasMedidas = [];
+
+    let mediasTemperatura = [];
+    let mediasUmidade = [];
+    let dataMedias = [];
+
+
+    const canvasTemp = document.getElementById('grafico_temperatura');
+
+    const chartTemp = new Chart(canvasTemp, {
+        type: 'line',
+        data: {
+            labels: dataUltimasMedidas,
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: ultimasMedidasTemperatura,
+                    borderWidth: 2,
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    const canvasUmid = document.getElementById('grafico_umidade');
+
+    const chartUmid = new Chart(canvasUmid, {
+        type: 'line',
+        data: {
+            labels: dataUltimasMedidas,
+            datasets: [
+                {
+                    label: 'Umidade',
+                    data: ultimasMedidasUmidade,
+                    borderWidth: 2,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    const canvasTempMedio = document.getElementById('grafico_temperaturaMedio');
+
+    const chartTempMedio = new Chart(canvasTempMedio, {
+        type: 'line',
+        data: {
+            labels: dataMedias,
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: mediasTemperatura,
+                    borderWidth: 2,
+                    backgroundColor: 'purple',
+                    borderColor: 'purple',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    const canvasUmiMedio = document.getElementById('grafico_umidadeMedio');
+
+    const chartUmiMedio = new Chart(canvasUmiMedio, {
+        type: 'line',
+        data: {
+            labels: dataMedias,
+            datasets: [
+                {
+                    label: 'Umidade',
+                    data: mediasUmidade,
+                    borderWidth: 2,
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
 
     function conferirUsuario() {
 
@@ -216,6 +309,10 @@
 
 
     }
+
+    // buscarAlertas();
+
+    
 
     function exibirEnderecos() {
         console.log('exibir endercos galpao executada')
@@ -256,7 +353,17 @@
 
                         }
 
+                        
+                    for(let i = 0; i < enderecos.length; i++){
+                        console.log('entrei no for de chamar obterGalpoes')
+                        obterGalpoes(enderecos[i].idEndereco);
+                    }
+
+                    buscarAlertas();
+
                     });
+
+
 
                 }
             });
@@ -269,9 +376,11 @@
         exibirGalpoes(idEndereco);
     }
 
-    function exibirGalpoes(idEndereco) {
 
-        select_galpao.innerHTML = '';
+    function obterGalpoes(idEndereco) {
+
+        select_galpao.innerHTML = `<option hidden disabled selected>Selecione</option>`;
+        // select_galpao.innerHTML = '';
 
         fetch(`/medidas/buscarGalpoes/${idEndereco}`, {
             method: 'GET',
@@ -280,13 +389,25 @@
             if (resultado.status == 200) {
 
                 resultado.json().then(function (dadosGalpoes) {
-                    select_galpao.innerHTML = `<option hidden disabled selected>Selecione</option>`;
+                    // select_galpao.innerHTML = `<option hidden disabled selected>Selecione</option>`;
                     for (let i = 0; i < dadosGalpoes.length; i++) {
 
-                        select_galpao.innerHTML += `<option value=${dadosGalpoes[i].idGalpao}>Galpão ${i + 1}</option>`;
+                        // select_galpao.innerHTML += `<option value=${dadosGalpoes[i].idGalpao}>Galpão ${i + 1}</option>`;
 
+                        listaGalpoes.push(
+
+                            {
+                                idEndereco: idEndereco,
+                                idGalpao: dadosGalpoes[i].idGalpao,
+                                numeroGalpao: i + 1,
+                            }
+
+                        );
+
+                        
                     }
-
+                    
+                    console.log(listaGalpoes);
                 })
 
             }
@@ -295,13 +416,29 @@
 
     }
 
-    function exibirQuantidadeAlerta() {
-        fetch(`/medidas/exibirQuantidadeAlerta`, {
-            method: 'GET'
-        })
+    function exibirGalpoes(idEndereco){
+
+        select_galpao.innerHTML = `<option hidden disabled selected>Selecione</option>`;
+
+        for(let i = 0; i < listaGalpoes.length; i++){
+
+            if(listaGalpoes[i].idEndereco == idEndereco){
+
+                select_galpao.innerHTML += `<option value=${listaGalpoes[i].idGalpao}>Galpão ${listaGalpoes[i].numeroGalpao}</option>`;
+
+            }
+
+        }
+
     }
 
-    function buscarAlertas(idEmpresa) {
+    // function exibirQuantidadeAlerta() {
+    //     fetch(`/medidas/exibirQuantidadeAlerta`, {
+    //         method: 'GET'
+    //     })
+    // }
+
+    function buscarAlertas() {
         var idEmpresa = sessionStorage.ID_EMPRESA;
         fetch(`/medidas/buscarAlertas/${idEmpresa}`, {
             method: 'GET'
@@ -311,21 +448,42 @@
                     console.log(dadosAlerta);
                     let valoresAlertas = document.getElementById("esconder")
                     for (let i = 0; i < dadosAlerta.length; i++){
+
+                        let numeroGalpao = undefined
+                        console.log('oi bom dia');
+
+                        for(let j = 0; j < listaGalpoes.length; j++){
+
+                            console.log(listaGalpoes[j]);
+
+                            if(dadosAlerta[i].idGalpao == listaGalpoes[j].idGalpao){
+
+                                numeroGalpao = listaGalpoes[j].numeroGalpao;
+
+                            }
+
+                        }
+
                         if (dadosAlerta[i].temperatura > 26 || dadosAlerta[i].temperatura < 20) {
+
                             valoresAlertas.innerHTML += ` <div class="alertas">
                                 <h1>ALERTA DE TEMPERATURA!</h1>
-                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
-                                <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
-                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span><br>
+                                <span>DATA: ${dadosAlerta[i].dataAlerta}</span>
+                                <span>HORA: ${dadosAlerta[i].horaAlerta}</span>
+                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span>
+                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span>
+                                <span class="galpaoAlerta">GALPÃO: ${numeroGalpao}</span>
                                 <span class="metricaAlerta">TEMPERATURA: ${dadosAlerta[i].temperatura}ºC</span>
                             </div>`
                         }
                          if (dadosAlerta[i].umidade > 75 || dadosAlerta[i].umidade < 60) {
                             valoresAlertas.innerHTML += ` <div class="alertas">
                                 <h1>ALERTA DE UMIDADE!</h1>
-                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span><br>
-                                <span class="galpaoAlerta">GALPÃO: ${dadosAlerta[i].idGalpao}</span><br>
-                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span><br>
+                                <span>DATA: ${dadosAlerta[i].dataAlerta}</span>
+                                <span>HORA: ${dadosAlerta[i].horaAlerta}</span>
+                                <span class="sensorAlerta">SENSOR: ${dadosAlerta[i].idSensor} </span>
+                                <span class="metricaAlerta">Endereço: ${dadosAlerta[i].logradouro}</span>
+                                <span class="galpaoAlerta">GALPÃO: ${numeroGalpao}</span>
                                 <span class="metricaAlerta">UMIDADE: ${dadosAlerta[i].umidade}</span>
                             </div>`
                         }
@@ -367,9 +525,6 @@
         buscarMedias(idGalpao)
     }
 
-    let ultimasMedidasTemperatura = [];
-    let ultimasMedidasUmidade = [];
-    let dataUltimasMedidas = [];
 
     function buscarUltimasMedidas(idGalpao) {
 
@@ -417,47 +572,7 @@
 
     // window.onload = criarGraficosUltimasMedidas();
 
-    const canvasTemp = document.getElementById('grafico_temperatura');
-
-    const chartTemp = new Chart(canvasTemp, {
-        type: 'line',
-        data: {
-            labels: dataUltimasMedidas,
-            datasets: [
-                {
-                    label: 'Temperatura',
-                    data: ultimasMedidasTemperatura,
-                    borderWidth: 2,
-                    backgroundColor: 'yellow',
-                    borderColor: 'yellow',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
-
-    const canvasUmid = document.getElementById('grafico_umidade');
-
-    const chartUmid = new Chart(canvasUmid, {
-        type: 'line',
-        data: {
-            labels: dataUltimasMedidas,
-            datasets: [
-                {
-                    label: 'Umidade',
-                    data: ultimasMedidasUmidade,
-                    borderWidth: 2,
-                    backgroundColor: 'blue',
-                    borderColor: 'blue',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
+    
 
     // const chartSensor = document.getElementById('grafico_sensores');
 
@@ -479,9 +594,7 @@
     //     }
     // });
 
-    let mediasTemperatura = [];
-    let mediasUmidade = [];
-    let dataMedias = [];
+    
 
     function buscarMedias(idGalpao) {
 
@@ -533,47 +646,8 @@
 
     }
 
-    const canvasTempMedio = document.getElementById('grafico_temperaturaMedio');
-
-    const chartTempMedio = new Chart(canvasTempMedio, {
-        type: 'line',
-        data: {
-            labels: dataMedias,
-            datasets: [
-                {
-                    label: 'Temperatura',
-                    data: mediasTemperatura,
-                    borderWidth: 2,
-                    backgroundColor: 'purple',
-                    borderColor: 'purple',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
-
-    const canvasUmiMedio = document.getElementById('grafico_umidadeMedio');
-
-    const chartUmiMedio = new Chart(canvasUmiMedio, {
-        type: 'line',
-        data: {
-            labels: dataMedias,
-            datasets: [
-                {
-                    label: 'Umidade',
-                    data: mediasUmidade,
-                    borderWidth: 2,
-                    backgroundColor: 'red',
-                    borderColor: 'red',
-                },
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
+    
+    window.onload = exibirEnderecos(), conferirUsuario();
 
 
     let esconder = document.getElementById("esconder");

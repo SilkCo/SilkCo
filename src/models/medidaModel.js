@@ -93,12 +93,14 @@ function buscarAlertas(idEmpresa){
         sensor.idSensor,
         leitura_sensor.temperatura,
         leitura_sensor.umidade,
+        DATE_FORMAT(leitura_sensor.dtColeta, '%d/%m/%Y') AS dataAlerta,
+        DATE_FORMAT(leitura_sensor.dtColeta, '%H:%i') AS horaAlerta,
         endereco.logradouro
         FROM endereco JOIN galpao ON galpao.fkEndereco = endereco.idEndereco
         JOIN sensor ON sensor.fkGalpao = galpao.idGalpao 
         JOIN leitura_sensor ON leitura_sensor.idColeta =
         (SELECT MAX(leitura_sensor2.idColeta) FROM leitura_sensor AS leitura_sensor2 WHERE leitura_sensor2.fkSensor = sensor.idSensor)  
-        WHERE endereco.fkEmpresa = ${idEmpresa}
+        WHERE endereco.fkEmpresa = ${idEmpresa};
     `
     return database.executar(instrucaoSql);
 }

@@ -108,7 +108,7 @@
 }
 .alertas span{
   font-weight: bold;
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
   font-size: 14px;
   text-align: center;
   width: 100%;
