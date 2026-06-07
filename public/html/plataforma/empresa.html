@@ -49,7 +49,7 @@
                             <img src="../../src/img/icon/ia.png" alt="">
                         </span>
                         <span class="nav-text">
-                            bobIA
+                            Bob IA
                         </span>
                     </a>
                 </div>
@@ -71,27 +71,27 @@
                 <div class="input-section">
                     <div class="form-item">
                         <label for="">Código: </label>
-                        <input type="text" disabled value="1234">
+                        <input type="text" id="input_codigo_empresa" disabled>
                     </div>
 
                     <div class="form-item">
                         <label for="">Nome: </label>
-                        <input type="text" disabled value="Nome da Empresa">
+                        <input type="text" id="input_nome_empresa" disabled>
                     </div>
                 
                     <div class="form-item">
                         <label for="">CNPJ: </label>
-                        <input type="text" disabled value="12345678912345">
+                        <input type="text" id="input_cnpj_empresa" disabled>
                     </div>
                 
-                    <div class="form-item">
+                    <!-- <div class="form-item">
                         <label for="">Telefone: </label>
-                        <input type="text" disabled value="11912345678">
-                    </div>
+                        <input type="text" id="input_telefone_empresa" disabled>
+                    </div> -->
                 </div>
             </div>
 
-            <div class="form" id="form_cadastrar">
+            <!-- <div class="form" id="form_cadastrar">
                 <div class="form-title">
                     <span>Cadastrar Empresa</span>
                 </div>
@@ -134,43 +134,69 @@
                 <button>
                     Entrar na Empresa
                 </button>
-            </div>
+            </div> -->
         </div>
     </main>
 </body>
 </html>
 
 <script>
-    let verifCNPJ = 0;
-    let verifTelefone = 0;
-    window.onload = conferirUsuario(),function exibirForm(){
+    // let verifCNPJ = 0;
+    // let verifTelefone = 0;
+    window.onload = conferirUsuario();
+    window.onload = buscarDadosEmpresa();
 
-        // escolher qual formulário de empresa vai aparecer
-        // formulario = 'cadastrar' para cadastrar empresa
-        // formulario = 'cadastrado' para visualizar informação de empresa cadastrada
-        // formulario = 'entrar' para entrar em empresa existente
-        
-        let formulario = 'cadastrar'; 
-        // let formulario = 'cadastrado'; 
-        // let formulario = 'entrar'; 
+    function buscarDadosEmpresa(){
 
+        let idEmpresa = sessionStorage.ID_EMPRESA;
 
-        console.log('função executada');
+        fetch(`/empresas/buscar/${idEmpresa}`, {
+            method: 'GET',
+        })
+        .then(function(resposta){
 
-        if(formulario == 'cadastrar'){
-            form_cadastrado.style.display = 'none';
-            form_entrar.style.display = 'none';
-            form_cadastrar.style.display = 'flex';
-        } else if(formulario == 'cadastrado'){
-            form_cadastrar.style.display = 'none';
-            form_entrar.style.display = 'none';
-            form_cadastrado.style.display = 'flex';
-        } else if(formulario == 'entrar'){
-            form_cadastrado.style.display = 'none';
-            form_cadastrar.style.display = 'none';
-            form_entrar.style.display = 'flex';
-        }
+            resposta.json().then(function(resposta){
+
+                // console.log(resposta);
+
+                document.getElementById('input_codigo_empresa').value = resposta[0].codigo;
+                document.getElementById('input_nome_empresa').value = resposta[0].nome;
+                document.getElementById('input_cnpj_empresa').value = resposta[0].cnpj;
+
+            })
+
+        })
+
     }
+
+    // function exibirForm(){
+
+    //     // escolher qual formulário de empresa vai aparecer
+    //     // formulario = 'cadastrar' para cadastrar empresa
+    //     // formulario = 'cadastrado' para visualizar informação de empresa cadastrada
+    //     // formulario = 'entrar' para entrar em empresa existente
+        
+    //     let formulario = 'cadastrar'; 
+    //     // let formulario = 'cadastrado'; 
+    //     // let formulario = 'entrar'; 
+
+
+    //     console.log('função executada');
+
+    //     if(formulario == 'cadastrar'){
+    //         form_cadastrado.style.display = 'none';
+    //         form_entrar.style.display = 'none';
+    //         form_cadastrar.style.display = 'flex';
+    //     } else if(formulario == 'cadastrado'){
+    //         form_cadastrar.style.display = 'none';
+    //         form_entrar.style.display = 'none';
+    //         form_cadastrado.style.display = 'flex';
+    //     } else if(formulario == 'entrar'){
+    //         form_cadastrado.style.display = 'none';
+    //         form_cadastrar.style.display = 'none';
+    //         form_entrar.style.display = 'flex';
+    //     }
+    // }
 
     function conferirUsuario() {
 
@@ -186,36 +212,36 @@
 
         }
 
-    function validarCNPJ(){
-        let cnpj = ipt_cnpj.value;
+    // function validarCNPJ(){
+    //     let cnpj = ipt_cnpj.value;
 
-    if(cnpj.length != 14 || isNaN(cnpj)){
-        txt_cnpj.innerHTML = `CNPJ inválido`;
-        verifCNPJ = 0;
-    }else{
-        txt_cnpj.innerHTML = ``;
-        verifCNPJ = 1;
-    }
-    }
-    function validarTelefone(){
-        let telefone = ipt_telefone.value;
+    // if(cnpj.length != 14 || isNaN(cnpj)){
+    //     txt_cnpj.innerHTML = `CNPJ inválido`;
+    //     verifCNPJ = 0;
+    // }else{
+    //     txt_cnpj.innerHTML = ``;
+    //     verifCNPJ = 1;
+    // }
+    // }
+    // function validarTelefone(){
+    //     let telefone = ipt_telefone.value;
 
-    if(telefone.length != 11 || isNaN(telefone)){
-        txt_telefone.innerHTML = `Telefone inválido`;
-        verifTelefone = 0;
-    }else{
-        txt_telefone.innerHTML = ``;
-        verifTelefone = 1;
-    }
-    }
-    function cadastrar(){
-        let verif = verifCNPJ+ verifTelefone;
-        let nome = ipt_nome.value;
+    // if(telefone.length != 11 || isNaN(telefone)){
+    //     txt_telefone.innerHTML = `Telefone inválido`;
+    //     verifTelefone = 0;
+    // }else{
+    //     txt_telefone.innerHTML = ``;
+    //     verifTelefone = 1;
+    // }
+    // }
+    // function cadastrar(){
+    //     let verif = verifCNPJ+ verifTelefone;
+    //     let nome = ipt_nome.value;
 
-        if(verif == 2 && nome != ''){
-            alert(`Cadastrado com sucesso`);
-        }else{
-            alert(`Tem que ter todos os parâmetros`);
-        }
-    }
+    //     if(verif == 2 && nome != ''){
+    //         alert(`Cadastrado com sucesso`);
+    //     }else{
+    //         alert(`Tem que ter todos os parâmetros`);
+    //     }
+    // }
 </script>
